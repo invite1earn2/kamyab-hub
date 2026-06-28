@@ -162,57 +162,111 @@ Loading Dashboard...
 
 <div className="grid md:grid-cols-3 gap-6">
 
-<div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+<div className="rounded-3xl border border-green-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-<p className="text-gray-500 text-sm">
+<div className="flex items-start justify-between">
 
-💰 Total Earnings
+<div>
+
+<p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+
+Total Earnings
 
 </p>
 
-<h2 className="text-4xl font-black mt-4 tracking-tight">
+<h2 className="mt-3 text-4xl font-black text-gray-900">
 
-PKR {earnings+sales}
+PKR {earnings + sales}
 
 </h2>
+
+<p className="mt-3 text-sm text-green-600 font-semibold">
+
+▲ Your total business income
+
+</p>
 
 </div>
 
-<div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl">
 
-<p className="text-gray-500 text-sm">
-
-👥 Referral Rewards
-
-</p>
-
-<h2 className="text-4xl font-black mt-4 tracking-tight">
-
-PKR {earnings}
-
-</h2>
+💰
 
 </div>
 
-<div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+</div>
 
-<p className="text-gray-500 text-sm">
+</div>
 
-📦 Product Profit
+<div className="rounded-3xl border border-blue-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-</p>
+  <div className="flex items-start justify-between">
 
-<h2 className="text-4xl font-black mt-4 tracking-tight">
+    <div>
 
-PKR {sales}
+      <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
 
-</h2>
+        Referral Rewards
 
-<p className="mt-3 text-sm text-gray-500">
+      </p>
 
-Delivered Orders: {orderCount}
+      <h2 className="mt-3 text-4xl font-black text-gray-900">
 
-</p>
+        PKR {earnings}
+
+      </h2>
+
+      <p className="mt-3 text-sm font-semibold text-blue-600">
+
+        Growing through referrals
+
+      </p>
+
+    </div>
+
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
+
+      👥
+
+    </div>
+
+  </div>
+
+</div>
+
+<div className="rounded-3xl border border-amber-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+  <div className="flex items-start justify-between">
+
+    <div>
+
+      <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+
+        Product Profit
+
+      </p>
+
+      <h2 className="mt-3 text-4xl font-black text-gray-900">
+
+        PKR {sales}
+
+      </h2>
+
+      <p className="mt-3 text-sm font-semibold text-amber-600">
+
+        {orderCount} Delivered Orders
+
+      </p>
+
+    </div>
+
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-3xl">
+
+      📦
+
+    </div>
+
+  </div>
 
 </div>
 
