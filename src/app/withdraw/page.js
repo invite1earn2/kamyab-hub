@@ -26,6 +26,8 @@ const [amount,setAmount]=useState("");
 const [balance,setBalance]=useState(0);
 const [loading,setLoading]=useState(true);
 
+const [user,setUser]=useState(null);
+
 useEffect(()=>{
 
 check();
@@ -56,7 +58,15 @@ data:user
 }=
 await supabase
 .from("users")
-.select("subscribed,earnings_balance")
+.select(`
+subscribed,
+earnings_balance,
+payment_method,
+payment_number,
+bank_name,
+account_title,
+iban
+`)
 .eq("email",email)
 .single();
 
@@ -77,6 +87,7 @@ user.earnings_balance||0
 )
 );
 
+setUser(user);
 setLoading(false);
 
 }
@@ -129,6 +140,73 @@ return;
 
 }
 
+if(
+!user?.payment_method
+){
+
+alert(
+"Please complete your Payment Settings before requesting a withdrawal."
+);
+
+window.location.href="/payment-settings";
+
+return;
+
+}
+
+if(
+user.payment_method==="EasyPaisa"
+&&
+!user.payment_number
+){
+
+alert(
+"Please add your EasyPaisa number."
+);
+
+window.location.href="/payment-settings";
+
+return;
+
+}
+
+if(
+user.payment_method==="JazzCash"
+&&
+!user.payment_number
+){
+
+alert(
+"Please add your JazzCash number."
+);
+
+window.location.href="/payment-settings";
+
+return;
+
+}
+
+if(
+user.payment_method==="Bank"
+&&
+(
+!user.bank_name
+||
+!user.account_title
+||
+!user.iban
+)
+){
+
+alert(
+"Please complete your bank account details."
+);
+
+window.location.href="/payment-settings";
+
+return;
+
+}
 await createWithdrawal({
 
 user_name:name,
