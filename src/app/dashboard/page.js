@@ -340,98 +340,115 @@ PKR {earnings + sales}
 </a>
 
 <a
-href="/invite"
-className="bg-white border rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+  href="/invite"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
 >
 
-<div className="text-5xl">
+  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-4xl">
 
-👥
+    👥
 
-</div>
+  </div>
 
-<h3 className="text-2xl font-bold mt-6">
+  <h3 className="mt-6 text-2xl font-bold text-gray-900">
 
-Invite Partners
+    Invite Partners
 
-</h3>
+  </h3>
 
-<p className="mt-4 text-gray-600 leading-7">
+  <p className="mt-4 leading-7 text-gray-600">
 
-Grow your referral network and increase your passive income.
+    Grow your referral network and build a consistent passive income.
 
-</p>
+  </p>
 
-<div className="mt-8 text-blue-600 font-semibold">
+  <div className="mt-8 inline-flex items-center font-semibold text-blue-600">
 
-Invite →
+    Invite Now
 
-</div>
+    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
+
+      →
+
+    </span>
+
+  </div>
 
 </a>
 
 <a
-href="/orders"
-className="bg-white border rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+  href="/orders"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
 >
 
-<div className="text-5xl">
+  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-4xl">
 
-📋
+    📋
 
-</div>
+  </div>
 
-<h3 className="text-2xl font-bold mt-6">
+  <h3 className="mt-6 text-2xl font-bold text-gray-900">
 
-My Orders
+    My Orders
 
-</h3>
+  </h3>
 
-<p className="mt-4 text-gray-600 leading-7">
+  <p className="mt-4 leading-7 text-gray-600">
 
-Track every order and monitor delivery progress.
+    Monitor every order and stay updated with delivery progress.
 
-</p>
+  </p>
 
-<div className="mt-8 text-blue-600 font-semibold">
+  <div className="mt-8 inline-flex items-center font-semibold text-green-600">
 
-View →
+    View Orders
 
-</div>
+    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
+
+      →
+
+    </span>
+
+  </div>
 
 </a>
 
 <a
-href="/analytics"
-className="bg-white border rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+  href="/analytics"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-200 hover:shadow-xl"
 >
 
-<div className="text-5xl">
+  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 text-4xl">
 
-📈
+    📈
 
-</div>
+  </div>
 
-<h3 className="text-2xl font-bold mt-6">
+  <h3 className="mt-6 text-2xl font-bold text-gray-900">
 
-Analytics
+    Analytics
 
-</h3>
+  </h3>
 
-<p className="mt-4 text-gray-600 leading-7">
+  <p className="mt-4 leading-7 text-gray-600">
 
-Analyze your performance and monitor business growth.
+    Analyze your business performance and discover new growth opportunities.
 
-</p>
+  </p>
 
-<div className="mt-8 text-blue-600 font-semibold">
+  <div className="mt-8 inline-flex items-center font-semibold text-amber-600">
 
-Open →
+    Open Analytics
 
-</div>
+    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
+
+      →
+
+    </span>
+
+  </div>
 
 </a>
-
 </div>
 
 </div>
