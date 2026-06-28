@@ -78,38 +78,6 @@ return;
 
 }
 
-const { data:user }=
-await supabase
-.from("users")
-.select("earnings_balance")
-.eq("email",withdrawal.user_email)
-.single();
-
-if(!user){
-
-alert("User not found.");
-
-return;
-
-}
-
-const newBalance=
-
-Number(user.earnings_balance||0)
--
-Number(withdrawal.amount);
-
-await supabase
-.from("users")
-.update({
-
-earnings_balance:newBalance
-
-})
-.eq(
-"email",
-withdrawal.user_email
-);
 
 const transactionId=
 window.prompt(
@@ -123,6 +91,70 @@ alert("Transaction ID is required.");
 return;
 
 }
+
+const { data:user }=
+
+await supabase
+
+.from("users")
+
+.select("earnings_balance")
+
+.eq("email",withdrawal.user_email)
+
+.single();
+
+
+
+if(!user){
+
+
+
+alert("User not found.");
+
+
+
+return;
+
+
+
+}
+
+
+
+const newBalance=
+
+
+
+Number(user.earnings_balance||0)
+
+-
+
+Number(withdrawal.amount);
+
+
+
+await supabase
+
+.from("users")
+
+.update({
+
+
+
+earnings_balance:newBalance
+
+
+
+})
+
+.eq(
+
+"email",
+
+withdrawal.user_email
+
+);
 
 const ownerEmail=
 localStorage.getItem(
@@ -253,6 +285,88 @@ PKR {item.amount}
 {item.payment_method || "Not Provided"}
 
 </span>
+
+</td>
+
+<td className="p-4">
+
+{
+
+item.payment_method==="EasyPaisa"
+
+&&
+
+<div>
+
+<p className="font-semibold">
+
+📱 EasyPaisa
+
+</p>
+
+<p className="text-sm text-gray-600">
+
+{item.payment_number}
+
+</p>
+
+</div>
+
+}
+
+{
+
+item.payment_method==="JazzCash"
+
+&&
+
+<div>
+
+<p className="font-semibold">
+
+💸 JazzCash
+
+</p>
+
+<p className="text-sm text-gray-600">
+
+{item.payment_number}
+
+</p>
+
+</div>
+
+}
+
+{
+
+item.payment_method==="Bank"
+
+&&
+
+<div className="space-y-1 text-sm">
+
+<p>
+
+🏦 {item.bank_name}
+
+</p>
+
+<p>
+
+👤 {item.account_title}
+
+</p>
+
+<p className="break-all">
+
+{item.iban}
+
+</p>
+
+</div>
+
+}
 
 </td>
 
