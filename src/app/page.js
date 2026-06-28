@@ -42,59 +42,80 @@ return(
 
 {/* Hero Section */}
 
-<section className="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-24 text-center">
+<section className="max-w-7xl mx-auto px-5 md:px-8 py-14 md:py-24">
 
-<div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 border border-blue-100">
+<div className="max-w-5xl mx-auto text-center">
 
-<span className="text-xl">
+<div className="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-5 py-2 border border-blue-200 shadow-sm">
+
+<span className="text-lg">
 
 🚀
 
 </span>
 
-<p className="text-blue-700 font-semibold uppercase tracking-wider text-sm">
+<p className="font-semibold text-sm md:text-base">
 
-Welcome to Pakistan's Smart Business Partner Platform
+Pakistan's Smart Business Partner Platform
 
 </p>
 
 </div>
 
-<h1 className="text-5xl sm:text-6xl md:text-7xl font-black mt-8 text-gray-900">
+<h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900">
 
 Kamyab Hub
 
 </h1>
 
-<p className="mt-4 text-xl md:text-2xl font-semibold text-blue-600">
+<p className="mt-4 text-xl md:text-2xl font-bold text-blue-600">
 
 Har Qadam Kamyabi Ki Taraf
 
 </p>
 
-<h2 className="text-3xl sm:text-5xl md:text-5xl font-bold mt-8 leading-tight text-gray-900">
+<h2 className="mt-8 text-3xl md:text-5xl font-black text-gray-900 leading-tight">
 
-Build Your Business.
-<br/>
+Build Your Business
 
-Grow Your Income.
+<br />
+
+<span className="text-blue-600">
+
+Grow Your Income
+
+</span>
 
 </h2>
 
-<p className="max-w-3xl mx-auto mt-8 text-lg md:text-xl text-gray-700 leading-8">
+<p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl leading-8 text-gray-700">
 
-Join Pakistan's growing <strong>Business Partner Network</strong> and build a sustainable income through quality products and referral rewards.
+Join Pakistan's growing
 
-<br/><br/>
+<span className="font-bold text-gray-900">
 
-Kamyab Hub manages inventory, nationwide delivery and platform operations—so you can focus on growing your business.
+ Business Partner Network
+
+</span>
+
+and build sustainable income through
+
+quality products,
+
+referral rewards,
+
+and a trusted business platform.
 
 </p>
-<div className="flex justify-center gap-5 mt-10 flex-wrap">
+
+<div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
 
 <a
+
 href="/signup"
-className="px-8 py-4 rounded-xl bg-black text-white hover:bg-gray-800 transition"
+
+className="rounded-2xl bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold shadow-lg transition-all duration-300"
+
 >
 
 Become a Business Partner
@@ -102,8 +123,11 @@ Become a Business Partner
 </a>
 
 <a
+
 href="/products"
-className="px-8 py-4 rounded-xl border bg-white hover:bg-gray-100 transition"
+
+className="rounded-2xl border-2 border-gray-300 bg-white hover:border-blue-600 hover:text-blue-600 px-8 py-4 font-bold transition-all duration-300"
+
 >
 
 Explore Products
@@ -112,15 +136,73 @@ Explore Products
 
 </div>
 
-<div className="flex justify-center gap-8 mt-12 text-sm font-medium text-gray-700 flex-wrap">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
 
-<p>✅ Trusted Business Platform</p>
+<div className="rounded-2xl bg-white shadow-md border border-gray-100 p-5">
 
-<p>✅ No Inventory Required</p>
+<div className="text-3xl">
 
-<p>✅ Nationwide Delivery</p>
+🤝
 
-<p>✅ Referral Rewards</p>
+</div>
+
+<p className="mt-3 font-semibold text-gray-900">
+
+Trusted Platform
+
+</p>
+
+</div>
+
+<div className="rounded-2xl bg-white shadow-md border border-gray-100 p-5">
+
+<div className="text-3xl">
+
+📦
+
+</div>
+
+<p className="mt-3 font-semibold text-gray-900">
+
+No Inventory
+
+</p>
+
+</div>
+
+<div className="rounded-2xl bg-white shadow-md border border-gray-100 p-5">
+
+<div className="text-3xl">
+
+🚚
+
+</div>
+
+<p className="mt-3 font-semibold text-gray-900">
+
+Delivery Managed
+
+</p>
+
+</div>
+
+<div className="rounded-2xl bg-white shadow-md border border-gray-100 p-5">
+
+<div className="text-3xl">
+
+💰
+
+</div>
+
+<p className="mt-3 font-semibold text-gray-900">
+
+Referral Rewards
+
+</p>
+
+</div>
+
+</div>
 
 </div>
 
