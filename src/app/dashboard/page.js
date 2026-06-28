@@ -274,58 +274,68 @@ PKR {earnings + sales}
 
 <div className="mt-16">
 
-<div className="mb-8">
+<div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 
-<p className="text-blue-600 font-semibold uppercase tracking-wider">
+  <div>
 
-Business Center
+    <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
 
-</p>
+      🚀 Quick Actions
 
-<h2 className="text-3xl font-black mt-2">
+    </span>
 
-Manage Your Business
+    <h2 className="mt-5 text-3xl md:text-4xl font-black text-gray-900">
 
-</h2>
+      Manage Your Business
 
-<p className="text-gray-600 mt-3">
+    </h2>
 
-Access all your business tools from one place.
+    <p className="mt-3 max-w-2xl text-gray-700 leading-7">
 
-</p>
+      Everything you need to sell products, grow referrals, track orders and monitor your business from one professional dashboard.
+
+    </p>
+
+  </div>
 
 </div>
 
 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
 <a
-href="/products"
-className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-blue-500 transition-all duration-300"
+  href="/products"
+  className="group rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
 >
 
-<div className="text-5xl">
+  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-4xl">
 
-📦
+    📦
 
-</div>
+  </div>
 
-<h3 className="text-2xl font-bold mt-6">
+  <h3 className="mt-6 text-2xl font-bold">
 
-Browse Products
+    Browse Products
 
-</h3>
+  </h3>
 
-<p className="mt-4 text-gray-600 leading-7">
+  <p className="mt-4 leading-7 text-blue-100">
 
-Explore premium products and start earning through every sale.
+    Explore premium products, earn profits from every sale and grow your business.
 
-</p>
+  </p>
 
-<div className="mt-8 text-blue-600 font-semibold">
+  <div className="mt-8 inline-flex items-center font-semibold">
 
-Explore →
+    Explore Products
 
-</div>
+    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
+
+      →
+
+    </span>
+
+  </div>
 
 </a>
 
