@@ -217,6 +217,8 @@ Review, approve and manage Business Partner withdrawal requests.
 
 <th>Method</th>
 
+<th>Payment Details</th>
+
 <th>Status</th>
 
 <th>Date</th>
@@ -244,9 +246,13 @@ PKR {item.amount}
 
 </td>
 
-<td>
+<td className="p-4">
 
-{item.method}
+<span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700">
+
+{item.payment_method || "Not Provided"}
+
+</span>
 
 </td>
 
