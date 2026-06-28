@@ -104,39 +104,59 @@ Loading Dashboard...
 
 <main className="p-8">
 
-<div className="mb-10 flex flex-col md:flex-row md:justify-between md:items-center">
+<div className="mb-12 rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 p-6 md:p-10 shadow-sm">
 
-<div>
+  <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
-<p className="text-blue-600 font-semibold uppercase tracking-wider">
+    <div>
 
-Welcome Back 👋
+      <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
 
-</p>
+        👋 Welcome Back
 
-<h1 className="text-4xl font-black mt-2">
+      </span>
 
-Business Dashboard
+      <h1 className="mt-5 text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
 
-</h1>
+        Business Dashboard
 
-<p className="text-gray-600 mt-3">
+      </h1>
 
-Manage your products, referrals and earnings from one place.
+      <p className="mt-4 max-w-2xl text-base leading-7 text-gray-700 md:text-lg">
 
-</p>
+        Manage your products, referral network, earnings, and business growth from one professional dashboard.
 
-</div>
+      </p>
 
-<div className="mt-6 md:mt-0">
+    </div>
 
-<span className="bg-blue-100 text-blue-700 px-5 py-2 rounded-full font-semibold">
+    <div>
 
-🤝 Business Partner
+      <div className="rounded-2xl border border-blue-200 bg-white px-6 py-4 text-center shadow-md">
 
-</span>
+        <div className="text-3xl">
 
-</div>
+          🤝
+
+        </div>
+
+        <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
+
+          Account Type
+
+        </p>
+
+        <p className="mt-1 text-lg font-bold text-gray-900">
+
+          Business Partner
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
