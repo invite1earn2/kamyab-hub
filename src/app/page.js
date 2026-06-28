@@ -123,17 +123,11 @@ Become a Business Partner
 </a>
 
 <a
-
-href="/products"
-
-className="rounded-2xl border-2 border-gray-300 bg-white hover:border-blue-600 hover:text-blue-600 px-8 py-4 font-bold transition-all duration-300"
-
+  href="/products"
+  className="rounded-2xl border-2 border-blue-600 bg-blue-50 text-blue-700 px-8 py-4 font-bold shadow-md transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-xl active:scale-95"
 >
-
-Explore Products
-
+  Explore Products
 </a>
-
 </div>
 
 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
