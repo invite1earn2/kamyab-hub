@@ -22,6 +22,12 @@ setStats
 ]=
 useState(null);
 
+const [
+ownerMode,
+setOwnerMode
+]=
+useState(false);
+
 useEffect(()=>{
 
 load();
@@ -35,8 +41,128 @@ localStorage.getItem(
 "user_email"
 );
 
+const owner=
+
+checkOwner();
+
+setOwnerMode(owner);
+
+if(owner){
+
+const {count:totalPartners}=
+
+await supabase
+
+.from("users")
+
+.select("*",{
+count:"exact",
+head:true
+});
+
+const {count:activeSubscribers}=
+
+await supabase
+
+.from("users")
+
+.select("*",{
+count:"exact",
+head:true
+})
+
+.eq("subscribed",true);
+
+const {count:totalOrders}=
+
+await supabase
+
+.from("orders")
+
+.select("*",{
+count:"exact",
+head:true
+});
+
+const {data:withdrawals}=
+
+await supabase
+
+.from("withdrawals")
+
+.select("amount,status");
+
+const pendingWithdrawals=
+
+(withdrawals||[])
+.filter(item=>item.status==="pending")
+.length;
+
+const approvedWithdrawals=
+
+(withdrawals||[])
+.filter(item=>item.status==="approved")
+.length;
+
+const totalPaid=
+
+(withdrawals||[])
+.filter(item=>item.status==="approved")
+.reduce(
+(total,item)=>
+total+
+Number(item.amount||0),
+0
+);
+
+const outstandingLiability=
+
+(withdrawals||[])
+.filter(item=>item.status==="pending")
+.reduce(
+(total,item)=>
+total+
+Number(item.amount||0),
+0
+);
+
+const {count:totalProducts}=
+
+await supabase
+
+.from("products")
+
+.select("*",{
+count:"exact",
+head:true
+});
+
+setStats({
+
+totalPartners,
+
+activeSubscribers,
+
+totalOrders,
+
+pendingWithdrawals,
+
+approvedWithdrawals,
+
+totalPaid,
+
+outstandingLiability,
+
+totalProducts
+
+});
+
+return;
+
+}
+
 if(
-!checkOwner()
+!owner
 ){
 
 const {
