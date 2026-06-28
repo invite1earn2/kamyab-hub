@@ -43,19 +43,23 @@ export default function MobileMenu({
 
         {user && !isCompany && (
           <>
-            <a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📊 Dashboard</a>
+            <a
+  href="/dashboard"
+  onClick={closeMenu}
+  className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition"
+>📊 Dashboard</a>
 
-            <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📦 Products</a>
+            <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📦 Products</a>
 
-            <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">👥 Invite</a>
+            <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">👥 Invite</a>
 
-            <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">🛒 Orders</a>
+            <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🛒 Orders</a>
 
-            <a href="/withdraw" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">💰 Withdraw</a>
+            <a href="/withdraw" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">💰 Withdraw</a>
 
-            <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📈 Analytics</a>
+            <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📈 Analytics</a>
 
-            <a href="/my-withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">🏦 My Withdrawals</a>
+            <a href="/my-withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🏦 My Withdrawals</a>
 
             <button
               onClick={logout}
@@ -68,25 +72,25 @@ export default function MobileMenu({
 
         {user && isCompany && (
           <>
-            <a href="/company" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">👑 Company Dashboard</a>
+            <a href="/company" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">👑 Company Dashboard</a>
 
-            <a href="/company-products" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📦 Product Management</a>
+            <a href="/company-products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📦 Product Management</a>
 
-            <a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📊 Dashboard</a>
+            <a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📊 Dashboard</a>
 
-            <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">🛍 Products</a>
+            <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🛍 Products</a>
 
-            <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">👥 Invite</a>
+            <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition"">👥 Invite</a>
 
-            <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">🛒 Orders</a>
+            <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition"🛒 Orders</a>
 
-            <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">📈 Analytics</a>
+            <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📈 Analytics</a>
 
-            <a href="/subscriptions" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">💳 Subscriptions</a>
+            <a href="/subscriptions" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">💳 Subscriptions</a>
 
-            <a href="/company-orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">🚚 Company Orders</a>
+            <a href="/company-orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🚚 Company Orders</a>
 
-            <a href="/withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 hover:bg-blue-50">💸 Withdrawal Management</a>
+            <a href="/withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">💸 Withdrawal Management</a>
 
             <button
               onClick={logout}
