@@ -92,7 +92,7 @@ loading
 
 <p className="mt-4 text-gray-600">
 
-Loading Dashboard...
+Preparing your business dashboard...
 
 </p>
 
@@ -102,9 +102,9 @@ Loading Dashboard...
 
 :
 
-<main className="p-8">
+<main className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
 
-<div className="mb-12 rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 p-6 md:p-10 shadow-sm">
+<div className="mb-12 rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-50 via-slate-50 to-indigo-50 p-6 md:p-10 shadow-sm">
 
   <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
@@ -160,9 +160,10 @@ Loading Dashboard...
 
 </div>
 
-<div className="grid md:grid-cols-3 gap-6">
+<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
 
-<div className="rounded-3xl border border-green-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div className="rounded-3xl border border-green-100 bg-white p-7 shadow-sm hover:shadow-2xl
+hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
 <div className="flex items-start justify-between">
 
@@ -198,7 +199,8 @@ PKR {earnings + sales}
 
 </div>
 
-<div className="rounded-3xl border border-blue-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div className="rounded-3xl border border-blue-100 bg-white p-7 shadow-sm hover:shadow-2xl
+hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
   <div className="flex items-start justify-between">
 
@@ -234,7 +236,8 @@ PKR {earnings + sales}
 
 </div>
 
-<div className="rounded-3xl border border-amber-100 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div className="rounded-3xl border border-amber-100 bg-white p-7 shadow-sm hover:shadow-2xl
+hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
   <div className="flex items-start justify-between">
 
@@ -272,7 +275,7 @@ PKR {earnings + sales}
 
 </div>
 
-<div className="mt-16">
+<div className="mt-20">
 
 <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 
@@ -300,7 +303,7 @@ PKR {earnings + sales}
 
 </div>
 
-<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
 
 <a
   href="/products"
@@ -341,7 +344,8 @@ PKR {earnings + sales}
 
 <a
   href="/invite"
-  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-2xl
+hover:scale-[1.02]"
 >
 
   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-4xl">
@@ -378,7 +382,8 @@ PKR {earnings + sales}
 
 <a
   href="/orders"
-  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-2xl
+hover:scale-[1.02]"
 >
 
   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-4xl">
@@ -415,7 +420,8 @@ PKR {earnings + sales}
 
 <a
   href="/analytics"
-  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-200 hover:shadow-xl"
+  className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-200 hover:shadow-2xl
+hover:scale-[1.02]"
 >
 
   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 text-4xl">
@@ -453,7 +459,7 @@ PKR {earnings + sales}
 
 </div>
 
-<section className="mt-16">
+<section className="mt-20">
 
 <div className="mb-8">
 
@@ -477,9 +483,10 @@ Stay focused on growing your business through product sales, referral rewards an
 
 </div>
 
-<div className="grid md:grid-cols-2 gap-6">
+<div className="grid gap-6 lg:grid-cols-2">
 
-<div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+<div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl
+hover:scale-[1.02]">
 
   <div className="flex items-center gap-4">
 
@@ -515,7 +522,8 @@ Stay focused on growing your business through product sales, referral rewards an
 
 </div>
 
-<div className="rounded-3xl border border-blue-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+<div className="rounded-3xl border border-blue-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl
+hover:scale-[1.02]">
 
   <div className="flex items-center gap-4">
 
