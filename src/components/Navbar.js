@@ -99,6 +99,7 @@ export default function Navbar() {
               <a href="/products">Products</a>
               <a href="/invite">Invite</a>
               <a href="/orders">Orders</a>
+              <a href="/payment-settings">Payment Settings</a>
               <a href="/withdraw">Withdraw</a>
               <a href="/analytics">Analytics</a>
               <a href="/my-withdrawals">Withdrawals</a>
