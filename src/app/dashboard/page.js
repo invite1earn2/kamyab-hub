@@ -226,7 +226,7 @@ Access all your business tools from one place.
 
 <a
 href="/products"
-className="bg-black text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-blue-500 transition-all duration-300"
 >
 
 <div className="text-5xl">
@@ -241,13 +241,13 @@ Browse Products
 
 </h3>
 
-<p className="mt-4 text-gray-300 leading-7">
+<p className="mt-4 text-gray-600 leading-7">
 
 Explore premium products and start earning through every sale.
 
 </p>
 
-<div className="mt-8 font-semibold">
+<div className="mt-8 text-blue-600 font-semibold">
 
 Explore →
 
