@@ -94,8 +94,7 @@ setLoading(false);
 }
 
 const referralLink =
-
-`http://localhost:3000/signup?ref=${code}`;
+`https://kamyab-hub.vercel.app/signup?ref=${code}`;
 async function copyLink(){
 
 await navigator.clipboard.writeText(
@@ -203,7 +202,7 @@ Referral Link
 
 <div className="mt-4 bg-gray-100 rounded-2xl p-5 break-all">
 
-http://localhost:3000/signup?ref={code}
+https://kamyab-hub.vercel.app/signup?ref={code}
 
 </div>
 
