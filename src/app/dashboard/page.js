@@ -455,43 +455,99 @@ PKR {earnings + sales}
 
 <section className="mt-16">
 
-<h2 className="text-2xl font-bold mb-6">
+<div className="mb-8">
 
-Business Summary
+<span className="inline-flex items-center rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
+
+📊 Business Insights
+
+</span>
+
+<h2 className="mt-5 text-3xl font-black text-gray-900">
+
+Your Growth Overview
 
 </h2>
 
-<div className="grid md:grid-cols-2 gap-6">
+<p className="mt-3 max-w-2xl text-gray-700 leading-7">
 
-<div className="bg-white border rounded-3xl p-8 shadow-sm">
-
-<h3 className="text-lg font-bold">
-
-📈 Your Progress
-
-</h3>
-
-<p className="text-gray-600 mt-4 leading-7">
-
-Keep growing your business by sharing quality products and inviting new Business Partners. Every successful referral and completed order increases your earnings.
+Stay focused on growing your business through product sales, referral rewards and consistent customer engagement.
 
 </p>
 
 </div>
 
-<div className="bg-white border rounded-3xl p-8 shadow-sm">
+<div className="grid md:grid-cols-2 gap-6">
 
-<h3 className="text-lg font-bold">
+<div className="rounded-3xl border border-green-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
-🎯 Next Goal
+  <div className="flex items-center gap-4">
 
-</h3>
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl">
 
-<p className="text-gray-600 mt-4 leading-7">
+      📈
 
-Increase your product sales, expand your referral network and build a consistent monthly income through Kamyab Hub.
+    </div>
 
-</p>
+    <div>
+
+      <h3 className="text-xl font-bold text-gray-900">
+
+        Your Progress
+
+      </h3>
+
+      <p className="text-sm font-semibold text-green-600">
+
+        Keep Building Momentum
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <p className="mt-6 leading-7 text-gray-600">
+
+    Continue promoting premium products and inviting new Business Partners. Every successful sale and referral strengthens your long-term income.
+
+  </p>
+
+</div>
+
+<div className="rounded-3xl border border-blue-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+
+  <div className="flex items-center gap-4">
+
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
+
+      🎯
+
+    </div>
+
+    <div>
+
+      <h3 className="text-xl font-bold text-gray-900">
+
+        Next Goal
+
+      </h3>
+
+      <p className="text-sm font-semibold text-blue-600">
+
+        Grow Every Month
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <p className="mt-6 leading-7 text-gray-600">
+
+    Expand your referral network, increase product sales and create a consistent monthly income through Kamyab Hub.
+
+  </p>
 
 </div>
 
