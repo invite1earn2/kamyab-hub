@@ -309,6 +309,208 @@ return(
 
 <main className="max-w-7xl mx-auto px-6 py-12">
 
+{
+ownerMode
+?
+
+<>
+
+<div className="mb-10">
+
+<p className="text-blue-600 font-semibold uppercase tracking-wider">
+
+Executive Analytics
+
+</p>
+
+<h1 className="text-5xl font-black mt-2">
+
+Company Performance
+
+</h1>
+
+<p className="text-gray-600 mt-4 max-w-3xl leading-7">
+
+Monitor the overall health of Kamyab Hub including partners, subscriptions, orders, products and withdrawal activity.
+
+</p>
+
+</div>
+
+<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+
+<div className="rounded-3xl bg-white border p-7 shadow-sm hover:shadow-xl transition">
+
+<div className="text-4xl">👥</div>
+
+<p className="mt-4 text-gray-500">
+
+Business Partners
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black">
+
+{stats.totalPartners}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl bg-white border p-7 shadow-sm hover:shadow-xl transition">
+
+<div className="text-4xl">💳</div>
+
+<p className="mt-4 text-gray-500">
+
+Active Subscribers
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black text-green-600">
+
+{stats.activeSubscribers}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl bg-white border p-7 shadow-sm hover:shadow-xl transition">
+
+<div className="text-4xl">📦</div>
+
+<p className="mt-4 text-gray-500">
+
+Total Orders
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black">
+
+{stats.totalOrders}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl bg-black text-white p-7 shadow-xl">
+
+<div className="text-4xl">🛍️</div>
+
+<p className="mt-4 text-gray-300">
+
+Products
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black">
+
+{stats.totalProducts}
+
+</h2>
+
+</div>
+
+</div>
+
+<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 mt-8">
+
+<div className="rounded-3xl border bg-white p-7 shadow-sm">
+
+<div className="text-4xl">
+
+⏳
+
+</div>
+
+<p className="mt-4 text-gray-500">
+
+Pending Withdrawals
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black text-yellow-600">
+
+{stats.pendingWithdrawals}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl border bg-white p-7 shadow-sm">
+
+<div className="text-4xl">
+
+✅
+
+</div>
+
+<p className="mt-4 text-gray-500">
+
+Approved Withdrawals
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black text-green-600">
+
+{stats.approvedWithdrawals}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl border bg-white p-7 shadow-sm">
+
+<div className="text-4xl">
+
+💸
+
+</div>
+
+<p className="mt-4 text-gray-500">
+
+Outstanding Liability
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black text-red-600">
+
+PKR {stats.outstandingLiability}
+
+</h2>
+
+</div>
+
+<div className="rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-7 shadow-xl">
+
+<div className="text-4xl">
+
+💰
+
+</div>
+
+<p className="mt-4 text-blue-100">
+
+Total Paid
+
+</p>
+
+<h2 className="mt-2 text-4xl font-black">
+
+PKR {stats.totalPaid}
+
+</h2>
+
+</div>
+
+</div>
+
+</>
+
+:
+
+<>
+
 <div className="mb-10">
 
 <p className="text-blue-600 font-semibold uppercase tracking-wider">
@@ -540,6 +742,8 @@ Stay active, keep sharing, and build a sustainable business through Kamyab Hub.
 </div>
 
 </section>
+
+</>
 
 </main>
 
