@@ -42,7 +42,7 @@ return(
 
 {/* Hero Section */}
 
-<section className="max-w-7xl mx-auto px-6 py-24 text-center">
+<section className="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-24 text-center">
 
 <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 border border-blue-100">
 
@@ -60,7 +60,7 @@ Welcome to Pakistan's Smart Business Partner Platform
 
 </div>
 
-<h1 className="text-6xl md:text-7xl font-black mt-8 text-gray-900">
+<h1 className="text-5xl sm:text-6xl md:text-7xl font-black mt-8 text-gray-900">
 
 Kamyab Hub
 
@@ -72,7 +72,7 @@ Har Qadam Kamyabi Ki Taraf
 
 </p>
 
-<h2 className="text-4xl md:text-5xl font-bold mt-8 leading-tight text-gray-900">
+<h2 className="text-3xl sm:text-5xl md:text-5xl font-bold mt-8 leading-tight text-gray-900">
 
 Build Your Business.
 <br/>
@@ -81,7 +81,7 @@ Grow Your Income.
 
 </h2>
 
-<p className="max-w-3xl mx-auto mt-8 text-xl text-gray-600 leading-9">
+<p className="max-w-3xl mx-auto mt-8 text-lg md:text-xl text-gray-700 leading-8">
 
 Join Pakistan's growing <strong>Business Partner Network</strong> and build a sustainable income through quality products and referral rewards.
 
@@ -103,7 +103,7 @@ Become a Business Partner
 
 <a
 href="/products"
-className="px-8 py-4 rounded-xl border hover:bg-white transition"
+className="px-8 py-4 rounded-xl border bg-white hover:bg-gray-100 transition"
 >
 
 Explore Products
@@ -130,13 +130,13 @@ Explore Products
 
 <section className="max-w-7xl mx-auto px-6 py-20">
 
-<h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900">
+<h2 className="text-5xl md:text-5xl font-bold text-center text-gray-900">
 
 Why Choose Kamyab Hub?
 
 </h2>
 
-<p className="text-center text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+<p className="text-center text-xl text-gray-700 mt-6 max-w-3xl mx-auto">
 
 Everything you need to start, manage and grow your business from one trusted platform.
 
@@ -144,15 +144,15 @@ Everything you need to start, manage and grow your business from one trusted pla
 
 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
 
-<div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+<div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
 
-<div className="text-4xl">
+<div className="text-5xl">
 
 🤝
 
 </div>
 
-<h3 className="text-xl font-bold mt-5">
+<h3 className="text-2xl font-bold text-gray-900 mt-5">
 
 Become a Business Partner
 
@@ -165,15 +165,15 @@ Join Pakistan's growing Business Partner network and create long-term earning op
 </p>
 </div>
 
-<div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+<div className="bg-white rounded-3xl border border-gray-100 p-7 md:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
 
-<div className="text-4xl">
+<div className="text-5xl">
 
 📦
 
 </div>
 
-<h3 className="text-xl font-semibold mt-5">
+<h3 className="text-2xl font-bold text-gray-900 mt-5">
 
 Premium Products
 
@@ -187,15 +187,15 @@ Promote quality products while we manage inventory and nationwide delivery.
 
 </div>
 
-<div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+<div className="bg-white rounded-3xl border border-gray-100 p-7 md:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
 
-<div className="text-4xl">
+<div className="text-5xl">
 
 👥
 
 </div>
 
-<h3 className="text-xl font-semibold mt-5">
+<h3 className="text-2xl font-bold text-gray-900 mt-5">
 
 Referral Rewards
 
@@ -209,15 +209,15 @@ Grow your network by inviting Business Partners and earn referral rewards as you
 
 </div>
 
-<div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+<div className="bg-white rounded-3xl border border-gray-100 p-7 md:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
 
-<div className="text-4xl">
+<div className="text-5xl">
 
 💰
 
 </div>
 
-<h3 className="text-xl font-semibold mt-5">
+<h3 className="text-2xl font-bold text-gray-900 mt-5">
 
 Secure Withdrawals
 
@@ -241,7 +241,7 @@ Track your earnings and withdraw your income whenever you're ready.
 
 <div className="max-w-6xl mx-auto px-6">
 
-<h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900">
+<h2 className="text-5xl md:text-5xl font-bold text-center text-gray-900">
 
 How Kamyab Hub Works
 
@@ -263,7 +263,7 @@ Start your business journey in five simple steps and begin earning with confiden
 
 </div>
 
-<h3 className="text-xl font-bold mt-6">
+<h3 className="text-2xl font-bold text-gray-900 mt-6">
 
 Create Your Account
 
@@ -285,7 +285,7 @@ Register in just a few minutes and join Kamyab Hub as a Business Partner.
 
 </div>
 
-<h3 className="text-xl font-bold mt-6">
+<h3 className="text-2xl font-bold text-gray-900 mt-6">
 
 Activate Membership
 
@@ -307,7 +307,7 @@ Complete your membership activation to unlock products, referrals and earning op
 
 </div>
 
-<h3 className="text-xl font-bold mt-6">
+<h3 className="text-2xl font-bold text-gray-900 mt-6">
 
 Promote Products
 
@@ -329,7 +329,7 @@ Share quality products with your customers while Kamyab Hub manages fulfillment 
 
 </div>
 
-<h3 className="text-xl font-bold mt-6">
+<h3 className="text-2xl font-bold text-gray-900 mt-6">
 
 Invite Business Partners
 
@@ -351,7 +351,7 @@ Expand your network by inviting new Business Partners and earn referral rewards.
 
 </div>
 
-<h3 className="text-xl font-bold mt-6">
+<h3 className="text-2xl font-bold text-gray-900 mt-6">
 
 Earn & Withdraw
 
@@ -377,7 +377,7 @@ Track your earnings and request secure withdrawals directly from your Business P
 
 <div className="text-center">
 
-<h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+<h2 className="text-5xl md:text-5xl font-bold text-gray-900">
 
 Why Business Partners Trust Kamyab Hub
 
@@ -393,9 +393,9 @@ We're committed to helping every Business Partner grow with confidence through a
 
 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 💼 Professional Business Platform
 
@@ -409,9 +409,9 @@ Everything you need to manage your business from one secure dashboard.
 
 </div>
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 🚚 Nationwide Delivery
 
@@ -425,9 +425,9 @@ We manage product delivery so you can focus on selling and growing your customer
 
 </div>
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 🤝 Transparent Referral Rewards
 
@@ -441,9 +441,9 @@ Earn referral commissions through a clear and transparent reward system.
 
 </div>
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 📦 Quality Products
 
@@ -457,9 +457,9 @@ Promote carefully selected products that help build long-term customer trust.
 
 </div>
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 💳 Secure Earnings
 
@@ -473,9 +473,9 @@ Monitor your earnings and request withdrawals directly through your dashboard.
 
 </div>
 
-<div className="bg-white border rounded-2xl p-8 shadow-sm">
+<div className="bg-white border rounded-3xl p-7 md:p-8 shadow-sm">
 
-<h3 className="text-xl font-bold">
+<h3 className="text-2xl font-bold text-gray-900">
 
 📈 Long-Term Growth
 
@@ -499,7 +499,7 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
   <div className="bg-gradient-to-r from-black to-gray-800 rounded-3xl text-white p-12 md:p-16 text-center shadow-2xl">
 
-    <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+    <h2 className="text-5xl md:text-6xl font-bold leading-tight">
 
       Your Journey Towards Success
       <br />
@@ -516,7 +516,7 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
     <a
       href="/signup"
-      className="inline-block mt-10 px-10 py-4 rounded-xl bg-white text-black font-bold hover:scale-105 transition-all duration-300"
+      className="inline-block mt-10 px-10 py-4 rounded-xl bg-white text-black font-bold hover:scale-105 transition-all duration-500"
     >
 
       Become a Business Partner
@@ -563,7 +563,7 @@ Pakistan's Smart Business Partner Platform helping people grow through quality p
 
 <div>
 
-<h3 className="text-xl font-semibold text-white">
+<h3 className="text-2xl font-bold text-gray-900 text-white">
 
 Quick Links
 
@@ -603,7 +603,7 @@ Products
 
 <div>
 
-<h3 className="text-xl font-semibold text-white">
+<h3 className="text-2xl font-bold text-gray-900 text-white">
 
 Support
 
