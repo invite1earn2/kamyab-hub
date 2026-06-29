@@ -96,7 +96,8 @@ const dropdownRef = useRef(null);
           )}
 
 
-         {user && isCompany && (
+{user && isCompany && (
+<>
 
 <div className="relative">
 
@@ -168,9 +169,12 @@ className="block px-5 py-3 hover:bg-gray-100"
 
 </div>
 
+</>
+
 )}
 
 {user && isCompany && (
+<>
 
 <div className="relative ml-3">
 
