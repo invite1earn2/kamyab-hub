@@ -1,16 +1,39 @@
 "use client";
 
+import { useEffect } from "react";
+
 export default function MobileMenu({
+
   open,
   user,
   isCompany,
   logout,
   closeMenu,
 }) {
+  useEffect(() => {
+
+  if (open) {
+
+    document.body.style.overflow = "hidden";
+
+  } else {
+
+    document.body.style.overflow = "";
+
+  }
+
+  return () => {
+
+    document.body.style.overflow = "";
+
+  };
+
+}, [open]);
+
   if (!open) return null;
 
   return (
-    <div className="md:hidden border-t border-gray-200 bg-white shadow-xl animate-in slide-in-from-top duration-300">
+    <div className="md:hidden fixed inset-x-0 top-[88px] bottom-0 overflow-y-auto border-t border-gray-200 bg-white shadow-xl animate-in slide-in-from-top duration-300 z-50">
       <div className="px-5 py-5 space-y-2">
 
         <a
