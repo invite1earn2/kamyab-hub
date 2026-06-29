@@ -20,7 +20,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ===========================
+   Announcement Marquee
+=========================== */
+
 @keyframes marquee {
+
   from {
     transform: translateX(0);
   }
@@ -28,32 +33,121 @@ body {
   to {
     transform: translateX(-50%);
   }
+
 }
 
 .animate-marquee {
+
   display: flex;
   width: max-content;
   white-space: nowrap;
   will-change: transform;
   animation: marquee 20s linear infinite;
-}
-/* Premium CTA Animation */
 
-@keyframes floatingButton {
+}
+
+/* ===========================
+   Premium CTA Animation
+=========================== */
+
+@keyframes premiumFloat {
 
   0%,
   100%{
-    transform: translateY(0px);
+    transform: translateY(0) scale(1);
+    box-shadow: 0 12px 25px rgba(0,0,0,.18);
+  }
+
+  25%{
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 18px 35px rgba(37,99,235,.30);
   }
 
   50%{
-    transform: translateY(-6px);
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 25px 45px rgba(37,99,235,.45);
+  }
+
+  75%{
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 18px 35px rgba(37,99,235,.30);
+  }
+
+}
+
+@keyframes shine {
+
+  0%{
+    left:-130%;
+  }
+
+  100%{
+    left:160%;
   }
 
 }
 
 .floating-btn{
 
-  animation: floatingButton 2.8s ease-in-out infinite;
+  position: relative;
+
+  overflow: hidden;
+
+  animation: premiumFloat 3s ease-in-out infinite;
+
+}
+
+.floating-btn::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+
+  left:-130%;
+
+  width:60%;
+
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+
+  transform:skewX(-25deg);
+
+  animation:shine 4s linear infinite;
+
+}
+
+.floating-btn:hover{
+
+  transform:translateY(-6px) scale(1.08);
+
+  transition:.3s;
+
+}
+
+/* Stagger animation */
+
+.floating-btn:nth-child(1){
+
+  animation-delay:0s;
+
+}
+
+.floating-btn:nth-child(2){
+
+  animation-delay:.35s;
+
+}
+
+.floating-btn:nth-child(3){
+
+  animation-delay:.7s;
 
 }
