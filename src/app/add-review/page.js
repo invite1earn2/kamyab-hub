@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import supabase from "../../lib/supabase";
 
-export default function AddReview() {
+export default function AddReview(){
+
+const [saving,setSaving]=useState(false);
+
+const [submitted,setSubmitted]=useState(false);
 
 const [review,setReview]=useState({
 
@@ -15,11 +19,82 @@ review:""
 
 });
 
+useEffect(()=>{
+
+loadUser();
+
+},[]);
+
+async function loadUser(){
+
+const email=
+
+localStorage.getItem(
+"user_email"
+);
+
+if(!email){
+
+return;
+
+}
+
+const { data,error }=
+
+await supabase
+
+.from("users")
+
+.select("name")
+
+.eq("email",email)
+
+.single();
+
+if(error){
+
+console.log(error);
+
+return;
+
+}
+
+setReview(prev=>({
+
+...prev,
+
+name:data?.name || ""
+
+}));
+
+}
+
 async function submitReview(){
 
-const { error } =
+if(
+
+!review.name.trim() ||
+
+!review.city.trim() ||
+
+!review.review.trim()
+
+){
+
+alert("Please complete all required fields.");
+
+return;
+
+}
+
+setSaving(true);
+
+const { error }=
+
 await supabase
+
 .from("community_reviews")
+
 .insert({
 
 name:review.name,
@@ -35,6 +110,8 @@ display_order:999
 
 if(error){
 
+setSaving(false);
+
 alert("Failed to submit review.");
 
 console.log(error);
@@ -43,7 +120,6 @@ return;
 
 }
 
-alert("Thank you! Your review has been submitted for approval.");
 
 setReview({
 
@@ -54,6 +130,62 @@ language:"urdu",
 review:""
 
 });
+
+setSaving(false);
+
+setSubmitted(true);
+
+setTimeout(()=>{
+
+window.location.href="/";
+
+},2000);
+
+}
+
+if(submitted){
+
+return(
+
+<main className="max-w-2xl mx-auto px-6 py-24">
+
+<div className="rounded-3xl border bg-green-50 p-10 text-center shadow">
+
+<div className="text-6xl">
+
+✅
+
+</div>
+
+<h1 className="mt-6 text-4xl font-black text-green-700">
+
+Review Submitted!
+
+</h1>
+
+<p className="mt-4 text-gray-700">
+
+Thank you for sharing your experience.
+
+</p>
+
+<p className="mt-2 text-gray-600">
+
+Your review will be reviewed before appearing on the homepage.
+
+</p>
+
+<p className="mt-8 text-sm text-gray-500">
+
+Redirecting to Home...
+
+</p>
+
+</div>
+
+</main>
+
+);
 
 }
 
@@ -98,13 +230,8 @@ Your Name
 
 <input
 value={review.name}
-onChange={(e)=>
-setReview({
-...review,
-name:e.target.value
-})
-}
-className="w-full border rounded-xl p-3"
+readOnly
+className="w-full rounded-xl border bg-gray-100 p-3 cursor-not-allowed"
 />
 
 </div>
@@ -178,17 +305,9 @@ language:e.target.value
 className="w-full border rounded-xl p-3"
 >
 
-<option value="urdu">
+<option value="urdu">Urdu</option>
 
-Urdu
-
-</option>
-
-<option value="english">
-
-English
-
-</option>
+<option value="english">English</option>
 
 </select>
 
@@ -221,10 +340,11 @@ className="w-full border rounded-xl p-3"
 
 <button
 onClick={submitReview}
-className="w-full rounded-2xl bg-black py-4 text-lg font-bold text-white hover:bg-gray-800 transition"
+disabled={saving}
+className="w-full rounded-2xl bg-black py-4 text-lg font-bold text-white hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
 >
 
-⭐ Submit Review
+{saving ? "Submitting..." : "⭐ Submit Review"}
 
 </button>
 
