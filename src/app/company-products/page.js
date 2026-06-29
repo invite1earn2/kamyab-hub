@@ -11,6 +11,9 @@ const [loading,setLoading]=useState(true);
 
 const [editingProduct,setEditingProduct]=
 useState(null);
+const [selectedImage, setSelectedImage] = useState(null);
+
+const [previewImage, setPreviewImage] = useState("");
 
 useEffect(()=>{
 
@@ -450,6 +453,54 @@ className="w-full border rounded-lg p-3"
 
 </div>
 
+<div>
+
+<label className="block mb-2 font-medium">
+
+Product Image
+
+</label>
+
+<input
+type="file"
+accept="image/*"
+onChange={(e)=>{
+
+const file=e.target.files[0];
+
+if(!file)return;
+
+setSelectedImage(file);
+
+setPreviewImage(URL.createObjectURL(file));
+
+}}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
+
+{
+previewImage && (
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Preview
+
+</label>
+
+<img
+src={previewImage}
+alt="Preview"
+className="h-40 w-40 rounded-xl border object-cover"
+/>
+
+</div>
+
+)
+}
 <div className="md:col-span-2">
 
 <label className="block mb-2 font-medium">
