@@ -78,35 +78,23 @@ export default function Subscription() {
 
     const result = await createNotification({
 
-user_email:email,
 
-role:"partner",
+  user_email: email,
 
-title:"🎉 Subscription Approved",
+  role: "partner",
 
-message:"Congratulations! Your Kamyab Hub subscription has been approved. You now have full access to the platform.",
+  title: "🎉 Subscription Approved",
 
-type:"subscription",
+  message:
+    "Congratulations! Your Kamyab Hub subscription has been approved. You now have full access to the platform.",
 
-link:"/dashboard"
+  type: "subscription",
+
+  link: "/dashboard"
 
 });
 
 console.log("Notification Result:", result);
-
-user_email:email,
-
-role:"partner",
-
-title:"🎉 Subscription Approved",
-
-message:"Congratulations! Your Kamyab Hub subscription has been approved. You now have full access to the platform.",
-
-type:"subscription",
-
-link:"/dashboard"
-
-});
 
     const { data: approvedUser } = await supabase
       .from("users")
