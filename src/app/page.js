@@ -73,7 +73,7 @@ return(
 
 {/* Hero Section */}
 
-<section className="max-w-7xl mx-auto px-5 md:px-8 py-14 md:py-24">
+<section className="max-w-7xl mx-auto px-5 md:px-8 pt-10 pb-20 md:pt-14 md:pb-24">
 
 <div className="max-w-5xl mx-auto text-center">
 
@@ -93,13 +93,13 @@ Pakistan's Smart Business Partner Platform
 
 </div>
 
-<h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900">
+<h1 className="mt-5 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900">
 
 Kamyab Hub
 
 </h1>
 
-<p className="mt-4 text-xl md:text-2xl font-bold text-blue-600">
+<p className="mt-2 text-xl md:text-2xl font-bold text-blue-600">
 
 Har Qadam Kamyabi Ki Taraf
 
