@@ -9,6 +9,10 @@ const [saving,setSaving]=useState(false);
 
 const [submitted,setSubmitted]=useState(false);
 
+const [allowed,setAllowed]=useState(false);
+
+const [checking,setChecking]=useState(true);
+
 const [review,setReview]=useState({
 
 name:"",
@@ -35,6 +39,8 @@ localStorage.getItem(
 
 if(!email){
 
+setChecking(false);
+
 return;
 
 }
@@ -45,7 +51,7 @@ await supabase
 
 .from("users")
 
-.select("name")
+.select("name,status")
 
 .eq("email",email)
 
@@ -54,6 +60,8 @@ await supabase
 if(error){
 
 console.log(error);
+
+setChecking(false);
 
 return;
 
@@ -67,7 +75,16 @@ name:data?.name || ""
 
 }));
 
+if(data?.status==="approved"){
+
+setAllowed(true);
+
 }
+
+setChecking(false);
+
+}
+
 
 async function submitReview(){
 
@@ -140,6 +157,77 @@ setTimeout(()=>{
 window.location.href="/";
 
 },2000);
+
+}
+
+if(checking){
+
+return(
+
+<main className="max-w-2xl mx-auto px-6 py-24">
+
+<div className="rounded-3xl border bg-white p-10 text-center shadow">
+
+<h2 className="text-3xl font-black">
+
+Checking Membership...
+
+</h2>
+
+<p className="mt-4 text-gray-600">
+
+Please wait...
+
+</p>
+
+</div>
+
+</main>
+
+);
+
+}
+
+if(!allowed){
+
+return(
+
+<main className="max-w-2xl mx-auto px-6 py-24">
+
+<div className="rounded-3xl border bg-red-50 p-10 text-center shadow">
+
+<div className="text-6xl">
+
+🔒
+
+</div>
+
+<h1 className="mt-6 text-4xl font-black text-red-700">
+
+Business Partners Only
+
+</h1>
+
+<p className="mt-4 text-gray-700">
+
+Only approved Business Partners can submit community reviews.
+
+</p>
+
+<a
+href="/subscribe"
+className="inline-block mt-8 rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700 transition"
+>
+
+Become a Business Partner
+
+</a>
+
+</div>
+
+</main>
+
+);
 
 }
 
