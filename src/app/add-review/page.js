@@ -1,6 +1,18 @@
 "use client";
 
+import { useState } from "react";
+
 export default function AddReview(){
+
+const [review,setReview]=useState({
+
+name:"",
+city:"",
+rating:5,
+language:"urdu",
+review:""
+
+});    
 
 return(
 
@@ -24,9 +36,54 @@ Share Your Experience
 
 <p className="mt-4 text-gray-600">
 
-Your feedback helps other Business Partners make informed decisions.
+Share your genuine experience with Kamyab Hub.
+Your review will be reviewed before it is published.
 
 </p>
+
+</div>
+
+<div className="mt-10 space-y-6"></div>
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Your Name
+
+</label>
+
+<input
+value={review.name}
+onChange={(e)=>
+setReview({
+...review,
+name:e.target.value
+})
+}
+className="w-full border rounded-xl p-3"
+/>
+
+</div>
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+City
+
+</label>
+
+<input
+value={review.city}
+onChange={(e)=>
+setReview({
+...review,
+city:e.target.value
+})
+}
+className="w-full border rounded-xl p-3"
+/>
 
 </div>
 
