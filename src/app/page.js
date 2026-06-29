@@ -123,10 +123,33 @@ Become a Business Partner
 </a>
 
 <a
-  href="/products"
-  className="rounded-2xl border-2 border-blue-600 bg-blue-50 text-blue-700 px-8 py-4 font-bold shadow-md transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-xl active:scale-95"
+  href="/invite"
+  className="group rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 text-white px-8 py-4 font-bold shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl"
 >
-  Explore Products
+
+  🎉 Build Your Team & Earn
+
+  <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
+
+    →
+
+  </span>
+
+</a>
+
+<a
+  href="/products"
+  className="group rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 font-bold shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl"
+>
+
+  🛍 Sell Products & Earn
+
+  <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
+
+    →
+
+  </span>
+
 </a>
 </div>
 
