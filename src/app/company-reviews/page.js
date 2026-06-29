@@ -39,6 +39,40 @@ await supabase
 setReviews(data||[]);
 
 }
+async function deleteReview(id){
+
+const confirmDelete=
+window.confirm(
+"Are you sure you want to delete this review?"
+);
+
+if(!confirmDelete){
+
+return;
+
+}
+
+const { error }=
+await supabase
+.from("community_reviews")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert("Failed to delete review.");
+
+console.log(error);
+
+return;
+
+}
+
+alert("Review deleted successfully.");
+
+loadReviews();
+
+}
 
 return(
 
@@ -150,7 +184,16 @@ className="border-t"
 
 <td className="p-4">
 
-Coming Soon...
+<button
+onClick={()=>
+deleteReview(item.id)
+}
+className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition"
+>
+
+🗑 Delete
+
+</button>
 
 </td>
 
