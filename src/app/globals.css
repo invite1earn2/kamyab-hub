@@ -37,3 +37,23 @@ body {
   will-change: transform;
   animation: marquee 20s linear infinite;
 }
+/* Premium CTA Animation */
+
+@keyframes floatingButton {
+
+  0%,
+  100%{
+    transform: translateY(0px);
+  }
+
+  50%{
+    transform: translateY(-6px);
+  }
+
+}
+
+.floating-btn{
+
+  animation: floatingButton 2.8s ease-in-out infinite;
+
+}
