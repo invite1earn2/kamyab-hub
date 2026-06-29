@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import supabase from "../../lib/supabase";
 import { checkOwner } from "../../services/owner";
+import { createNotification } from "../../services/notification";
 
 export default function Subscription() {
 
@@ -74,6 +75,38 @@ export default function Subscription() {
       return;
 
     }
+
+    const result = await createNotification({
+
+user_email:email,
+
+role:"partner",
+
+title:"🎉 Subscription Approved",
+
+message:"Congratulations! Your Kamyab Hub subscription has been approved. You now have full access to the platform.",
+
+type:"subscription",
+
+link:"/dashboard"
+
+});
+
+console.log("Notification Result:", result);
+
+user_email:email,
+
+role:"partner",
+
+title:"🎉 Subscription Approved",
+
+message:"Congratulations! Your Kamyab Hub subscription has been approved. You now have full access to the platform.",
+
+type:"subscription",
+
+link:"/dashboard"
+
+});
 
     const { data: approvedUser } = await supabase
       .from("users")

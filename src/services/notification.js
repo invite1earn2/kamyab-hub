@@ -40,12 +40,13 @@ link
 
 if(error){
 
-console.log(error);
+console.error("Notification Error:", error);
 
 return false;
 
 }
 
+console.log("Notification Created Successfully");
 return true;
 
 }
