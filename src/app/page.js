@@ -531,27 +531,32 @@ Real thoughts from our growing community.
 
 <div
 key={index}
-className="min-w-[320px] rounded-2xl border bg-white p-5 shadow-sm hover:shadow-xl transition"
+className="min-w-[260px] max-w-[260px] rounded-3xl border border-gray-200 bg-white p-6 shadow-md hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
 >
 
-<div className="flex items-center gap-4">
+<div className="text-yellow-500 text-lg">
 
-<div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg">
+{"⭐".repeat(item.rating)}
+
+</div>
+
+<p className="mt-4 text-gray-700 italic text-[15px] leading-7 min-h-[120px]">
+
+"{item.review}"
+
+</p>
+
+<div className="mt-6 flex items-center gap-3">
+
+<div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
 
 {
-
 item.name
-
 ?.split(" ")
-
 .map(word=>word[0])
-
 .join("")
-
 .substring(0,2)
-
 .toUpperCase()
-
 }
 
 </div>
@@ -573,18 +578,6 @@ item.name
 </div>
 
 </div>
-
-<div className="mt-4 text-yellow-500">
-
-{"⭐".repeat(item.rating)}
-
-</div>
-
-<p className="mt-4 text-gray-700 line-clamp-2">
-
-"{item.review}"
-
-</p>
 
 </div>
 
