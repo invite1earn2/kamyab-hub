@@ -476,6 +476,31 @@ Approve partner withdrawals.
 
 </a>
 
+<a
+href="/company-reviews"
+className="border rounded-2xl p-6 hover:shadow-lg transition"
+>
+
+<div className="text-4xl">
+
+💬
+
+</div>
+
+<h3 className="text-xl font-bold mt-4">
+
+Community Reviews
+
+</h3>
+
+<p className="text-gray-600 mt-2">
+
+Manage homepage community member experiences.
+
+</p>
+
+</a>
+
 </div>
 
 </div>
