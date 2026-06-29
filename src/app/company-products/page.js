@@ -77,14 +77,18 @@ if (selectedImage) {
   const fileName =
     Date.now() + "-" + selectedImage.name;
 
-  const { error: uploadError } =
+const { data, error: uploadError } =
     await supabase.storage
       .from("product-images")
-      .upload(fileName, selectedImage);
+      .upload(fileName, selectedImage, {
+        upsert: true,
+      });
 
   if (uploadError) {
 
-    alert("Image upload failed.");
+    console.log("Upload Error:", uploadError);
+
+alert(uploadError.message);
 
     console.log(uploadError);
 
