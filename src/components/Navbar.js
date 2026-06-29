@@ -95,6 +95,52 @@ const dropdownRef = useRef(null);
             </>
           )}
 
+{user && !isCompany && (
+  <>
+    <a href="/dashboard" className="hover:text-blue-600 transition">
+      Dashboard
+    </a>
+
+    <a href="/products" className="hover:text-blue-600 transition">
+      Products
+    </a>
+
+    <a href="/invite" className="hover:text-blue-600 transition">
+      Invite
+    </a>
+
+    <a href="/orders" className="hover:text-blue-600 transition">
+      Orders
+    </a>
+
+    <a href="/payment-settings" className="hover:text-blue-600 transition">
+      Payment Settings
+    </a>
+
+    <a href="/withdraw" className="hover:text-blue-600 transition">
+      Withdraw
+    </a>
+
+    <a href="/analytics" className="hover:text-blue-600 transition">
+      Analytics
+    </a>
+
+    <a href="/my-withdrawals" className="hover:text-blue-600 transition">
+      Withdrawals
+    </a>
+
+    <a href="/notifications" className="hover:text-blue-600 transition">
+      Notifications
+    </a>
+
+    <button
+      onClick={logout}
+      className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl transition"
+    >
+      Logout
+    </button>
+  </>
+)}
 
 {user && isCompany && (
 <>
