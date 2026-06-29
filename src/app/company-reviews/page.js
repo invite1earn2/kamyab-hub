@@ -74,6 +74,73 @@ loadReviews();
 
 }
 
+async function saveReview(){
+
+let error;
+
+if(editingReview.id){
+
+const result=
+await supabase
+.from("community_reviews")
+.update({
+
+name:editingReview.name,
+city:editingReview.city,
+review:editingReview.review,
+rating:editingReview.rating,
+language:editingReview.language,
+featured:editingReview.featured,
+status:editingReview.status,
+display_order:editingReview.display_order,
+image_url:editingReview.image_url
+
+})
+.eq("id",editingReview.id);
+
+error=result.error;
+
+}else{
+
+const result=
+await supabase
+.from("community_reviews")
+.insert({
+
+name:editingReview.name,
+city:editingReview.city,
+review:editingReview.review,
+rating:editingReview.rating,
+language:editingReview.language,
+featured:editingReview.featured,
+status:editingReview.status,
+display_order:editingReview.display_order,
+image_url:editingReview.image_url
+
+});
+
+error=result.error;
+
+}
+
+if(error){
+
+alert("Failed to save review.");
+
+console.log(error);
+
+return;
+
+}
+
+alert("Review saved successfully.");
+
+setEditingReview(null);
+
+loadReviews();
+
+}
+
 return(
 
 <main className="p-10">
