@@ -39,6 +39,35 @@ await supabase
 setReviews(data||[]);
 
 }
+async function approveReview(id){
+
+const { error } =
+
+await supabase
+
+.from("community_reviews")
+
+.update({
+
+status:"active"
+
+})
+
+.eq("id",id);
+
+if(error){
+
+alert("Failed to approve review.");
+
+console.log(error);
+
+return;
+
+}
+
+loadReviews();
+
+}
 async function deleteReview(id){
 
 const confirmDelete=
@@ -255,6 +284,23 @@ className="border-t"
 
 <div className="flex gap-2">
 
+{
+item.status==="pending" && (
+
+<button
+onClick={()=>
+approveReview(item.id)
+}
+className="rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition"
+>
+
+✅ Approve
+
+</button>
+
+)
+}
+
 <button
 onClick={()=>
 setEditingReview(item)
@@ -469,9 +515,15 @@ status:e.target.value
 className="w-full border rounded-lg p-3"
 >
 
+<option value="pending">
+
+Pending
+
+</option>
+
 <option value="active">
 
-Active
+Approved
 
 </option>
 
