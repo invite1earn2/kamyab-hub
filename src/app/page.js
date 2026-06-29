@@ -1,6 +1,37 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import supabase from "../lib/supabase";
+
 export default function Home(){
+
+const [reviews,setReviews]=useState([]);
+
+useEffect(()=>{
+
+loadReviews();
+
+},[]);
+
+async function loadReviews(){
+
+const { data }=
+
+await supabase
+
+.from("community_reviews")
+
+.select("*")
+
+.eq("status","active")
+
+.order("featured",{ascending:false})
+
+.order("display_order",{ascending:true});
+
+setReviews(data||[]);
+
+}
 
 return(
 
@@ -470,6 +501,102 @@ Track your earnings and request secure withdrawals directly from your Business P
 
 </section>
 
+{/* Community Member Experiences */}
+
+<section className="max-w-7xl mx-auto px-6 py-16 overflow-hidden">
+
+<div className="text-center mb-10">
+
+<h2 className="text-4xl md:text-5xl font-bold">
+
+💬 Community Member Experiences
+
+</h2>
+
+<p className="mt-4 text-gray-600">
+
+Real thoughts from our growing community.
+
+</p>
+
+</div>
+
+<div className="overflow-hidden">
+
+<div className="flex gap-5 animate-marquee">
+
+{
+
+[...reviews,...reviews].map((item,index)=>(
+
+<div
+key={index}
+className="min-w-[320px] rounded-2xl border bg-white p-5 shadow-sm hover:shadow-xl transition"
+>
+
+<div className="flex items-center gap-4">
+
+<div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg">
+
+{
+
+item.name
+
+?.split(" ")
+
+.map(word=>word[0])
+
+.join("")
+
+.substring(0,2)
+
+.toUpperCase()
+
+}
+
+</div>
+
+<div>
+
+<h3 className="font-bold">
+
+{item.name}
+
+</h3>
+
+<p className="text-sm text-gray-500">
+
+{item.city}
+
+</p>
+
+</div>
+
+</div>
+
+<div className="mt-4 text-yellow-500">
+
+{"⭐".repeat(item.rating)}
+
+</div>
+
+<p className="mt-4 text-gray-700 line-clamp-2">
+
+"{item.review}"
+
+</p>
+
+</div>
+
+))
+
+}
+
+</div>
+
+</div>
+
+</section>
 {/* Why Business Partners Trust Kamyab Hub */}
 
 <section className="max-w-7xl mx-auto px-6 py-24">
