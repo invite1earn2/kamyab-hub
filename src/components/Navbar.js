@@ -207,6 +207,13 @@ className="block px-5 py-3 hover:bg-gray-100"
 📈 Company Analytics
 </a>
 
+<a
+href="/company-reviews"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+💬 Community Reviews
+</a>
+
 </div>
 
 )
