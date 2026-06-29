@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [user, setUser] = useState("");
   const [isCompany, setIsCompany] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [companyMenu, setCompanyMenu] = useState(false);
+const [partnerMenu, setPartnerMenu] = useState(false);
+const dropdownRef = useRef(null);
   useEffect(() => {
     const email = localStorage.getItem("user_email");
     const role = localStorage.getItem("user_role");
@@ -113,24 +115,179 @@ export default function Navbar() {
             </>
           )}
 
-          {user && isCompany && (
-            <>
-              <a href="/company">Company</a>
-              <a href="/company-products">Products</a>
-              <a href="/dashboard">Dashboard</a>
-              <a href="/analytics">Analytics</a>
-              <a href="/subscriptions">Subscriptions</a>
-              <a href="/company-orders">Orders</a>
-              <a href="/withdrawals">Withdrawals</a>
+         {user && isCompany && (
 
-              <button
-                onClick={logout}
-                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl transition"
-              >
-                Logout
-              </button>
-            </>
-          )}
+<div className="relative">
+
+<button
+onClick={()=>{
+setCompanyMenu(!companyMenu);
+setPartnerMenu(false);
+}}
+className="rounded-xl bg-purple-100 px-4 py-2 font-semibold text-purple-700 hover:bg-purple-200 transition"
+>
+
+👑 Company ▾
+
+</button>
+
+{
+
+companyMenu && (
+
+<div className="absolute left-0 mt-3 w-64 rounded-2xl border bg-white shadow-2xl overflow-hidden z-50">
+
+<a
+href="/company"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📊 Company Dashboard
+</a>
+
+<a
+href="/company-products"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📦 Product Management
+</a>
+
+<a
+href="/subscriptions"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+💳 Subscriptions
+</a>
+
+<a
+href="/company-orders"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+🚚 Company Orders
+</a>
+
+<a
+href="/withdrawals"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+💸 Withdrawal Management
+</a>
+
+<a
+href="/analytics"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📈 Company Analytics
+</a>
+
+</div>
+
+)
+
+}
+
+</div>
+
+)}
+
+<div className="relative ml-3">
+
+<button
+onClick={()=>{
+setPartnerMenu(!partnerMenu);
+setCompanyMenu(false);
+}}
+className="rounded-xl bg-blue-100 px-4 py-2 font-semibold text-blue-700 hover:bg-blue-200 transition"
+>
+
+🤝 Partner ▾
+
+</button>
+
+{
+
+partnerMenu && (
+
+<div className="absolute left-0 mt-3 w-64 rounded-2xl border bg-white shadow-2xl overflow-hidden z-50">
+
+<a
+href="/dashboard"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📊 Dashboard
+</a>
+
+<a
+href="/products"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📦 Products
+</a>
+
+<a
+href="/invite"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+👥 Invite Partners
+</a>
+
+<a
+href="/orders"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+🛒 My Orders
+</a>
+
+<a
+href="/payment-settings"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+🏦 Payment Settings
+</a>
+
+<a
+href="/withdraw"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+💰 Withdraw
+</a>
+
+<a
+href="/my-withdrawals"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📄 Withdrawal History
+</a>
+
+<a
+href="/analytics"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+📈 Analytics
+</a>
+
+<a
+href="/notifications"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+🔔 Notifications
+</a>
+
+</div>
+
+)
+
+}
+
+</div>
+
+<button
+onClick={logout}
+className="ml-4 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl transition"
+>
+
+Logout
+
+</button>
 
         </div>
 

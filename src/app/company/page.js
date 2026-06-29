@@ -92,31 +92,103 @@ return(
 
 <main className="p-10">
 
-<h1 className="text-4xl font-bold mb-8">
+<div className="mb-12 rounded-3xl bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 p-10 text-white shadow-2xl">
 
-Company Dashboard
+<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+
+<div>
+
+<p className="uppercase tracking-[0.3em] text-blue-200 font-semibold">
+
+Executive Dashboard
+
+</p>
+
+<h1 className="mt-3 text-5xl font-black">
+
+👑 Company Control Center
 
 </h1>
 
-<div className="grid grid-cols-2 gap-5">
+<p className="mt-5 max-w-2xl text-blue-100 leading-8">
 
-<div className="border p-6 rounded">
+Welcome back! Monitor your platform, manage business partners, approve subscriptions, process withdrawals and grow Kamyab Hub from one centralized dashboard.
 
-<h2>Total Users</h2>
-
-<p>{stats.userCount}</p>
+</p>
 
 </div>
 
-<div className="border p-6 rounded">
+<div className="rounded-3xl bg-white/10 backdrop-blur-md p-6 border border-white/20">
 
-<h2>Pending Subscriptions</h2>
+<p className="text-sm uppercase tracking-wider text-blue-200">
 
-<p>{stats.pendingSubscriptions}</p>
+Platform Status
+
+</p>
+
+<h2 className="mt-3 text-3xl font-black text-green-300">
+
+🟢 Online
+
+</h2>
+
+<p className="mt-3 text-blue-100">
+
+All core services are operational.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+
+<div className="rounded-3xl bg-white border border-gray-200 p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+
+<div className="text-5xl">👥</div>
+
+<p className="mt-5 text-gray-500 font-medium">
+
+Business Partners
+
+</p>
+
+<h2 className="mt-3 text-5xl font-black">
+
+{stats.userCount}
+
+</h2>
+
+<p className="mt-4 text-sm text-green-600 font-semibold">
+
+Platform Members
+
+</p>
+
+</div>
+
+<div className="rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-7 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+
+<div className="text-5xl">💳</div>
+
+<p className="mt-5 text-blue-100">
+
+Pending Subscriptions
+
+</p>
+
+<h2 className="mt-3 text-5xl font-black">
+
+{stats.pendingSubscriptions}
+
+</h2>
 
 <a
 href="/subscriptions"
-className="text-blue-600"
+className="inline-block mt-5 rounded-xl bg-white px-4 py-2 font-semibold text-blue-700 hover:bg-blue-50 transition"
 >
 
 Manage →
@@ -125,28 +197,54 @@ Manage →
 
 </div>
 
-<div className="border p-6 rounded">
+<div className="rounded-3xl bg-white border border-gray-200 p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
 
-<h2>Pending Withdrawals</h2>
+<div className="text-5xl">💸</div>
 
-<p>{stats.pendingWithdrawals}</p>
+<p className="mt-5 text-gray-500">
+
+Pending Withdrawals
+
+</p>
+
+<h2 className="mt-3 text-5xl font-black text-red-600">
+
+{stats.pendingWithdrawals}
+
+</h2>
 
 <a
 href="/withdrawals"
-className="text-blue-600"
+className="inline-block mt-5 font-semibold text-blue-600 hover:text-blue-800"
 >
 
-Manage →
+Review →
 
 </a>
 
 </div>
 
-<div className="border p-6 rounded">
+<div className="rounded-3xl bg-black text-white p-7 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
 
-<h2>Total Orders</h2>
+<div className="text-5xl">📦</div>
 
-<p>{stats.totalOrders}</p>
+<p className="mt-5 text-gray-300">
+
+Total Orders
+
+</p>
+
+<h2 className="mt-3 text-5xl font-black">
+
+{stats.totalOrders}
+
+</h2>
+
+<p className="mt-4 text-sm text-green-400">
+
+All Orders
+
+</p>
 
 </div>
 
