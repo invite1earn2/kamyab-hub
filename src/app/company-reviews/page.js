@@ -99,7 +99,9 @@ review:"",
 rating:5,
 language:"urdu",
 featured:false,
-status:"active"
+status:"active",
+display_order:reviews.length+1,
+image_url:""
 
 })}
 className="mt-8 rounded-xl bg-black px-6 py-3 text-white"
@@ -209,6 +211,27 @@ className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transitio
 
 </div>
 
+{
+editingReview && (
+
+<div className="mt-10 rounded-2xl border bg-white p-8 shadow">
+
+<h2 className="mb-6 text-2xl font-bold">
+
+Community Review
+
+</h2>
+
+<p className="text-gray-600">
+
+Review form coming in next step...
+
+</p>
+
+</div>
+
+)
+}
 </main>
 
 );
