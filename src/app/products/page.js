@@ -183,9 +183,25 @@ key={item.id}
 className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
 >
 
-<div className="h-52 bg-gray-100 flex items-center justify-center text-6xl">
+<div className="h-52 bg-gray-100 overflow-hidden">
 
-📦
+  {item.image_url ? (
+
+    <img
+      src={item.image_url}
+      alt={item.name}
+      className="w-full h-full object-cover"
+    />
+
+  ) : (
+
+    <div className="w-full h-full flex items-center justify-center text-6xl">
+
+      📦
+
+    </div>
+
+  )}
 
 </div>
 
