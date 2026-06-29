@@ -7,6 +7,7 @@ import { checkOwner } from "../../services/owner";
 export default function OwnerDashboard(){
 
 const [stats,setStats]=useState(null);
+const [activities,setActivities]=useState([]);
 
 useEffect(()=>{
 
@@ -71,6 +72,119 @@ pendingWithdrawals,
 totalOrders
 
 });
+const activity=[];
+
+/* Latest Subscriptions */
+
+const {data:subs}=
+
+await supabase
+
+.from("subscriptions")
+
+.select("user_email,status,created_at")
+
+.order("created_at",{ascending:false})
+
+.limit(5);
+
+(subs||[]).forEach(item=>{
+
+activity.push({
+
+icon:"💳",
+
+title:"New Subscription",
+
+description:item.user_email,
+
+time:item.created_at,
+
+action:"/subscriptions"
+
+});
+
+});
+
+/* Latest Orders */
+
+const {data:orders}=
+
+await supabase
+
+.from("orders")
+
+.select("user_email,created_at")
+
+.order("created_at",{ascending:false})
+
+.limit(5);
+
+(orders||[]).forEach(item=>{
+
+activity.push({
+
+icon:"📦",
+
+title:"New Order",
+
+description:item.user_email,
+
+time:item.created_at,
+
+action:"/company-orders"
+
+});
+
+});
+
+/* Latest Withdrawals */
+
+const {data:withdrawals}=
+
+await supabase
+
+.from("withdrawals")
+
+.select("user_email,amount,created_at")
+
+.order("created_at",{ascending:false})
+
+.limit(5);
+
+(withdrawals||[]).forEach(item=>{
+
+activity.push({
+
+icon:"💸",
+
+title:"Withdrawal Request",
+
+description:`${item.user_email} • PKR ${item.amount}`,
+
+time:item.created_at,
+
+action:"/withdrawals"
+
+});
+
+});
+
+/* Sort newest first */
+
+activity.sort(
+
+(a,b)=>
+
+new Date(b.time)-new Date(a.time)
+
+);
+
+setActivities(
+
+activity.slice(0,10)
+
+);
 
 }
 
@@ -365,6 +479,110 @@ Approve partner withdrawals.
 </div>
 
 </div>
+
+<section className="mt-16">
+
+<div className="mb-8">
+
+<p className="text-blue-600 font-semibold uppercase tracking-wider">
+
+Platform Activity
+
+</p>
+
+<h2 className="text-4xl font-black mt-2">
+
+📢 Live Activity
+
+</h2>
+
+<p className="text-gray-600 mt-3">
+
+Monitor the latest subscriptions, orders and withdrawal requests from across Kamyab Hub.
+
+</p>
+
+</div>
+
+<div className="bg-white rounded-3xl border shadow-sm overflow-hidden">
+
+{
+
+activities.length===0
+
+?
+
+<div className="p-12 text-center text-gray-500">
+
+No recent activity found.
+
+</div>
+
+:
+
+activities.map((item,index)=>(
+
+<div
+
+key={index}
+
+className="flex items-start justify-between gap-6 p-6 border-b last:border-b-0 hover:bg-gray-50 transition"
+
+>
+
+<div className="flex gap-5">
+
+<div className="text-4xl">
+
+{item.icon}
+
+</div>
+
+<div>
+
+<h3 className="text-xl font-bold">
+
+{item.title}
+
+</h3>
+
+<p className="text-gray-600 mt-2">
+
+{item.description}
+
+</p>
+
+<p className="text-sm text-gray-400 mt-3">
+
+{new Date(item.time).toLocaleString()}
+
+</p>
+
+</div>
+
+</div>
+
+<a
+
+href={item.action}
+
+className="self-center rounded-xl bg-blue-600 px-5 py-2 font-semibold text-white hover:bg-blue-700 transition"
+
+>
+
+Open →
+
+</a>
+
+</div>
+
+))
+
+}
+
+</div>
+
+</section>
 
 </main>
 
