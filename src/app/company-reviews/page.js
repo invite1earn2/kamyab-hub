@@ -75,6 +75,97 @@ className="mt-8 rounded-xl bg-black px-6 py-3 text-white"
 
 </button>
 
+<div className="mt-10 overflow-x-auto">
+
+<table className="w-full border border-gray-200 rounded-xl overflow-hidden">
+
+<thead className="bg-gray-100">
+
+<tr>
+
+<th className="p-4 text-left">Name</th>
+
+<th className="p-4 text-left">City</th>
+
+<th className="p-4 text-left">Rating</th>
+
+<th className="p-4 text-left">Language</th>
+
+<th className="p-4 text-left">Status</th>
+
+<th className="p-4 text-left">Featured</th>
+
+<th className="p-4 text-left">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{
+
+reviews.map((item)=>(
+
+<tr
+key={item.id}
+className="border-t"
+>
+
+<td className="p-4">
+
+{item.name}
+
+</td>
+
+<td className="p-4">
+
+{item.city}
+
+</td>
+
+<td className="p-4">
+
+{"⭐".repeat(item.rating)}
+
+</td>
+
+<td className="p-4">
+
+{item.language}
+
+</td>
+
+<td className="p-4">
+
+{item.status}
+
+</td>
+
+<td className="p-4">
+
+{item.featured ? "✅" : "—"}
+
+</td>
+
+<td className="p-4">
+
+Coming Soon...
+
+</td>
+
+</tr>
+
+))
+
+}
+
+</tbody>
+
+</table>
+
+</div>
+
 </main>
 
 );
