@@ -597,37 +597,38 @@ item.name
 </div>
 
 </section>
-<section className="max-w-4xl mx-auto px-6 pb-20">
+<section className="py-8">
 
-<div className="rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700 p-10 text-center text-white shadow-2xl">
+<div className="max-w-6xl mx-auto px-6">
 
-<div className="text-5xl mb-4">
+<div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 flex flex-col md:flex-row items-center justify-between gap-5">
 
-✍️
+<div>
 
-</div>
+<h3 className="text-2xl font-bold">
 
-<h2 className="text-3xl md:text-4xl font-black">
+✍️ Share Your Experience
 
-Share Your Experience
+</h3>
 
-</h2>
+<p className="mt-2 text-gray-600">
 
-<p className="mt-4 text-blue-100 text-lg">
-
-Help other Business Partners by sharing your journey with Kamyab Hub.
-Your honest review helps our community grow stronger.
+Help other Business Partners by sharing your experience with Kamyab Hub.
 
 </p>
 
+</div>
+
 <a
 href="/add-review"
-className="inline-block mt-8 rounded-2xl bg-white px-8 py-4 text-lg font-bold text-blue-700 shadow-lg transition hover:scale-105 hover:bg-blue-50"
+className="floating-btn rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700 transition"
 >
 
 ⭐ Write a Review
 
 </a>
+
+</div>
 
 </div>
 
