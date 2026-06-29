@@ -573,7 +573,7 @@ item.name
 
 </div>
 
-<p className="mt-4 text-gray-700 leading-7 break-words">
+<p className="mt-4 text-gray-700 leading-7 whitespace-pre-wrap break-words break-all overflow-hidden">
 
 "{item.review}"
 
