@@ -70,6 +70,39 @@ setLoading(false);
 async function saveProduct(){
 
 let error;
+let imageUrl = editingProduct.image_url || "";
+
+if (selectedImage) {
+
+  const fileName =
+    Date.now() + "-" + selectedImage.name;
+
+  const { error: uploadError } =
+    await supabase.storage
+      .from("product-images")
+      .upload(fileName, selectedImage);
+
+  if (uploadError) {
+
+    alert("Image upload failed.");
+
+    console.log(uploadError);
+
+    return;
+
+  }
+
+  const {
+    data: publicUrl
+  } =
+    supabase.storage
+      .from("product-images")
+      .getPublicUrl(fileName);
+
+  imageUrl =
+    publicUrl.publicUrl;
+
+}
 
 if(editingProduct.id){
 
@@ -81,6 +114,7 @@ await supabase
 name:editingProduct.name,
 price:editingProduct.price,
 profit:editingProduct.profit,
+image_url: imageUrl,
 category:editingProduct.category,
 short_description:editingProduct.short_description,
 delivery_time:editingProduct.delivery_time,
@@ -102,6 +136,7 @@ await supabase
 name:editingProduct.name,
 price:editingProduct.price,
 profit:editingProduct.profit,
+image_url:imageUrl,
 category:editingProduct.category,
 short_description:editingProduct.short_description,
 delivery_time:editingProduct.delivery_time,
