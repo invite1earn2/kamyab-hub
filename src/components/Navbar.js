@@ -95,25 +95,6 @@ const dropdownRef = useRef(null);
             </>
           )}
 
-          {user && !isCompany && (
-            <>
-              <a href="/dashboard">Dashboard</a>
-              <a href="/products">Products</a>
-              <a href="/invite">Invite</a>
-              <a href="/orders">Orders</a>
-              <a href="/payment-settings">Payment Settings</a>
-              <a href="/withdraw">Withdraw</a>
-              <a href="/analytics">Analytics</a>
-              <a href="/my-withdrawals">Withdrawals</a>
-
-              <button
-                onClick={logout}
-                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl transition"
-              >
-                Logout
-              </button>
-            </>
-          )}
 
          {user && isCompany && (
 
@@ -188,6 +169,8 @@ className="block px-5 py-3 hover:bg-gray-100"
 </div>
 
 )}
+
+{user && isCompany && (
 
 <div className="relative ml-3">
 
@@ -284,10 +267,12 @@ className="block px-5 py-3 hover:bg-gray-100"
 onClick={logout}
 className="ml-4 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl transition"
 >
-
 Logout
-
 </button>
+
+</>
+
+)}
 
         </div>
 
