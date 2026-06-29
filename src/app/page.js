@@ -597,6 +597,42 @@ item.name
 </div>
 
 </section>
+<section className="max-w-4xl mx-auto px-6 pb-20">
+
+<div className="rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700 p-10 text-center text-white shadow-2xl">
+
+<div className="text-5xl mb-4">
+
+✍️
+
+</div>
+
+<h2 className="text-3xl md:text-4xl font-black">
+
+Share Your Experience
+
+</h2>
+
+<p className="mt-4 text-blue-100 text-lg">
+
+Help other Business Partners by sharing your journey with Kamyab Hub.
+Your honest review helps our community grow stronger.
+
+</p>
+
+<a
+href="/add-review"
+className="inline-block mt-8 rounded-2xl bg-white px-8 py-4 text-lg font-bold text-blue-700 shadow-lg transition hover:scale-105 hover:bg-blue-50"
+>
+
+⭐ Write a Review
+
+</a>
+
+</div>
+
+</section>
+
 {/* Why Business Partners Trust Kamyab Hub */}
 
 <section className="max-w-7xl mx-auto px-6 py-24">
