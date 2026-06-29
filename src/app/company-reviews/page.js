@@ -253,6 +253,19 @@ className="border-t"
 
 <td className="p-4">
 
+<div className="flex gap-2">
+
+<button
+onClick={()=>
+setEditingReview(item)
+}
+className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
+>
+
+✏️ Edit
+
+</button>
+
 <button
 onClick={()=>
 deleteReview(item.id)
@@ -263,6 +276,8 @@ className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transitio
 🗑 Delete
 
 </button>
+
+</div>
 
 </td>
 
@@ -283,17 +298,269 @@ editingReview && (
 
 <div className="mt-10 rounded-2xl border bg-white p-8 shadow">
 
-<h2 className="mb-6 text-2xl font-bold">
+<h2 className="text-2xl font-bold mb-8">
 
-Community Review
+{editingReview.id ? "Edit Review" : "Add Community Review"}
 
 </h2>
 
-<p className="text-gray-600">
+<div className="grid md:grid-cols-2 gap-6">
 
-Review form coming in next step...
+{/* Name */}
 
-</p>
+<div>
+
+<label className="block mb-2 font-medium">
+
+Reviewer Name
+
+</label>
+
+<input
+value={editingReview.name || ""}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+name:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
+
+{/* City */}
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+City
+
+</label>
+
+<input
+value={editingReview.city || ""}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+city:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
+
+{/* Rating */}
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Rating
+
+</label>
+
+<select
+value={editingReview.rating || 5}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+rating:Number(e.target.value)
+})
+}
+className="w-full border rounded-lg p-3"
+>
+
+<option value={5}>⭐⭐⭐⭐⭐</option>
+
+<option value={4}>⭐⭐⭐⭐</option>
+
+<option value={3}>⭐⭐⭐</option>
+
+<option value={2}>⭐⭐</option>
+
+<option value={1}>⭐</option>
+
+</select>
+
+</div>
+
+{/* Language */}
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Language
+
+</label>
+
+<select
+value={editingReview.language || "urdu"}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+language:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+>
+
+<option value="urdu">
+
+Urdu
+
+</option>
+
+<option value="english">
+
+English
+
+</option>
+
+</select>
+
+</div>
+
+{/* Review */}
+
+<div className="md:col-span-2">
+
+<label className="block mb-2 font-medium">
+
+Review
+
+</label>
+
+<textarea
+rows={5}
+value={editingReview.review || ""}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+review:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
+
+{/* Status */}
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Status
+
+</label>
+
+<select
+value={editingReview.status || "active"}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+status:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+>
+
+<option value="active">
+
+Active
+
+</option>
+
+<option value="hidden">
+
+Hidden
+
+</option>
+
+</select>
+
+</div>
+
+{/* Display Order */}
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Display Order
+
+</label>
+
+<input
+type="number"
+value={editingReview.display_order || 1}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+display_order:Number(e.target.value)
+})
+}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
+
+{/* Featured */}
+
+<div className="md:col-span-2">
+
+<label className="flex items-center gap-3">
+
+<input
+type="checkbox"
+checked={editingReview.featured || false}
+onChange={(e)=>
+setEditingReview({
+...editingReview,
+featured:e.target.checked
+})
+}
+/>
+
+<span>
+
+Featured Review
+
+</span>
+
+</label>
+
+</div>
+
+</div>
+
+<div className="mt-8 flex gap-4">
+
+<button
+onClick={saveReview}
+className="rounded-xl bg-black px-6 py-3 text-white hover:bg-gray-800 transition"
+>
+
+{editingReview.id ? "Update Review" : "Save Review"}
+
+</button>
+
+<button
+onClick={()=>
+setEditingReview(null)
+}
+className="rounded-xl border px-6 py-3 hover:bg-gray-100 transition"
+>
+
+Cancel
+
+</button>
+
+</div>
 
 </div>
 
