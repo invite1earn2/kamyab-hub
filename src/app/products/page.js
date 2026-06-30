@@ -118,7 +118,7 @@ key={item.id}
 className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
 >
 
-<div className="h-36 sm:h-44 md:h-52 bg-gray-100 overflow-hidden rounded-t-3xl">
+<div className="h-42 sm:h-48 md:h-52 bg-gray-100 overflow-hidden rounded-t-3xl">
 
   {item.image_url ? (
 
@@ -172,32 +172,35 @@ PKR {item.price}
 
 </span>
 
-<span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
-
-🏢 Company Managed
-
-</span>
-
-<span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
-
-💯 Quality Assured
-
-</span>
-
 </div>
 
+{
+
+localStorage.getItem("user_email")
+
+?
+
 <button
-onClick={()=>
-sell(
-item
-)
-}
-className="mt-6 w-full bg-black text-white py-4 rounded-2xl font-semibold hover:bg-gray-800 transition-all"
+onClick={() => sell(item)}
+className="mt-6 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
 >
 
-Sell Product
+🛒 Sell Product
 
 </button>
+
+:
+
+<a
+href="/signup"
+className="mt-6 block w-full rounded-2xl bg-blue-600 py-4 text-center font-bold text-white transition hover:bg-blue-700"
+>
+
+🤝 Become a Business Partner
+
+</a>
+
+}
 
 </div>
 
