@@ -169,7 +169,7 @@ PKR {item.price}
 
 <div className="mt-2">
 
-<span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+<span className="inline-flex items-center whitespace-nowrap rounded-full bg-green-100 px-2.5 py-1 text-[11px] font-semibold text-green-700">
 
 🚚 Delivery Available
 
