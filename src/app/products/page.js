@@ -37,81 +37,16 @@ load();
 async function load(){
 
 const email =
+localStorage.getItem("user_email");
 
-localStorage.getItem(
-"user_email"
-);
-
-if(
-checkOwner()
-){
-
-const {
-data
-}=
+const { data } =
 await supabase
-.from(
-"products"
-)
+.from("products")
 .select("*");
 
-setProducts(
-data||[]
-);
+setProducts(data || []);
 
-setLoading(
-false
-);
-
-return;
-
-}
-
-const {
-data:user
-}=
-await supabase
-.from(
-"users"
-)
-.select(
-"subscribed"
-)
-.eq(
-"email",
-email
-)
-.single();
-
-if(
-!user
-||
-!user.subscribed
-){
-
-window.location.href=
-"/subscribe";
-
-return;
-
-}
-
-const {
-data
-}=
-await supabase
-.from(
-"products"
-)
-.select("*");
-
-setProducts(
-data||[]
-);
-
-setLoading(
-false
-);
+setLoading(false);
 
 }
 
@@ -171,7 +106,7 @@ Choose quality products, share them with customers and earn profit on every succ
 
 </div>
 
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
 
 {
 
@@ -183,7 +118,7 @@ key={item.id}
 className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
 >
 
-<div className="h-52 bg-gray-100 overflow-hidden">
+<div className="h-36 sm:h-44 md:h-52 bg-gray-100 overflow-hidden rounded-t-3xl">
 
   {item.image_url ? (
 
@@ -213,19 +148,43 @@ className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2x
 
 </h2>
 
-<p>
+<div className="mt-5 rounded-2xl bg-blue-50 border border-blue-100 p-4">
 
-Price:
+<p className="text-sm text-gray-500">
+
+💰 Price
+
+</p>
+
+<p className="mt-1 text-2xl font-black text-blue-700">
+
 PKR {item.price}
 
 </p>
 
-<p>
+</div>
 
-Your Profit:
-PKR {item.profit}
+<div className="mt-5 flex flex-wrap gap-2">
 
-</p>
+<span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+
+🚚 Delivery Available
+
+</span>
+
+<span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+
+🏢 Company Managed
+
+</span>
+
+<span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+
+💯 Quality Assured
+
+</span>
+
+</div>
 
 <button
 onClick={()=>
