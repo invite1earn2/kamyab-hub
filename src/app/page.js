@@ -749,7 +749,7 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
 </section>
 
-<div className="text-center mb-4">
+<div className="text-center mb-3">
 
 <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
 
