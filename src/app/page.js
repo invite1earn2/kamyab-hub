@@ -759,11 +759,11 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
 <div className="flex justify-center">
 
-<div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-2xl">
+<div className="w-48 h-48 rounded-full bg-gradient-to-br from-pink-500 via-fuchsia-600 to-indigo-700 flex items-center justify-center shadow-2xl">
 
 <div className="text-7xl">
 
-👨‍💼
+👩🏻‍💼
 
 </div>
 
@@ -775,55 +775,43 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
 <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
 
-💙 A Message From The Founder
+💙 بانی کا پیغام
 
 </span>
 
 <h2 className="mt-5 text-4xl md:text-5xl font-black text-gray-900">
 
-Building Opportunities,
-
-<br />
-
-<span className="text-blue-600">
-
-Not Just Income
-
-</span>
+السلام علیکم!
 
 </h2>
 
-<p className="mt-8 text-lg leading-8 text-gray-700">
+<p className="mt-8 text-lg leading-9 text-gray-700 text-right">
 
-<b>Assalamu Alaikum,</b>
-
-<br /><br />
-
-Welcome to <strong>Kamyab Hub</strong>.
-
-Our vision is simple: to create a trusted platform where ordinary people can build extraordinary opportunities through business, referrals, and quality products.
+<strong>کامیاب ہب</strong> صرف ایک کاروباری پلیٹ فارم نہیں، بلکہ ایک ایسا وژن ہے جس کا مقصد پاکستان کے باصلاحیت، محنتی اور باہمت افراد کو باعزت روزگار، کاروباری ترقی اور خودمختاری کے حقیقی مواقع فراہم کرنا ہے۔ ہمارا یقین ہے کہ جب ایک فرد ترقی کرتا ہے تو اس کے ساتھ ایک خاندان مضبوط ہوتا ہے، اور جب ہزاروں خاندان مضبوط ہوتے ہیں تو ایک مضبوط اور خوشحال پاکستان کی بنیاد رکھتی ہے۔ اسی سوچ کے ساتھ ہم نے کامیاب ہب کی بنیاد رکھی تاکہ آپ اپنی محنت، دیانت داری اور صلاحیتوں کے ذریعے ایک روشن مستقبل تعمیر کر سکیں.
 
 <br /><br />
 
-We believe success should be accessible to everyone willing to learn, work hard, and grow with honesty. Every Business Partner is an important part of our journey, and we are committed to providing the tools, support, and opportunities needed for long-term success.
-
-<br /><br />
-
-Thank you for placing your trust in Kamyab Hub. We look forward to growing together and helping you take every step toward a brighter future.
+میں آپ کو دعوت دیتا ہوں کہ آج ہی <strong>کامیاب ہب</strong> کا حصہ بنیں اور اپنے خوابوں کو حقیقت میں بدلنے کی جانب پہلا قدم اٹھائیں۔ آپ کا اعتماد ہمارے لیے اعزاز بھی ہے اور ذمہ داری بھی، اور ہم ہر گزرتے دن کے ساتھ اس پلیٹ فارم کو مزید بہتر، محفوظ اور قابلِ اعتماد بنانے کے لیے پُرعزم ہیں۔ <strong>آئیے، مل کر ایک ایسے پاکستان کی تعمیر کریں جہاں ہر محنت کرنے والے شخص کو کامیابی کا منصفانہ موقع ملے۔ اللہ تعالیٰ آپ کے رزق میں برکت عطا فرمائے اور آپ کو ہر قدم پر کامیابی عطا فرمائے۔ آمین۔</strong>
 
 </p>
 
-<div className="mt-10">
+<div className="mt-10 text-right">
 
 <p className="text-2xl font-bold text-gray-900">
 
-Har Qadam Kamyabi Ki Taraf.
+ہر قدم کامیابی کی طرف
 
 </p>
 
 <p className="mt-3 text-gray-600 font-medium">
 
-— Founder, Kamyab Hub
+امامہ عثمان
+
+</p>
+
+<p className="text-blue-600 font-semibold">
+
+بانی، کامیاب ہب
 
 </p>
 
