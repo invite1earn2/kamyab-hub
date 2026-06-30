@@ -127,7 +127,7 @@ key={item.id}
 className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
 >
 
-<div className="h-42 sm:h-48 md:h-52 bg-gray-100 overflow-hidden rounded-t-3xl">
+<div className="h-46 sm:h-48 md:h-52 bg-gray-100 overflow-hidden rounded-t-3xl">
 
   {item.image_url ? (
 
@@ -149,15 +149,15 @@ className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2x
 
 </div>
 
-<div className="p-3">
+<div className="p-2.5">
 
-<h2 className="mt-2 min-h-[40px] text-[15px] font-bold leading-5 text-gray-900">
+<h2 className="mt-1 min-h-[40px] text-[15px] font-bold leading-5 text-gray-900">
 
 {item.name}
 
 </h2>
 
-<div className="mt-2">
+<div className="mt-1">
 
 <p className="text-xl font-black text-blue-700">
 
@@ -167,7 +167,7 @@ PKR {item.price}
 
 </div>
 
-<div className="mt-5 flex flex-wrap gap-2">
+<div className="mt-2">
 
 <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
 
@@ -185,7 +185,7 @@ localStorage.getItem("user_email")
 
 <button
 onClick={() => sell(item)}
-className="mt-3 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
+className="mt-3 w-full rounded-2xl bg-black py-3 font-bold text-white transition hover:bg-gray-800"
 >
 
 🛒 Sell Product
