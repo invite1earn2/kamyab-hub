@@ -807,7 +807,13 @@ Learn about the vision, purpose and commitment behind Kamyab Hub from our founde
 
 </h2>
 
-<p className="mt-8 text-lg leading-9 text-gray-700 text-right">
+<p
+  className="mt-8 text-[22px] leading-[2.6] text-gray-700 text-right"
+  style={{
+    fontFamily: "var(--font-naskh)",
+    direction: "rtl",
+  }}
+>
 
 <strong>کامیاب ہب</strong> صرف ایک کاروباری پلیٹ فارم نہیں، بلکہ ایک ایسا وژن ہے جس کا مقصد پاکستان کے باصلاحیت، محنتی اور باہمت افراد کو باعزت روزگار، کاروباری ترقی اور خودمختاری کے حقیقی مواقع فراہم کرنا ہے۔ ہمارا یقین ہے کہ جب ایک فرد ترقی کرتا ہے تو اس کے ساتھ ایک خاندان مضبوط ہوتا ہے، اور جب ہزاروں خاندان مضبوط ہوتے ہیں تو ایک مضبوط اور خوشحال پاکستان کی بنیاد رکھتی ہے۔ اسی سوچ کے ساتھ ہم نے کامیاب ہب کی بنیاد رکھی تاکہ آپ اپنی محنت، دیانت داری اور صلاحیتوں کے ذریعے ایک روشن مستقبل تعمیر کر سکیں.
 
@@ -817,21 +823,27 @@ Learn about the vision, purpose and commitment behind Kamyab Hub from our founde
 
 </p>
 
-<div className="mt-10 text-right">
+<div
+  className="mt-10 text-right"
+  style={{
+    fontFamily: "var(--font-naskh)",
+    direction: "rtl",
+  }}
+>
 
-<p className="text-2xl font-bold text-gray-900">
+<p className="text-3xl font-bold text-gray-900">
 
 ہر قدم کامیابی کی طرف
 
 </p>
 
-<p className="mt-3 text-gray-600 font-medium">
+<p className="mt-4 text-2xl font-semibold text-gray-800">
 
 امامہ عثمان
 
 </p>
 
-<p className="text-blue-600 font-semibold">
+<p className="mt-1 text-lg font-medium text-blue-600">
 
 بانی، کامیاب ہب
 
