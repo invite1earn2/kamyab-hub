@@ -629,7 +629,7 @@ className="floating-btn rounded-xl bg-blue-600 px-6 py-3 font-bold text-white ho
 
 {/* Why Business Partners Trust Kamyab Hub */}
 
-<section className="max-w-7xl mx-auto px-6 py-24">
+<section className="max-w-7xl mx-auto px-6 pt-9 pb-24">
 
 <div className="text-center">
 
@@ -773,7 +773,7 @@ Learn about the vision, purpose and commitment behind Kamyab Hub from our founde
 
 {/* Founder Message */}
 
-<section className="max-w-7xl mx-auto px-6 py-24">
+<section className="max-w-7xl mx-auto px-6 pt-14 pb-24">
 
 <div className="rounded-[32px] border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-indigo-50 shadow-xl overflow-hidden">
 
