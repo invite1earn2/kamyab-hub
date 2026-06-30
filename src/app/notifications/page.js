@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 
 import AuthGuard from "../../components/authguard";
 
-import { getNotifications } from "../../services/notification";
+import {
+getNotifications,
+createNotification
+} from "../../services/notification";
 
 import { checkOwner } from "../../services/owner";
 
@@ -19,6 +22,46 @@ useEffect(()=>{
 load();
 
 },[]);
+
+async function testNotification(){
+
+const email=
+
+localStorage.getItem(
+"user_email"
+);
+
+const role=
+
+checkOwner()
+?
+"owner"
+:
+"partner";
+
+const result=
+
+await createNotification({
+
+user_email:email,
+
+role,
+
+title:"🧪 Test Notification",
+
+message:"Notification system is working correctly.",
+
+type:"test",
+
+link:"/notifications"
+
+});
+
+console.log(result);
+
+load();
+
+}
 
 async function load(){
 
@@ -221,6 +264,15 @@ onClick={load}
 className="rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
 
 >
+
+<button
+onClick={testNotification}
+className="mr-3 rounded-2xl bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700 transition"
+>
+
+Create Test Notification
+
+</button>
 
 Refresh Notifications
 
