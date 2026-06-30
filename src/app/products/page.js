@@ -140,27 +140,27 @@ className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2x
 
 </div>
 
-<div className="p-6">
+<div className="p-3">
 
-<h2>
+<h2 className="mt-2 min-h-[44px] text-base font-bold leading-6 text-gray-900">
 
 {item.name}
 
 </h2>
 
-<div className="mt-5 rounded-2xl bg-blue-50 border border-blue-100 p-4">
+<div className="mt-3 flex items-center justify-between">
 
-<p className="text-sm text-gray-500">
+<span className="text-sm font-medium text-gray-500">
 
 💰 Price
 
-</p>
+</span>
 
-<p className="mt-1 text-2xl font-black text-blue-700">
+<span className="text-xl font-black text-blue-700">
 
 PKR {item.price}
 
-</p>
+</span>
 
 </div>
 
@@ -182,7 +182,7 @@ localStorage.getItem("user_email")
 
 <button
 onClick={() => sell(item)}
-className="mt-6 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
+className="mt-4 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
 >
 
 🛒 Sell Product
