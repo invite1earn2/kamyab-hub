@@ -83,6 +83,10 @@ const dropdownRef = useRef(null);
             Home
           </a>
 
+          <a href="/products" className="hover:text-blue-600 transition">
+  Products
+</a>
+
           {!user && (
             <>
               <a href="/signup" className="hover:text-blue-600 transition">
@@ -99,10 +103,6 @@ const dropdownRef = useRef(null);
   <>
     <a href="/dashboard" className="hover:text-blue-600 transition">
       Dashboard
-    </a>
-
-    <a href="/products" className="hover:text-blue-600 transition">
-      Products
     </a>
 
     <a href="/invite" className="hover:text-blue-600 transition">
