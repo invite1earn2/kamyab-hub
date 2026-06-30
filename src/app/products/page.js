@@ -70,12 +70,21 @@ loading
 
 return(
 
-<div className="p-10">
+<div className="flex min-h-[60vh] items-center justify-center">
 
-Loading...
+<div className="text-center">
+
+<div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+
+<p className="mt-4 text-gray-600 font-medium">
+
+Loading Products...
+
+</p>
 
 </div>
 
+</div>
 );
 
 }
@@ -142,25 +151,19 @@ className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-2x
 
 <div className="p-3">
 
-<h2 className="mt-2 min-h-[44px] text-base font-bold leading-6 text-gray-900">
+<h2 className="mt-2 min-h-[40px] text-[15px] font-bold leading-5 text-gray-900">
 
 {item.name}
 
 </h2>
 
-<div className="mt-3 flex items-center justify-between">
+<div className="mt-2">
 
-<span className="text-sm font-medium text-gray-500">
-
-💰 Price
-
-</span>
-
-<span className="text-xl font-black text-blue-700">
+<p className="text-xl font-black text-blue-700">
 
 PKR {item.price}
 
-</span>
+</p>
 
 </div>
 
@@ -182,7 +185,7 @@ localStorage.getItem("user_email")
 
 <button
 onClick={() => sell(item)}
-className="mt-4 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
+className="mt-3 w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-gray-800"
 >
 
 🛒 Sell Product
