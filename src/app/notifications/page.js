@@ -79,13 +79,20 @@ checkOwner()
 :
 "partner";
 
-const data=
+console.log("========== Notification Debug ==========");
+console.log("Email:", email);
+console.log("Role:", role);
 
+const data =
 await getNotifications(
 email,
 role
 );
 
+console.log("Notifications Returned:", data);
+console.log("======================================");
+
+setNotifications(data);
 setNotifications(data);
 
 setLoading(false);

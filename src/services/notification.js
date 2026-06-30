@@ -77,9 +77,13 @@ query.eq("user_email",userEmail);
 
 }
 
-const {data,error}=
+console.log("Query Email:", userEmail);
+console.log("Query Role:", role);
 
-await query;
+const { data, error } = await query;
+
+console.log("Supabase Data:", data);
+console.log("Supabase Error:", error);
 
 if(error){
 
