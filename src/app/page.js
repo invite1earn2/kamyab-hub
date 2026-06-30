@@ -749,6 +749,28 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
 </section>
 
+<div className="text-center mb-14">
+
+<span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+
+💙 From the Founder
+
+</span>
+
+<h2 className="mt-5 text-4xl md:text-5xl font-black text-gray-900">
+
+A Message from Our Founder
+
+</h2>
+
+<p className="mt-5 max-w-3xl mx-auto text-lg leading-8 text-gray-600">
+
+Learn about the vision, purpose and commitment behind Kamyab Hub from our founder.
+
+</p>
+
+</div>
+
 {/* Founder Message */}
 
 <section className="max-w-7xl mx-auto px-6 py-24">
@@ -831,13 +853,11 @@ Build a sustainable business with products, referrals and continuous growth oppo
 
   <div className="bg-gradient-to-r from-black to-gray-800 rounded-3xl text-white p-12 md:p-16 text-center shadow-2xl">
 
-    <h2 className="text-5xl md:text-6xl font-bold leading-tight">
+   <h2 className="text-4xl md:text-5xl font-bold">
 
-      Your Journey Towards Success
-      <br />
-      Starts Today
+  Ready to Get Started?
 
-    </h2>
+</h2>
 
     <p className="text-xl mt-8 text-gray-200 max-w-3xl mx-auto leading-8">
 
