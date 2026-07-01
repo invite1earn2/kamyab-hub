@@ -31,7 +31,7 @@ localStorage.getItem("user_email");
 
 if(existing){
 
-window.location.href="/dashboard";
+window.location.replace("/");
 return;
 
 }
