@@ -8,7 +8,9 @@ import { checkOwner } from "../../services/owner";
 export default function Dashboard(){
 
 const [loading,setLoading]=useState(true);
-const [earnings,setEarnings]=useState(0);
+const [balance,setBalance]=useState(0);
+const [lifetime,setLifetime]=useState(0);
+const [referrals,setReferrals]=useState(0);
 const [sales,setSales]=useState(0);
 const [orderCount,setOrderCount]=useState(0);
 
@@ -29,7 +31,7 @@ return;
 const { data:user }=
 await supabase
 .from("users")
-.select("subscribed,earnings_balance")
+.select("subscribed,earnings_balance,lifetime_earnings,total_referrals")
 .eq("email",userEmail)
 .single();
 
@@ -56,8 +58,16 @@ Number(b.profit||0),
 0
 );
 
-setEarnings(
+setBalance(
 Number(user.earnings_balance||0)
+);
+
+setLifetime(
+Number(user.lifetime_earnings||0)
+);
+
+setReferrals(
+Number(user.total_referrals||0)
 );
 
 setSales(total);
@@ -177,7 +187,7 @@ Available Balance
 
 <h2 className="mt-3 text-4xl font-black text-gray-900">
 
-PKR {earnings + sales}
+PKR {balance}
 </h2>
 
 <p className="mt-3 text-sm text-green-600 font-semibold">
@@ -213,14 +223,13 @@ hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
       <h2 className="mt-3 text-4xl font-black text-gray-900">
 
-        PKR {earnings}
+       PKR {lifetime}
 
       </h2>
 
       <p className="mt-3 text-sm font-semibold text-blue-600">
 
-        Growing through referrals
-
+        {referrals} Successful Referrals
       </p>
 
     </div>
