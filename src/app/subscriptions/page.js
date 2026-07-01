@@ -45,6 +45,9 @@ export default function Subscription() {
   }
 
   async function approveSubscription(id, email) {
+  console.log("=== APPROVE STARTED ===");
+console.log("Subscription ID:", id);
+console.log("User Email:", email);
 
    const { data: subscription, error: loadError } = await supabase
   .from("subscriptions")
@@ -106,6 +109,7 @@ if (subscriptionError) {
         subscribed: true
       })
       .eq("email", email);
+      console.log("User subscription updated successfully.");
 
     if (userError) {
 
@@ -114,6 +118,7 @@ if (subscriptionError) {
       return;
 
     }
+    console.log("User subscription updated successfully.");
 
     const result = await createNotification({
 
@@ -140,6 +145,7 @@ console.log("Notification Result:", result);
       .select("referred_by")
       .eq("email", email)
       .single();
+      console.log("Approved User:", approvedUser);
 
     if (approvedUser?.referred_by) {
 
@@ -148,7 +154,7 @@ console.log("Notification Result:", result);
         .select("id, earnings_balance, lifetime_earnings, total_referrals")
         .eq("referral_code", approvedUser.referred_by)
         .single();
-
+      console.log("Inviter:", inviter);
       if (inviter) {
 
   await supabase
@@ -170,7 +176,7 @@ console.log("Notification Result:", result);
 }
 
     }
-
+    console.log("Updating platform_stats...");
     const { data: stats } = await supabase
   .from("platform_stats")
   .select("*")
