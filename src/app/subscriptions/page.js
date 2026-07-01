@@ -149,12 +149,31 @@ console.log("Notification Result:", result);
 
     if (approvedUser?.referred_by) {
 
-      const { data: inviter } = await supabase
-        .from("users")
-        .select("id, earnings_balance, lifetime_earnings, total_referrals")
-        .eq("referral_code", approvedUser.referred_by)
-        .single();
-      console.log("Inviter:", inviter);
+      let inviter = null;
+
+if (approvedUser.referred_by.startsWith("KH")) {
+
+  const { data } = await supabase
+    .from("users")
+    .select("id, earnings_balance, lifetime_earnings, total_referrals")
+    .eq("partner_id", approvedUser.referred_by)
+    .single();
+
+  inviter = data;
+
+} else {
+
+  const { data } = await supabase
+    .from("users")
+    .select("id, earnings_balance, lifetime_earnings, total_referrals")
+    .eq("referral_code", approvedUser.referred_by)
+    .single();
+
+  inviter = data;
+
+}
+
+console.log("Inviter:", inviter);
       if (inviter) {
 
   const { data: updatedInviter, error: inviterError } = await supabase
