@@ -151,12 +151,11 @@ if(authError){
 
 console.log("AUTH ERROR:", authError);
 
-alert(JSON.stringify(authError));
+alert("AUTH ERROR");
 
 return false;
 
 }
-
 const {
 
 data:user,
@@ -174,7 +173,7 @@ if(userError){
 
 console.log("USER ERROR:", userError);
 
-alert(JSON.stringify(userError));
+alert("USER ERROR");
 
 return false;
 
