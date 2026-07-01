@@ -171,14 +171,13 @@ hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
 <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
 
-Total Earnings
+Available Balance
 
 </p>
 
 <h2 className="mt-3 text-4xl font-black text-gray-900">
 
 PKR {earnings + sales}
-
 </h2>
 
 <p className="mt-3 text-sm text-green-600 font-semibold">
@@ -208,7 +207,7 @@ hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
 
       <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
 
-        Referral Rewards
+        Lifetime Earnings
 
       </p>
 
