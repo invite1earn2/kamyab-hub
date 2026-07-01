@@ -21,19 +21,13 @@ async function load(){
 const userEmail=
 localStorage.getItem("user_email");
 
-if(checkOwner()){
-
-setLoading(false);
-return;
-
-}
-
 const { data:user }=
 await supabase
 .from("users")
 .select("subscribed,earnings_balance,lifetime_earnings,total_referrals")
 .eq("email",userEmail)
 .single();
+console.log("Dashboard User:", user);
 
 if(!user||!user.subscribed){
 
