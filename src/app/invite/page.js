@@ -23,6 +23,12 @@ setCode
 useState("");
 
 const [
+partnerId,
+setPartnerId
+]=
+useState("");
+
+const [
 loading,
 setLoading
 ]=
@@ -50,7 +56,7 @@ await supabase
 "users"
 )
 .select(
-"subscribed,referral_code"
+"subscribed,referral_code,partner_id"
 )
 .eq(
 "email",
@@ -77,20 +83,29 @@ user.referral_code
 "NO CODE"
 );
 
+setPartnerId(
+user.partner_id
+||
+"NO PARTNER ID"
+);
+
 setLoading(false);
 
 }
+
+const partnerLink =
+`https://kamyab-hub.vercel.app/join/${partnerId}`;
 
 const referralLink =
 `https://kamyab-hub.vercel.app/signup?ref=${code}`;
 async function copyLink(){
 
 await navigator.clipboard.writeText(
-referralLink
+partnerLink
 );
 
 alert(
-"Referral link copied successfully."
+"Partner link copied successfully."
 );
 
 }
@@ -100,7 +115,7 @@ const message =
 
 `Join Kamyab Hub using my referral link and start your business today.
 
-${referralLink}`;
+${partnerLink}`;
 
 window.open(
 
@@ -162,22 +177,37 @@ Invite new Business Partners using your referral link and earn PKR 300 for every
 
 <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
 
-Your Referral Code
+Partner ID
 
 </p>
 
 <h2 className="text-5xl font-black mt-3 tracking-widest">
 
-{code}
+{partnerId}
 
 </h2>
 
 <p className="text-gray-600 mt-5 leading-7">
 
-Share this code with friends and earn referral rewards whenever they become active Business Partners.
+This is your permanent Kamyab Hub Partner ID. Share your professional partner link below to earn PKR 300 whenever someone becomes an active Business Partner.
 
 </p>
 
+<div className="mt-8 pt-6 border-t">
+
+<p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+
+Legacy Referral Code
+
+</p>
+
+<h3 className="text-2xl font-bold mt-2">
+
+{code}
+
+</h3>
+
+</div>
 </div>
 
 <div>
@@ -190,13 +220,13 @@ Referral Link
 
 <div className="mt-4 bg-gray-100 rounded-2xl p-5 break-all">
 
-https://kamyab-hub.vercel.app/signup?ref={code}
+{partnerLink}
 
 </div>
 
 <p className="text-sm text-gray-500 mt-4">
 
-Share this link directly through WhatsApp, Facebook or any social platform.
+Share this professional partner link through WhatsApp, Facebook, Instagram, TikTok, YouTube, QR Codes, posters or any marketing channel.
 
 </p>
 
@@ -207,7 +237,7 @@ onClick={copyLink}
 className="bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all duration-300"
 >
 
-📋 Copy Referral Link
+📋 Copy Professional Partner Link
 
 </button>
 
