@@ -49,6 +49,18 @@ if(ref){
 setReferral(ref);
 
 }
+const partnerId =
+localStorage.getItem(
+"partner_id"
+);
+
+if(partnerId){
+
+setReferral(
+partnerId
+);
+
+}
 
 },[]);
 

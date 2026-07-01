@@ -50,6 +50,32 @@ Math.random()
 
 .toUpperCase();
 
+const {
+data: lastPartner
+} =
+await supabase
+.from("users")
+.select("partner_id")
+.not("partner_id","is",null)
+.order("partner_id",{ ascending:false })
+.limit(1)
+.single();
+
+let nextPartnerId = "KH002000";
+
+if(lastPartner?.partner_id){
+
+const number =
+parseInt(
+lastPartner.partner_id.replace("KH","")
+);
+
+nextPartnerId =
+"KH" +
+String(number+1).padStart(6,"0");
+
+}
+
 const payload={
 
 name:
@@ -60,6 +86,9 @@ data.email,
 
 role:
 data.role,
+
+partner_id:
+nextPartnerId,
 
 referred_by:
 data.referral_code,

@@ -42,18 +42,6 @@ localStorage.getItem(
 "user_email"
 );
 
-if(
-checkOwner()
-){
-
-setCode("OWNER");
-
-setLoading(false);
-
-return;
-
-}
-
 const {
 data:user
 }=
