@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import supabase from "../../lib/supabase";
 import { updateWithdrawal } from "../../services/withdrawalStatus";
 import { checkOwner } from "../../services/owner";
+import { createNotification } from "../../services/notification";
 
 export default function Withdrawals(){
 
@@ -187,11 +188,43 @@ return;
 
 }
 
+await createNotification({
+
+user_email: withdrawal.user_email,
+
+role: "partner",
+
+title: "💸 Withdrawal Approved",
+
+message: `Your withdrawal request of PKR ${withdrawal.amount} has been approved successfully.`,
+
+type: "withdrawal",
+
+link: "/my-withdrawals"
+
+});
+
+await createNotification({
+
+user_email: withdrawal.user_email,
+
+role: "partner",
+
+title: "💸 Withdrawal Approved",
+
+message: `Your withdrawal request of PKR ${withdrawal.amount} has been approved successfully.`,
+
+type: "withdrawal",
+
+link: "/my-withdrawals"
+
+});
 alert(
 "Withdrawal approved successfully."
 );
 
 load();
+
 
 }
 
