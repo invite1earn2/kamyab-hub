@@ -112,15 +112,43 @@ console.log("Notification Result:", result);
 
       if (inviter) {
 
-        await supabase
-          .from("users")
-          .update({
-            earnings_balance:
-              Number(inviter.earnings_balance || 0) + 300
-          })
-          .eq("id", inviter.id);
+  await supabase
+    .from("users")
+    .update({
 
-      }
+      earnings_balance:
+        Number(inviter.earnings_balance || 0) + 300,
+
+      lifetime_earnings:
+        Number(inviter.lifetime_earnings || 0) + 300,
+
+      total_referrals:
+        Number(inviter.total_referrals || 0) + 1
+
+    })
+    .eq("id", inviter.id);
+
+}
+
+const { data: stats } =
+await supabase
+.from("platform_stats")
+.select("*")
+.eq("id",1)
+.single();
+
+await supabase
+.from("platform_stats")
+.update({
+
+total_revenue:
+Number(stats.total_revenue||0)+999,
+
+total_members:
+Number(stats.total_members||0)+1
+
+})
+.eq("id",1);
 
     }
 
