@@ -11,6 +11,11 @@ login
 }
 from "../../services/auth";
 
+import {
+bootstrapOwner
+}
+from "../../services/bootstrapOwner";
+
 export default function Login(){
 
 const [
