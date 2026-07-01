@@ -157,7 +157,7 @@ console.log("Notification Result:", result);
       console.log("Inviter:", inviter);
       if (inviter) {
 
-  await supabase
+  const { data: updatedInviter, error: inviterError } = await supabase
     .from("users")
     .update({
 
@@ -171,12 +171,17 @@ console.log("Notification Result:", result);
         Number(inviter.total_referrals || 0) + 1
 
     })
-    .eq("id", inviter.id);
+    .eq("id", inviter.id)
+    .select();
 
-}
+  console.log("Updated Inviter:", updatedInviter);
+console.log("Inviter Update Error:", inviterError);
 
-    }
-    console.log("Updating platform_stats...");
+}   // closes if (inviter)
+
+}   // closes if (approvedUser?.referred_by)
+
+console.log("Updating platform_stats...");
     const { data: stats } = await supabase
   .from("platform_stats")
   .select("*")
