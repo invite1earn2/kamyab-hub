@@ -46,20 +46,59 @@ export default function Subscription() {
 
   async function approveSubscription(id, email) {
 
-    const { error: subscriptionError } = await supabase
-      .from("subscriptions")
-      .update({
-        status: "approved"
-      })
-      .eq("id", id);
+   const { data: subscription, error: loadError } = await supabase
+  .from("subscriptions")
+  .select("status")
+  .eq("id", id)
+  .single();
 
-    if (subscriptionError) {
+if (loadError) {
 
-      console.log(subscriptionError);
+  console.log(loadError);
 
-      return;
+  return;
 
-    }
+}
+
+if (subscription.status === "approved") {
+
+  alert("This subscription has already been approved.");
+
+  return;
+
+}
+
+const { data: updatedSubscription, error: subscriptionError } = await supabase
+  .from("subscriptions")
+  .update({
+    status: "approved"
+  })
+  .eq("id", id)
+  .eq("status", "pending")
+  .select();
+
+if (subscriptionError) {
+
+  console.log(subscriptionError);
+
+  return;
+
+}
+
+if (!updatedSubscription || updatedSubscription.length === 0) {
+
+  alert("This subscription has already been processed.");
+
+  return;
+
+}
+if (subscriptionError) {
+
+  console.log(subscriptionError);
+
+  return;
+
+}
 
     const { error: userError } = await supabase
       .from("users")
@@ -106,7 +145,7 @@ console.log("Notification Result:", result);
 
       const { data: inviter } = await supabase
         .from("users")
-        .select("id,earnings_balance")
+        .select("id, earnings_balance, lifetime_earnings, total_referrals")
         .eq("referral_code", approvedUser.referred_by)
         .single();
 
@@ -130,27 +169,26 @@ console.log("Notification Result:", result);
 
 }
 
-const { data: stats } =
-await supabase
-.from("platform_stats")
-.select("*")
-.eq("id",1)
-.single();
-
-await supabase
-.from("platform_stats")
-.update({
-
-total_revenue:
-Number(stats.total_revenue||0)+999,
-
-total_members:
-Number(stats.total_members||0)+1
-
-})
-.eq("id",1);
-
     }
+
+    const { data: stats } = await supabase
+  .from("platform_stats")
+  .select("*")
+  .eq("id", 1)
+  .single();
+
+await supabase
+  .from("platform_stats")
+  .update({
+
+    total_revenue:
+      Number(stats.total_revenue || 0) + 699,
+
+    total_members:
+      Number(stats.total_members || 0) + 1
+
+  })
+  .eq("id", 1);
 
     loadSubscriptions();
 
