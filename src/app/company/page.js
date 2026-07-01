@@ -69,6 +69,7 @@ await supabase
 .eq("id",1)
 .single();
 
+console.log("Platform Stats:", platformStats);
 setPlatform(platformStats);
 
 setStats({
