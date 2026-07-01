@@ -6,6 +6,8 @@ import supabase from "../../lib/supabase";
 export default function Help() {
 
 const [message,setMessage]=useState("");
+const [messages,setMessages]=useState([]);
+const [conversationId,setConversationId]=useState(null);
 
 useEffect(()=>{
 
@@ -51,6 +53,40 @@ console.log(
 "Conversation:",
 conversation
 );
+if(conversation){
+
+setConversationId(
+conversation.id
+);
+
+}
+const {
+data:chat
+}=
+
+await supabase
+
+.from(
+"support_messages"
+)
+
+.select("*")
+
+.eq(
+"conversation_id",
+conversation.id
+)
+
+.order(
+"created_at",
+{
+ascending:true
+}
+);
+
+setMessages(
+chat||[]
+);
 if(!conversation){
 
 const {
@@ -80,6 +116,37 @@ console.log(
 newConversation
 );
 
+setConversationId(
+newConversation.id
+);
+const {
+data:firstMessage
+}=
+
+await supabase
+
+.from(
+"support_messages"
+)
+
+.insert([{
+
+conversation_id:
+newConversation.id,
+
+sender:
+"system",
+
+message:
+"👋 Welcome to Kamyab Hub! How can we help you today?"
+
+}])
+
+.select();
+
+setMessages(
+firstMessage||[]
+);
 }
 
 }
@@ -236,47 +303,53 @@ Our support team is ready to help you.
 
 <div className="p-6 h-[420px] overflow-y-auto bg-gray-50">
 
-<div className="max-w-xl rounded-2xl bg-white border p-5">
+{
 
-<p className="font-bold">
+messages.map((item)=>(
 
-👨‍💼 Kamyab Hub Support
+<div
+
+key={item.id}
+
+className={`max-w-xl rounded-2xl border p-5 mb-4 ${
+item.sender==="system"
+?
+"bg-white"
+:
+"bg-blue-600 text-white ml-auto"
+}`}
+
+>
+
+<p className="font-bold mb-2">
+
+{
+
+item.sender==="system"
+
+?
+
+"👨‍💼 Kamyab Hub Support"
+
+:
+
+"👤 You"
+
+}
 
 </p>
 
-<p className="mt-4 text-gray-700 leading-7">
+<p>
 
-👋 Welcome to Kamyab Hub!
-
-</p>
-
-<p className="mt-3 text-gray-600">
-
-We're here to help you with:
-
-</p>
-
-<ul className="mt-4 space-y-2 text-gray-700">
-
-<li>• Membership Activation</li>
-
-<li>• Referral Earnings</li>
-
-<li>• Product Orders</li>
-
-<li>• Withdrawals</li>
-
-<li>• Technical Issues</li>
-
-</ul>
-
-<p className="mt-5 text-gray-600">
-
-Please type your question below.
+{item.message}
 
 </p>
 
 </div>
+
+))
+
+}
 
 </div>
 
