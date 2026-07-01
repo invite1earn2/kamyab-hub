@@ -32,6 +32,10 @@ useState("");
 
 useEffect(()=>{
 
+async function initialize(){
+
+await bootstrapOwner();
+
 const existing=
 localStorage.getItem(
 "user_email"
@@ -56,8 +60,11 @@ window.location.href="/dashboard";
 
 }
 
-},[]);
+}
 
+initialize();
+
+},[]);
 async function submit(e){
 
 e.preventDefault();
