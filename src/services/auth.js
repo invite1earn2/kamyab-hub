@@ -149,7 +149,9 @@ await supabase
 
 if(authError){
 
-console.log(authError);
+console.log("AUTH ERROR:", authError);
+
+alert(JSON.stringify(authError));
 
 return false;
 
@@ -170,7 +172,9 @@ await supabase
 
 if(userError){
 
-console.log(userError);
+console.log("USER ERROR:", userError);
+
+alert(JSON.stringify(userError));
 
 return false;
 
