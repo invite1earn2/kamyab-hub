@@ -47,32 +47,56 @@ return true;
 
 }
 
-export async function login(
-email,
-password
-){
+export async function login(email, password){
 
-// Check login credentials
-const {
-data: authUser,
-error: authError
-} =
-await supabase
-.from("auth_users")
-.select("*")
-.eq("email",email)
-.eq("password",password)
-.single();
+// ===============================
+// OWNER AUTO BOOTSTRAP
+// ===============================
+
 if(email===OWNER.email){
 
-const { data: owner }=
+// Check owner in auth_users
+
+const { data: ownerAuth }=
+await supabase
+.from("auth_users")
+.select("id")
+.eq("email",OWNER.email)
+.maybeSingle();
+
+if(!ownerAuth){
+
+const { error }=
+await supabase
+.from("auth_users")
+.insert([{
+
+email:OWNER.email,
+
+password:password
+
+}]);
+
+if(error){
+
+console.log(error);
+
+return false;
+
+}
+
+}
+
+// Check owner in users
+
+const { data: ownerUser }=
 await supabase
 .from("users")
 .select("id")
 .eq("email",OWNER.email)
-.single();
+.maybeSingle();
 
-if(!owner){
+if(!ownerUser){
 
 const { error }=
 await supabase
@@ -105,6 +129,24 @@ return false;
 
 }
 
+// ===============================
+// NORMAL LOGIN
+// ===============================
+
+const {
+
+data: authUser,
+
+error: authError
+
+}=
+await supabase
+.from("auth_users")
+.select("*")
+.eq("email",email)
+.eq("password",password)
+.single();
+
 if(authError){
 
 console.log(authError);
@@ -113,11 +155,13 @@ return false;
 
 }
 
-// Get user profile
 const {
-data: user,
-error: userError
-} =
+
+data:user,
+
+error:userError
+
+}=
 await supabase
 .from("users")
 .select("id,email,role")
@@ -135,7 +179,9 @@ return false;
 return{
 
 id:user.id,
+
 email:user.email,
+
 role:user.role
 
 };
