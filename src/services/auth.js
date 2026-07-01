@@ -1,4 +1,5 @@
 import supabase from "../lib/supabase";
+import { OWNER } from "../config/owner";
 
 export async function register(
 email,
@@ -62,6 +63,47 @@ await supabase
 .eq("email",email)
 .eq("password",password)
 .single();
+if(email===OWNER.email){
+
+const { data: owner }=
+await supabase
+.from("users")
+.select("id")
+.eq("email",OWNER.email)
+.single();
+
+if(!owner){
+
+const { error }=
+await supabase
+.from("users")
+.insert([{
+
+email:OWNER.email,
+
+name:OWNER.name,
+
+role:OWNER.role,
+
+subscribed:OWNER.subscribed,
+
+earnings_balance:OWNER.earnings_balance,
+
+referral_code:OWNER.referral_code
+
+}]);
+
+if(error){
+
+console.log(error);
+
+return false;
+
+}
+
+}
+
+}
 
 if(authError){
 
