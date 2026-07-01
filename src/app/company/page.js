@@ -7,6 +7,7 @@ import { checkOwner } from "../../services/owner";
 export default function OwnerDashboard(){
 
 const [stats,setStats]=useState(null);
+const [platform,setPlatform]=useState(null);
 const [activities,setActivities]=useState([]);
 
 useEffect(()=>{
@@ -61,6 +62,15 @@ count:"exact",
 head:true
 });
 
+const { data: platformStats }=
+await supabase
+.from("platform_stats")
+.select("*")
+.eq("id",1)
+.single();
+
+setPlatform(platformStats);
+
 setStats({
 
 userCount,
@@ -69,7 +79,13 @@ pendingSubscriptions,
 
 pendingWithdrawals,
 
-totalOrders
+totalOrders,
+
+totalRevenue:
+platformStats?.total_revenue||0,
+
+totalMembers:
+platformStats?.total_members||0
 
 });
 const activity=[];
@@ -350,13 +366,13 @@ Total Orders
 
 <h2 className="mt-3 text-5xl font-black">
 
-{stats.totalOrders}
+PKR {stats.totalRevenue}
 
 </h2>
 
 <p className="mt-4 text-sm text-green-400">
 
-All Orders
+Total Subscription Revenue
 
 </p>
 
