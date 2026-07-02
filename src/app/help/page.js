@@ -29,7 +29,7 @@ return;
 
 }
 
-await supabase
+const { error } = await supabase
 
 .from(
 "support_messages"
@@ -48,19 +48,25 @@ message
 
 }]);
 
+if(error){
+
+console.log(error);
+
+return;
+
+}
+
 setMessage("");
 
-loadConversation();
+await loadConversation();
 
 }
 
 
 async function loadConversation(){
 
-const email=
-localStorage.getItem(
-"user_email"
-);
+const email =
+localStorage.getItem("user_email");
 
 if(!email){
 
@@ -70,45 +76,58 @@ return;
 
 }
 
-const {
-data:conversation
-}=
+let { data: conversation } = await supabase
 
-await supabase
-
-.from(
-"support_conversations"
-)
+.from("support_conversations")
 
 .select("*")
 
-.eq(
-"user_email",
-email
-)
+.eq("user_email", email)
 
 .single();
 
-console.log(
-"Conversation:",
-conversation
-);
-if(conversation){
+if(!conversation){
+
+const { data: newConversation } = await supabase
+
+.from("support_conversations")
+
+.insert([{
+
+user_email: email
+
+}])
+
+.select()
+
+.single();
+
+conversation = newConversation;
+
+await supabase
+
+.from("support_messages")
+
+.insert([{
+
+conversation_id: conversation.id,
+
+sender: "system",
+
+message:
+"👋 Welcome to Kamyab Hub! How can we help you today?"
+
+}]);
+
+}
 
 setConversationId(
 conversation.id
 );
 
-}
-const {
-data:chat
-}=
+const { data: chat } = await supabase
 
-await supabase
-
-.from(
-"support_messages"
-)
+.from("support_messages")
 
 .select("*")
 
@@ -125,69 +144,8 @@ ascending:true
 );
 
 setMessages(
-chat||[]
+chat || []
 );
-if(!conversation){
-
-const {
-data:newConversation,
-error
-}=
-
-await supabase
-
-.from(
-"support_conversations"
-)
-
-.insert([{
-
-user_email:
-email
-
-}])
-
-.select()
-
-.single();
-
-console.log(
-"Created:",
-newConversation
-);
-
-setConversationId(
-newConversation.id
-);
-const {
-data:firstMessage
-}=
-
-await supabase
-
-.from(
-"support_messages"
-)
-
-.insert([{
-
-conversation_id:
-newConversation.id,
-
-sender:
-"system",
-
-message:
-"👋 Welcome to Kamyab Hub! How can we help you today?"
-
-}])
-
-.select();
-
-setMessages(
-firstMessage||[]
-);
-}
 
 }
 
