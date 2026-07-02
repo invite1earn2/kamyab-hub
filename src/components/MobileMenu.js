@@ -189,8 +189,16 @@ export default function MobileMenu({
 🏦 My Withdrawals
 </a>
 
+<a href="/notifications" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+🔔 Notifications
+</a>
+
 <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
 📈 Analytics
+</a>
+
+<a href="/notifications" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+🔔 Notifications
 </a>
 
 <hr className="my-5" />
