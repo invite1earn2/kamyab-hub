@@ -26,25 +26,24 @@ const notoNaskh = Noto_Naskh_Arabic({
 export const metadata = {
 
   title: {
-    default: "Kamyab Hub",
-    template: "%s | Kamyab Hub",
-  },
-
+  default: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
+  template: "%s | Kamyab Hub",
+},
   description:
-    "Kamyab Hub is Pakistan's Smart Business Partner Platform. Build your business through product selling, referral rewards and secure earnings management.",
+  "Start your online business with Kamyab Hub. Earn through referrals, sell quality products, and grow your income with Pakistan's trusted Business Partner Platform.",
 
   keywords: [
-    "Kamyab Hub",
-    "Business Partner",
-    "Referral Platform",
-    "Product Selling",
-    "Affiliate Marketing",
-    "Pakistan Business",
-    "Earn Online",
-    "Business Opportunity",
-    "Referral System",
-    "Commission Platform",
-  ],
+  "online business Pakistan",
+  "earn money online",
+  "referral marketing Pakistan",
+  "business partner",
+  "online earning",
+  "affiliate marketing",
+  "product selling",
+  "work from home Pakistan",
+  "Kamyab Hub",
+  "business opportunity",
+],
 
   authors: [
     {
@@ -59,19 +58,19 @@ export const metadata = {
   applicationName: "Kamyab Hub",
 
   openGraph: {
+  title: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
 
-    title: "Kamyab Hub",
+  description:
+    "Start your online business with Kamyab Hub. Earn through referrals and product sales with a one-time membership.",
 
-    description:
-      "Har Qadam Kamyabi Ki Taraf",
+  url: "https://kamyabhub.com",
 
-    type: "website",
+  siteName: "Kamyab Hub",
 
-    locale: "en_PK",
+  locale: "en_PK",
 
-    siteName: "Kamyab Hub",
-
-  },
+  type: "website",
+},
 
 };
 
