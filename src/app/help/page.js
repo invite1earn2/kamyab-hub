@@ -170,33 +170,21 @@ return(
 
 <main className="max-w-7xl mx-auto px-6 py-10">
 
-<div className="mb-10">
+<div className="mb-6">
 
-<p className="text-blue-600 font-semibold uppercase tracking-wider">
+<h1 className="text-3xl font-black">
 
-Help Center
-
-</p>
-
-<h1 className="text-5xl font-black mt-3">
-
-💬 We're Here To Help
+💬 Help Center
 
 </h1>
 
-<p className="text-gray-600 mt-4 max-w-3xl leading-7">
-
-Find quick answers to common questions or send a message directly to the Kamyab Hub Support Team.
-
-</p>
-
 </div>
 
-<div className="grid lg:grid-cols-3 gap-8">
+<div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
 
 {/* FAQ */}
 
-<div className="lg:col-span-1">
+<div className="order-2 lg:order-1 lg:col-span-1">
 
 <div className="rounded-3xl border bg-white shadow-sm p-6">
 
@@ -296,47 +284,58 @@ Product profit is added after your order has been delivered successfully.
 
 {/* Support Chat */}
 
-<div className="lg:col-span-2">
+<div className="order-1 lg:order-2 lg:col-span-2">
 
 <div className="rounded-3xl border bg-white shadow-sm overflow-hidden">
 
-<div className="border-b p-6">
+<div className="border-b bg-white px-6 py-5">
 
-<h2 className="text-2xl font-bold">
+<div className="flex items-center gap-3">
 
-💬 Chat With Support
+<div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl">
+
+👨‍💼
+
+</div>
+
+<div>
+
+<h2 className="font-bold text-lg">
+
+Kamyab Hub Support
 
 </h2>
 
-<p className="text-gray-500 mt-2">
+<p className="text-sm text-green-600 font-medium">
 
-Our support team is ready to help you.
+🟢 Usually replies within 5–30 minutes
 
 </p>
 
 </div>
 
-<div className="p-6 h-[420px] overflow-y-auto bg-gray-50">
+</div>
+
+</div>
+
+<div className="p-5 h-[500px] overflow-y-auto bg-gray-100 space-y-4">
 
 {
 
 messages.map((item)=>(
 
 <div
-
 key={item.id}
-
-className={`max-w-xl rounded-2xl border p-5 mb-4 ${
+className={`max-w-[85%] rounded-3xl px-5 py-4 shadow ${
 item.sender==="system"
-?
-"bg-white"
-:
-"bg-blue-600 text-white ml-auto"
+? "bg-white mr-auto"
+: "bg-blue-600 text-white ml-auto"
 }`}
-
 >
 
-<p className="font-bold mb-2">
+<div className="flex justify-between items-center mb-3">
+
+<p className="font-semibold text-sm">
 
 {
 
@@ -348,13 +347,31 @@ item.sender==="system"
 
 :
 
-"👤 You"
+"You"
 
 }
 
 </p>
 
-<p>
+<p className="text-xs opacity-70">
+
+{
+
+new Date(item.created_at)
+
+.toLocaleTimeString([],
+{
+hour:"2-digit",
+minute:"2-digit"
+})
+
+}
+
+</p>
+
+</div>
+
+<p className="whitespace-pre-line leading-7 text-sm">
 
 {item.message}
 
@@ -368,7 +385,9 @@ item.sender==="system"
 
 </div>
 
-<div className="border-t p-5 flex gap-4">
+<div className="border-t bg-white p-4">
+
+<div className="flex items-center gap-3">
 
 <input
 
@@ -378,7 +397,7 @@ onChange={(e)=>setMessage(e.target.value)}
 
 placeholder="Type your message..."
 
-className="flex-1 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-blue-500"
+className="flex-1 rounded-full border border-gray-300 px-5 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition"
 
 />
 
@@ -386,13 +405,15 @@ className="flex-1 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-blu
 
 onClick={sendMessage}
 
-className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-xl font-semibold"
+className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition"
 
 >
 
 Send
 
 </button>
+
+</div>
 
 </div>
 
