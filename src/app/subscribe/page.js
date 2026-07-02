@@ -12,7 +12,7 @@ export default function Subscribe(){
 
 const [transaction,setTransaction]=useState("");
 const [loading,setLoading]=useState(true);
-
+const [copied,setCopied]=useState(false);
 useEffect(()=>{
 
 checkSubscription();
@@ -293,35 +293,265 @@ PKR 999
 
 </div>
 
+<div className="max-w-5xl mx-auto mt-12">
+
+<div className="rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 p-10 text-white shadow-2xl overflow-hidden relative">
+
+<div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10"></div>
+
+<div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-white/10"></div>
+
+<div className="relative">
+
+<div className="inline-flex items-center rounded-full bg-white/20 px-4 py-2 text-sm font-bold backdrop-blur">
+
+💼 BUSINESS OPPORTUNITY
+
+</div>
+
+<h2 className="mt-6 text-4xl font-black">
+
+💰 Earn an Independent Monthly Income
+
+</h2>
+
+<p className="mt-5 max-w-3xl text-lg leading-8 text-blue-100">
+
+🚀 Active Business Partners are building monthly incomes of <span className="font-bold text-white">PKR 35,000+</span> through consistent referrals and product sales.
+
+</p>
+
+<div className="mt-8 rounded-2xl bg-white/10 p-5 backdrop-blur">
+
+<p className="text-sm leading-7">
+
+⭐ Your success depends on your consistency, referrals, and product sales. The more you grow your business, the greater your earning potential.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 <div className="max-w-5xl mx-auto mt-10 grid md:grid-cols-2 gap-8">
 
 <div className="rounded-3xl border bg-white p-8 shadow-sm">
 
-<h2 className="text-2xl font-bold mb-6">
+<h2 className="text-3xl font-black mb-2">
 
 🎁 What You'll Get
 
 </h2>
 
-<div className="space-y-4 text-gray-700">
+<p className="text-gray-500 mb-8">
 
-<p>✅ Permanent Partner ID</p>
+Everything you need to start and grow your business.
 
-<p>✅ Earn PKR 300 Per Successful Referral</p>
+</p>
 
-<p>✅ Sell Company Products</p>
+<div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
 
-<p>✅ Lifetime Membership</p>
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl">
 
-<p>✅ Personal Dashboard</p>
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
 
-<p>✅ Withdrawal Facility</p>
+🆔
 
-<p>✅ Analytics & Reports</p>
+</div>
 
-<p>✅ Notifications</p>
+<p className="mt-4 font-bold text-gray-900">
 
-<p>✅ Premium Help Center Support</p>
+Partner ID
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Lifetime Business ID
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-100 text-2xl">
+
+💰
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Earn PKR 300
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Per Successful Business Partner
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-purple-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-2xl">
+
+🛍
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Online Store
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Ready-to-Sell Products
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-2xl">
+
+📊
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Dashboard
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Track Your Business
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-yellow-100 text-2xl">
+
+💸
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Withdraw
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Request Anytime
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-pink-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-100 text-2xl">
+
+📈
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Analytics
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Real-Time Reports
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-2xl">
+
+🔔
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Notifications
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Instant Updates
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-2xl">
+
+🎧
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Help Center
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+Priority Support
+
+</p>
+
+</div>
+
+<div className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-500 hover:shadow-xl">
+
+<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 text-2xl">
+
+⭐
+
+</div>
+
+<p className="mt-4 font-bold text-gray-900">
+
+Lifetime Access
+
+</p>
+
+<p className="mt-1 text-sm text-gray-500">
+
+One-Time Membership
+
+</p>
+
+</div>
 
 </div>
 
@@ -329,17 +559,53 @@ PKR 999
 
 <div className="rounded-3xl border bg-blue-50 p-8 shadow-sm">
 
-<h2 className="text-2xl font-bold mb-6">
+<h2 className="text-3xl font-black mb-2">
 
 💳 Payment Details
 
 </h2>
 
-<div className="space-y-5">
+<p className="text-gray-500 mb-8">
+
+Complete your membership by sending the payment below.
+
+</p>
+
+<div className="rounded-2xl border border-blue-100 bg-blue-50 p-6">
+
+<div className="flex items-center justify-between">
 
 <div>
 
-<p className="text-gray-500 text-sm">
+<p className="text-sm text-gray-500">
+
+Membership Fee
+
+</p>
+
+<p className="text-3xl font-black text-blue-700">
+
+PKR 999
+
+</p>
+
+</div>
+
+<div className="rounded-full bg-green-100 px-4 py-2 font-semibold text-green-700">
+
+One-Time
+
+</div>
+
+</div>
+
+</div>
+
+<div className="mt-6 space-y-5">
+
+<div className="rounded-xl border p-4">
+
+<p className="text-sm text-gray-500">
 
 Payment Method
 
@@ -353,9 +619,9 @@ EasyPaisa
 
 </div>
 
-<div>
+<div className="rounded-xl border p-4">
 
-<p className="text-gray-500 text-sm">
+<p className="text-sm text-gray-500">
 
 Account Title
 
@@ -369,21 +635,41 @@ Ali Khan
 
 </div>
 
-<div>
+<div className="rounded-xl border-2 border-blue-600 bg-blue-50 p-5">
 
-<p className="text-gray-500 text-sm">
+<p className="text-sm text-gray-500">
 
 EasyPaisa Number
 
 </p>
 
-<p className="font-bold text-2xl text-blue-700">
+<div className="mt-3 flex items-center justify-between gap-4">
+
+<p className="text-3xl font-black tracking-wider text-blue-700">
 
 03024567898
 
 </p>
 
-</div>
+<button
+onClick={()=>{
+navigator.clipboard.writeText("03024567898");
+
+setCopied(true);
+
+setTimeout(()=>{
+
+setCopied(false);
+
+},2000);
+
+}}
+className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+>
+
+📋 Copy
+
+</button>
 
 </div>
 
@@ -391,136 +677,95 @@ EasyPaisa Number
 
 </div>
 
-<div className="max-w-5xl mx-auto mt-12">
-
-<h2 className="text-3xl font-black text-center mb-8">
-
-⚡ How It Works
-
-</h2>
-
-<div className="grid md:grid-cols-4 gap-6">
-
-<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
-
-<div className="text-4xl mb-4">
-
-1️⃣
-
-</div>
-
-<h3 className="font-bold">
-
-Become a Business Partner
-
-</h3>
-
-<p className="text-sm text-gray-600 mt-3">
-
-Activate your membership with a one-time payment.
-
-</p>
-
-</div>
-
-<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
-
-<div className="text-4xl mb-4">
-
-2️⃣
-
-</div>
-
-<h3 className="font-bold">
-
-Invite & Sell
-
-</h3>
-
-<p className="text-sm text-gray-600 mt-3">
-
-Invite new partners and promote company products.
-
-</p>
-
-</div>
-
-<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
-
-<div className="text-4xl mb-4">
-
-3️⃣
-
-</div>
-
-<h3 className="font-bold">
-
-Earn Money
-
-</h3>
-
-<p className="text-sm text-gray-600 mt-3">
-
-Earn PKR 300 for every successful Business Partner plus product profits.
-
-</p>
-
-</div>
-
-<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
-
-<div className="text-4xl mb-4">
-
-4️⃣
-
-</div>
-
-<h3 className="font-bold">
-
-Withdraw Anytime
-
-</h3>
-
-<p className="text-sm text-gray-600 mt-3">
-
-Request withdrawals directly from your dashboard.
-
-</p>
-
 </div>
 
 </div>
 
-</div>
 
 <div className="max-w-5xl mx-auto mt-12">
 
 <div className="rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-white to-blue-50 p-8 shadow-lg">
 
-<div className="inline-flex rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white">
+<div className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white">
 
-STEP 2 • VERIFY YOUR PAYMENT
+FINAL STEP
 
 </div>
 
 <h2 className="mt-6 text-4xl font-black text-gray-900">
 
-🎉 You're Almost There!
+🚀 Complete Your Membership
 
 </h2>
 
 <p className="mt-4 text-lg leading-8 text-gray-600">
 
-You have successfully completed the first step.
-
-Now enter your <span className="font-bold text-blue-700">EasyPaisa Transaction ID</span> below so our team can verify your payment and activate your <span className="font-bold">Business Partner Account</span>.
+You're just one step away from becoming an official <span className="font-bold text-blue-700">Kamyab Hub Business Partner.</span>
 
 </p>
+
+<div className="mt-8 rounded-2xl border bg-white p-6">
+
+<div className="flex items-start gap-4">
+
+<div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
+
+1
+
+</div>
+
+<div>
+
+<h3 className="font-bold">
+
+Send PKR 999
+
+</h3>
+
+<p className="text-gray-600">
+
+Transfer your membership fee to the EasyPaisa account shown above.
+
+</p>
+
+</div>
+
+</div>
+
+<div className="my-5 border-t"></div>
+
+<div className="flex items-start gap-4">
+
+<div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
+
+2
+
+</div>
+
+<div>
+
+<h3 className="font-bold">
+
+Enter Your Transaction ID
+
+</h3>
+
+<p className="text-gray-600">
+
+Paste your EasyPaisa Transaction ID below to complete your membership.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
 <input
 value={transaction}
 onChange={(e)=>setTransaction(e.target.value)}
 placeholder="Enter your EasyPaisa Transaction ID"
-className="mt-8 w-full rounded-2xl border-2 border-gray-200 bg-white px-6 py-5 text-lg shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+className="mt-6 w-full rounded-xl border border-gray-300 bg-white px-5 py-3 text-base shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
 />
 
 <input
@@ -570,6 +815,20 @@ className="mt-8 w-full rounded-2xl bg-blue-600 py-4 text-lg font-bold text-white
 </div>
 
 </div>
+
+{
+
+copied && (
+
+<div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-2xl bg-green-600 px-6 py-3 text-white shadow-2xl">
+
+✅ EasyPaisa number copied successfully!
+
+</div>
+
+)
+
+}
 
 </main>
 
