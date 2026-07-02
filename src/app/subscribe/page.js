@@ -251,7 +251,7 @@ return(
 
 </div>
 
-<h1 className="mt-6 text-5xl font-black text-gray-900">
+<h1 className="mt-6 text-4xl md:text-5xl font-black text-gray-900">
 
 🚀 Become a Business Partner
 
@@ -288,50 +288,6 @@ PKR 999
 ✅ One-Time Payment • No Monthly Charges
 
 </p>
-
-</div>
-
-</div>
-
-<div className="max-w-5xl mx-auto mt-12">
-
-<div className="rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 p-10 text-white shadow-2xl overflow-hidden relative">
-
-<div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10"></div>
-
-<div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-white/10"></div>
-
-<div className="relative">
-
-<div className="inline-flex items-center rounded-full bg-white/20 px-4 py-2 text-sm font-bold backdrop-blur">
-
-💼 BUSINESS OPPORTUNITY
-
-</div>
-
-<h2 className="mt-6 text-4xl font-black">
-
-💰 Earn an Independent Monthly Income
-
-</h2>
-
-<p className="mt-5 max-w-3xl text-lg leading-8 text-blue-100">
-
-🚀 Active Business Partners are building monthly incomes of <span className="font-bold text-white">PKR 35,000+</span> through consistent referrals and product sales.
-
-</p>
-
-<div className="mt-8 rounded-2xl bg-white/10 p-5 backdrop-blur">
-
-<p className="text-sm leading-7">
-
-⭐ Your success depends on your consistency, referrals, and product sales. The more you grow your business, the greater your earning potential.
-
-</p>
-
-</div>
-
-</div>
 
 </div>
 
@@ -686,24 +642,27 @@ className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hov
 
 <div className="rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-white to-blue-50 p-8 shadow-lg">
 
-<div className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white">
+<div className="mb-8">
 
-FINAL STEP
+<span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700">
 
-</div>
+Final Step
 
-<h2 className="mt-6 text-4xl font-black text-gray-900">
+</span>
 
-🚀 Complete Your Membership
+<h2 className="mt-4 text-3xl font-black text-gray-900">
+
+Complete Your Membership
 
 </h2>
 
-<p className="mt-4 text-lg leading-8 text-gray-600">
+<p className="mt-3 max-w-2xl text-gray-600 leading-7">
 
-You're just one step away from becoming an official <span className="font-bold text-blue-700">Kamyab Hub Business Partner.</span>
+Complete the final step below to activate your <span className="font-semibold text-blue-700">Business Partner Account</span>.
 
 </p>
 
+</div>
 <div className="mt-8 rounded-2xl border bg-white p-6">
 
 <div className="flex items-start gap-4">
@@ -718,7 +677,7 @@ You're just one step away from becoming an official <span className="font-bold t
 
 <h3 className="font-bold">
 
-Send PKR 999
+Send Payment
 
 </h3>
 
@@ -764,15 +723,8 @@ Paste your EasyPaisa Transaction ID below to complete your membership.
 <input
 value={transaction}
 onChange={(e)=>setTransaction(e.target.value)}
-placeholder="Enter your EasyPaisa Transaction ID"
+placeholder="EasyPaisa Transaction ID"
 className="mt-6 w-full rounded-xl border border-gray-300 bg-white px-5 py-3 text-base shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-/>
-
-<input
-value={transaction}
-onChange={(e)=>setTransaction(e.target.value)}
-placeholder="Enter EasyPaisa Transaction ID"
-className="mt-8 w-full rounded-2xl border border-gray-300 p-4 text-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
 />
 
 <button
