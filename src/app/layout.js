@@ -57,8 +57,8 @@ export const metadata = {
 
   applicationName: "Kamyab Hub",
 
-  verification: {
-  google: "JWGFdDQS8__NYRyKHmCpvUl6i-z_1Zz-k1TVk2lAIXQ",
+ verification: {
+  google: "LprUQOY4SIxlLOUod-52PKquoRVWdaAEiaf4wMdVltg",
 },
 
   openGraph: {
