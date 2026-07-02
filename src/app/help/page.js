@@ -15,6 +15,46 @@ loadConversation();
 
 },[]);
 
+async function sendMessage(){
+
+if(
+
+!conversationId ||
+
+!message.trim()
+
+){
+
+return;
+
+}
+
+await supabase
+
+.from(
+"support_messages"
+)
+
+.insert([{
+
+conversation_id:
+conversationId,
+
+sender:
+"user",
+
+message:
+message
+
+}]);
+
+setMessage("");
+
+loadConversation();
+
+}
+
+
 async function loadConversation(){
 
 const email=
@@ -368,6 +408,8 @@ className="flex-1 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-blu
 />
 
 <button
+
+onClick={sendMessage}
 
 className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-xl font-semibold"
 
