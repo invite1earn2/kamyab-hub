@@ -8,11 +8,11 @@ return(
 
 href="/help"
 
-className="fixed bottom-6 right-6 z-50"
+className="fixed bottom-10 right-6 md:bottom-6 z-50"
 
 >
 
-<div className="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-2xl px-6 py-4 flex items-center gap-3 transition-all duration-300 hover:scale-105">
+<div className="bg-blue-600/95 backdrop-blur hover:bg-blue-700 text-white rounded-full shadow-2xl px-6 py-4 flex items-center gap-3 transition-all duration-300 hover:scale-105">
 
 <span className="text-2xl">
 
