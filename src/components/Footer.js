@@ -203,6 +203,38 @@ export default function Footer() {
 
           </div>
 
+                    {/* ===========================
+              COMPANY
+          =========================== */}
+
+          <div>
+
+            <h3 className="text-lg font-black text-gray-900">
+
+              Company
+
+            </h3>
+
+            <div className="mt-6 flex flex-col gap-4">
+
+              {companyLinks.map((link) => (
+
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="font-medium text-gray-600 transition hover:translate-x-1 hover:text-blue-600"
+                >
+
+                  {link.name}
+
+                </Link>
+
+              ))}
+
+            </div>
+
+          </div>
+
         </div>
 
         <div className="mt-12 border-t border-gray-200 pt-8">
