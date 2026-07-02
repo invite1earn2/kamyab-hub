@@ -165,110 +165,11 @@ export default function Footer() {
 
             </div>
 
-          </div>
-
-          {/* ===========================
-              COMPANY
-          =========================== */}
-
-          <div>
-
-            <h3 className="text-lg font-black text-gray-900">
-
-              Company
-
-            </h3>
-
-            <div className="mt-6 flex flex-col gap-4">
-
-              {companyLinks.map((link) => (
-
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="font-medium text-gray-600 transition hover:translate-x-1 hover:text-blue-600"
-                >
-
-                  {link.name}
-
-                </Link>
-
-              ))}
-
-            </div>
-
-          </div>
-
-          {/* ===========================
-              SUPPORT
-          =========================== */}
-
-          <div>
-
-            <h3 className="text-lg font-black text-gray-900">
-
-              Support
-
-            </h3>
-
-            <div className="mt-6 space-y-5">
-
-              <div className="rounded-2xl border bg-gray-50 p-4">
-
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-
-                  Email
-
-                </p>
-
-                <p className="mt-2 break-all font-semibold text-gray-800">
-
-                  invite1earn2@gmail.com
-
-                </p>
-
-              </div>
-
-              <div className="rounded-2xl border bg-gray-50 p-4">
-
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-
-                  Account Title
-
-                </p>
-
-                <p className="mt-2 font-semibold text-gray-800">
-
-                  Ali Khan
-
-                </p>
-
-              </div>
-
-              <div className="rounded-2xl border border-green-200 bg-green-50 p-4">
-
-                <p className="font-semibold text-green-700">
-
-                  🇵🇰 Proudly Built in Pakistan
-
-                </p>
-
-                <p className="mt-2 text-sm leading-6 text-gray-600">
-
-                  Designed to help people across Pakistan build
-                  successful online businesses.
-
-                </p>
-
-              </div>
-
-            </div>
 
           </div>
 
         </div>
 
-        {/* ========= PART 2 STARTS BELOW THIS LINE ========= */}
                 <div className="mt-16 border-t border-gray-200 pt-8">
 
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
