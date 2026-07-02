@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./MobileMenu";
+import FloatingHelpButton from "./FloatingHelpButton";
 
 export default function Navbar() {
   const [user, setUser] = useState("");
@@ -351,6 +352,8 @@ Logout
         logout={logout}
         closeMenu={closeMenu}
       />
+
+      {user && <FloatingHelpButton />}
 
     </nav>
   );
