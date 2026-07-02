@@ -243,54 +243,297 @@ return(
 
 <main className="p-10">
 
-<h1 className="text-4xl font-bold">
+<div className="max-w-5xl mx-auto text-center">
 
-Activate Your Account
+<div className="inline-block rounded-full bg-red-100 px-5 py-2 text-sm font-bold text-red-600">
+
+🔥 30-Day Launch Offer
+
+</div>
+
+<h1 className="mt-6 text-5xl font-black text-gray-900">
+
+🚀 Become a Business Partner
 
 </h1>
 
-<p className="mt-6">
+<p className="mt-5 text-lg text-gray-600">
 
-Subscription Fee: 1000 PKR
+Start your own online business with Kamyab Hub and unlock multiple earning opportunities.
 
 </p>
 
-<div className="border rounded p-5 mt-6 max-w-xl">
+<div className="mt-10 rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-600 to-blue-700 p-8 text-white shadow-xl">
 
-<p>
-Method: EasyPaisa
+<p className="text-lg opacity-90">
+
+Regular Membership
+
 </p>
 
-<p>
-Account Title: Ali Khan
+<p className="mt-2 text-3xl line-through opacity-70">
+
+PKR 3,000
+
 </p>
 
-<p>
-Number: 03024567898
+<p className="mt-3 text-6xl font-black">
+
+PKR 999
+
+</p>
+
+<p className="mt-3 text-lg">
+
+✅ One-Time Payment • No Monthly Charges
+
 </p>
 
 </div>
 
+</div>
+
+<div className="max-w-5xl mx-auto mt-10 grid md:grid-cols-2 gap-8">
+
+<div className="rounded-3xl border bg-white p-8 shadow-sm">
+
+<h2 className="text-2xl font-bold mb-6">
+
+🎁 What You'll Get
+
+</h2>
+
+<div className="space-y-4 text-gray-700">
+
+<p>✅ Permanent Partner ID</p>
+
+<p>✅ Earn PKR 300 Per Successful Referral</p>
+
+<p>✅ Sell Company Products</p>
+
+<p>✅ Lifetime Membership</p>
+
+<p>✅ Personal Dashboard</p>
+
+<p>✅ Withdrawal Facility</p>
+
+<p>✅ Analytics & Reports</p>
+
+<p>✅ Notifications</p>
+
+<p>✅ Premium Help Center Support</p>
+
+</div>
+
+</div>
+
+<div className="rounded-3xl border bg-blue-50 p-8 shadow-sm">
+
+<h2 className="text-2xl font-bold mb-6">
+
+💳 Payment Details
+
+</h2>
+
+<div className="space-y-5">
+
+<div>
+
+<p className="text-gray-500 text-sm">
+
+Payment Method
+
+</p>
+
+<p className="font-bold text-lg">
+
+EasyPaisa
+
+</p>
+
+</div>
+
+<div>
+
+<p className="text-gray-500 text-sm">
+
+Account Title
+
+</p>
+
+<p className="font-bold text-lg">
+
+Ali Khan
+
+</p>
+
+</div>
+
+<div>
+
+<p className="text-gray-500 text-sm">
+
+EasyPaisa Number
+
+</p>
+
+<p className="font-bold text-2xl text-blue-700">
+
+03024567898
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div className="max-w-5xl mx-auto mt-12">
+
+<h2 className="text-3xl font-black text-center mb-8">
+
+⚡ How It Works
+
+</h2>
+
+<div className="grid md:grid-cols-4 gap-6">
+
+<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
+
+<div className="text-4xl mb-4">
+
+1️⃣
+
+</div>
+
+<h3 className="font-bold">
+
+Become a Business Partner
+
+</h3>
+
+<p className="text-sm text-gray-600 mt-3">
+
+Activate your membership with a one-time payment.
+
+</p>
+
+</div>
+
+<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
+
+<div className="text-4xl mb-4">
+
+2️⃣
+
+</div>
+
+<h3 className="font-bold">
+
+Invite & Sell
+
+</h3>
+
+<p className="text-sm text-gray-600 mt-3">
+
+Invite new partners and promote company products.
+
+</p>
+
+</div>
+
+<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
+
+<div className="text-4xl mb-4">
+
+3️⃣
+
+</div>
+
+<h3 className="font-bold">
+
+Earn Money
+
+</h3>
+
+<p className="text-sm text-gray-600 mt-3">
+
+Earn PKR 300 for every successful Business Partner plus product profits.
+
+</p>
+
+</div>
+
+<div className="rounded-3xl border bg-white p-6 text-center shadow-sm">
+
+<div className="text-4xl mb-4">
+
+4️⃣
+
+</div>
+
+<h3 className="font-bold">
+
+Withdraw Anytime
+
+</h3>
+
+<p className="text-sm text-gray-600 mt-3">
+
+Request withdrawals directly from your dashboard.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div className="max-w-5xl mx-auto mt-12">
+
+<div className="rounded-3xl border bg-white p-8 shadow-sm">
+
+<h2 className="text-3xl font-black">
+
+🚀 Complete Your Membership
+
+</h2>
+
+<p className="mt-3 text-gray-600">
+
+After sending your payment, enter your EasyPaisa Transaction ID below. Our team will verify your payment and activate your Business Partner account.
+
+</p>
+
 <input
 value={transaction}
-onChange={
-(e)=>
-setTransaction(
-e.target.value
-)
-}
-placeholder="Transaction ID"
-className="border p-3 rounded mt-6 w-full max-w-xl"
+onChange={(e)=>setTransaction(e.target.value)}
+placeholder="Enter EasyPaisa Transaction ID"
+className="mt-8 w-full rounded-2xl border border-gray-300 p-4 text-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
 />
 
 <button
 onClick={submit}
-className="mt-6 bg-black text-white p-4 rounded"
+className="mt-8 w-full rounded-2xl bg-blue-600 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-blue-700"
 >
 
-Submit Payment
+🚀 Become a Business Partner
 
 </button>
+
+<p className="mt-4 text-center text-sm text-gray-500">
+
+🔒 Your payment will be verified by our team before your membership is activated.
+
+</p>
+
+</div>
+
+</div>
 
 </main>
 
