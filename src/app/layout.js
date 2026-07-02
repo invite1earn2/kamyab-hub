@@ -57,6 +57,10 @@ export const metadata = {
 
   applicationName: "Kamyab Hub",
 
+  verification: {
+  google: "JWGFdDQS8__NYRyKHmCpvUl6i-z_1Zz-k1TVk2lAIXQ",
+},
+
   openGraph: {
   title: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
 
