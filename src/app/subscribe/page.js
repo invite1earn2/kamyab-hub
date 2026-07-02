@@ -495,19 +495,33 @@ Request withdrawals directly from your dashboard.
 
 <div className="max-w-5xl mx-auto mt-12">
 
-<div className="rounded-3xl border bg-white p-8 shadow-sm">
+<div className="rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-white to-blue-50 p-8 shadow-lg">
 
-<h2 className="text-3xl font-black">
+<div className="inline-flex rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white">
 
-🚀 Complete Your Membership
+STEP 2 • VERIFY YOUR PAYMENT
+
+</div>
+
+<h2 className="mt-6 text-4xl font-black text-gray-900">
+
+🎉 You're Almost There!
 
 </h2>
 
-<p className="mt-3 text-gray-600">
+<p className="mt-4 text-lg leading-8 text-gray-600">
 
-After sending your payment, enter your EasyPaisa Transaction ID below. Our team will verify your payment and activate your Business Partner account.
+You have successfully completed the first step.
+
+Now enter your <span className="font-bold text-blue-700">EasyPaisa Transaction ID</span> below so our team can verify your payment and activate your <span className="font-bold">Business Partner Account</span>.
 
 </p>
+<input
+value={transaction}
+onChange={(e)=>setTransaction(e.target.value)}
+placeholder="Enter your EasyPaisa Transaction ID"
+className="mt-8 w-full rounded-2xl border-2 border-gray-200 bg-white px-6 py-5 text-lg shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+/>
 
 <input
 value={transaction}
@@ -521,9 +535,31 @@ onClick={submit}
 className="mt-8 w-full rounded-2xl bg-blue-600 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-blue-700"
 >
 
-🚀 Become a Business Partner
+🚀 Verify Payment & Become a Business Partner
 
 </button>
+
+<div className="mt-6 rounded-2xl border border-yellow-200 bg-yellow-50 p-5">
+
+<p className="font-semibold text-yellow-800">
+
+📌 Important Before You Submit
+
+</p>
+
+<p className="mt-3 text-gray-700 leading-7">
+
+• Make sure you have already sent <span className="font-bold">PKR 999</span> to the EasyPaisa account above.<br /><br />
+
+• Enter the exact EasyPaisa Transaction ID you received after payment.<br /><br />
+
+• Our verification team usually reviews payments within <span className="font-bold">5–30 minutes</span> during business hours.<br /><br />
+
+• Once approved, your Business Partner account will be activated automatically and you can start inviting partners and selling products.
+
+</p>
+
+</div>
 
 <p className="mt-4 text-center text-sm text-gray-500">
 
