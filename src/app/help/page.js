@@ -114,8 +114,25 @@ conversation_id: conversation.id,
 
 sender: "system",
 
-message:
-"👋 Welcome to Kamyab Hub! How can we help you today?"
+message: `👋 Welcome to Kamyab Hub Help Center!
+
+Thank you for reaching out to us.
+
+To help us resolve your request as quickly as possible, please describe your question in complete detail. If your inquiry is related to a payment, membership, withdrawal, or product order, kindly include any relevant Transaction ID or Order ID.
+
+🕒 Our support team usually responds within 5–30 minutes during business hours.
+
+We can assist you with:
+
+• Membership Activation
+• Referral Commissions
+• Product Orders
+• Withdrawals
+• Payment Verification
+• Technical Issues
+• General Questions
+
+We appreciate your trust in Kamyab Hub and look forward to assisting you.`
 
 }]);
 
