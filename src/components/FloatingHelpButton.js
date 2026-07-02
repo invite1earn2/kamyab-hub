@@ -8,7 +8,7 @@ return(
 
 href="/help"
 
-className="fixed bottom-10 right-6 md:bottom-6 z-50"
+className="fixed bottom-5 right-10 md:bottom-10 z-50"
 
 >
 
