@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import NotificationBadge from "./NotificationBadge";
 
 export default function MobileMenu({
 
@@ -47,7 +48,7 @@ export default function MobileMenu({
 
       {/* Menu */}
 
-      <div className="absolute top-0 right-0 h-screen w-full bg-white overflow-y-auto shadow-2xl">
+      <div className="absolute top-0 right-0 h-screen w-full overflow-y-auto bg-white shadow-2xl">
 
         <div className="sticky top-0 flex items-center justify-between border-b bg-white px-5 py-4">
 
@@ -59,7 +60,7 @@ export default function MobileMenu({
 
           <button
             onClick={closeMenu}
-            className="rounded-lg px-3 py-2 hover:bg-gray-100"
+            className="rounded-lg px-3 py-2 transition hover:bg-gray-100"
           >
 
             ✕
@@ -68,135 +69,270 @@ export default function MobileMenu({
 
         </div>
 
-        <div className="px-5 py-5 space-y-2 pb-10">
+        <div className="space-y-2 px-5 py-5 pb-10">
 
           <a
             href="/"
             onClick={closeMenu}
-            className="block rounded-xl px-4 py-3 hover:bg-blue-50 font-medium text-gray-700"
+            className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
           >
+
             🏠 Home
+
           </a>
 
           {!user && (
+
             <>
+
               <a
                 href="/signup"
                 onClick={closeMenu}
-                className="block rounded-xl px-4 py-3 hover:bg-blue-50 font-medium text-gray-700"
+                className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
               >
+
                 👤 Signup
+
               </a>
 
               <a
                 href="/login"
                 onClick={closeMenu}
-                className="block rounded-xl px-4 py-3 hover:bg-blue-50 font-medium text-gray-700"
+                className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
               >
+
                 🔑 Login
+
               </a>
+
             </>
+
           )}
 
           {user && !isCompany && (
+
             <>
-              <a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📊 Dashboard</a>
 
-              <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📦 Products</a>
+              <a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
 
-              <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">👥 Invite</a>
+                📊 Dashboard
 
-              <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🛒 Orders</a>
+              </a>
 
-              <a href="/payment-settings" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">💳 Payment Settings</a>
+              <a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
 
-              <a href="/withdraw" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">💰 Withdraw</a>
+                📦 Products
 
-              <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">📈 Analytics</a>
+              </a>
 
-<a href="/notifications" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🔔 Notifications</a>
+              <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
 
-<a href="/my-withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">🏦 My Withdrawals</a>
+                👥 Invite
+
+              </a>
+
+              <a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
+
+                🛒 Orders
+
+              </a>
+
+              <a href="/payment-settings" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
+
+                💳 Payment Settings
+
+              </a>
+
+              <a href="/withdraw" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
+
+                💰 Withdraw
+
+              </a>
+
+              <a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
+
+                📈 Analytics
+
+              </a>
+
+              <NotificationBadge />
+
+              <a href="/my-withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
+
+                🏦 My Withdrawals
+
+              </a>
 
               <button
                 onClick={logout}
-                className="w-full mt-6 rounded-xl bg-red-600 py-3 font-semibold text-white hover:bg-red-700 transition"
+                className="mt-6 w-full rounded-xl bg-red-600 py-3 font-semibold text-white transition hover:bg-red-700"
               >
+
                 Logout
+
               </button>
+
             </>
+
           )}
 
-         {user && isCompany && (
-<>
-<div className="mt-2 mb-3 px-2 text-xs font-bold uppercase tracking-widest text-gray-500">
+          {user && isCompany && (
+
+            <>
+          <div className="mb-3 mt-2 px-2 text-xs font-bold uppercase tracking-widest text-gray-500">
+
 👑 Company Management
+
 </div>
 
-<a href="/company" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/company"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 🏠 Company Dashboard
+
 </a>
 
-<a href="/company-products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/company-products"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 📦 Product Management
+
 </a>
 
-<a href="/subscriptions" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/subscriptions"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 💳 Subscription Management
+
 </a>
 
-<a href="/company-orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/company-orders"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 🚚 Company Orders
+
 </a>
 
-<a href="/withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/withdrawals"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 💸 Withdrawal Management
+
 </a>
 
-<a href="/company-reviews" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/company-reviews"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 💬 Community Reviews
+
 </a>
 
 <hr className="my-5" />
 
 <div className="mb-3 px-2 text-xs font-bold uppercase tracking-widest text-gray-500">
+
 👤 Partner Area
+
 </div>
 
-<a href="/dashboard" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/dashboard"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 📊 Dashboard
+
 </a>
 
-<a href="/products" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/products"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 🛍 Products
+
 </a>
 
-<a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/invite"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 👥 Invite
+
 </a>
 
-<a href="/orders" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/orders"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 🛒 Orders
+
 </a>
 
-<a href="/payment-settings" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/payment-settings"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 💳 Payment Settings
+
 </a>
 
-<a href="/withdraw" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/withdraw"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 💰 Withdraw
+
 </a>
 
-<a href="/analytics" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/analytics"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 📈 Analytics
+
 </a>
 
-<a href="/notifications" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
-🔔 Notifications
-</a>
+<NotificationBadge />
 
-<a href="/my-withdrawals" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition">
+<a
+href="/my-withdrawals"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
 🏦 My Withdrawals
+
 </a>
 
 <hr className="my-5" />
@@ -204,20 +340,25 @@ export default function MobileMenu({
 <a
 href="/"
 onClick={closeMenu}
-className="block rounded-xl px-4 py-3 font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 transition"
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
 >
+
 🏠 Home
+
 </a>
 
 <button
 onClick={logout}
-className="w-full mt-6 rounded-xl bg-red-600 py-3 font-semibold text-white hover:bg-red-700 transition"
+className="mt-6 w-full rounded-xl bg-red-600 py-3 font-semibold text-white transition hover:bg-red-700"
 >
+
 🚪 Logout
+
 </button>
 
 </>
-)}   
+
+)}
 
         </div>
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import FloatingHelpButton from "./FloatingHelpButton";
+import NotificationBadge from "./NotificationBadge";
 
 export default function Navbar() {
   const [user, setUser] = useState("");
@@ -130,9 +131,7 @@ const dropdownRef = useRef(null);
       Withdrawals
     </a>
 
-    <a href="/notifications" className="hover:text-blue-600 transition">
-      Notifications
-    </a>
+    <NotificationBadge />
 
     <button
       onClick={logout}
@@ -306,12 +305,11 @@ className="block px-5 py-3 hover:bg-gray-100"
 📈 Analytics
 </a>
 
-<a
-href="/notifications"
-className="block px-5 py-3 hover:bg-gray-100"
->
-🔔 Notifications
-</a>
+<div className="px-5 py-3 hover:bg-gray-100">
+
+<NotificationBadge />
+
+</div>
 
 </div>
 
