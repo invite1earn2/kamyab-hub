@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import supabase from "../../lib/supabase";
 import { createOrder } from "../../services/order";
+import { addToCart } from "../../services/cart";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -33,9 +34,10 @@ export default function Products() {
     alert("Order Created Successfully");
   }
 
-  function addToCart(item) {
-    alert("Shopping Cart will be added in Phase 3.");
-  }
+  function addProductToCart(item) {
+  addToCart(item, 1);
+  alert("Product added to cart.");
+}
 
   if (loading) {
     return (
@@ -113,7 +115,7 @@ export default function Products() {
                 </Link>
 
                 <button
-                  onClick={() => addToCart(item)}
+  onClick={() => addProductToCart(item)}
                   className="w-full rounded-2xl bg-blue-600 py-3 font-bold text-white transition hover:bg-blue-700"
                 >
                   🛒 Add to Cart

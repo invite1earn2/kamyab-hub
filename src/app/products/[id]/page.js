@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import supabase from "../../../lib/supabase";
 import { createOrder } from "../../../services/order";
+import { addToCart } from "../../../services/cart";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -40,9 +41,10 @@ export default function ProductDetails() {
     alert("Order Created Successfully");
   }
 
-  function addToCart() {
-    alert("Shopping Cart will be implemented in Phase 3.");
-  }
+  function addCurrentProductToCart() {
+  addToCart(product, quantity);
+  alert("Product added to cart.");
+}
 
   function buyNow() {
     alert("Checkout will be implemented in Phase 4.");
@@ -173,7 +175,7 @@ export default function ProductDetails() {
           <div className="mt-10 space-y-3">
 
             <button
-              onClick={addToCart}
+  onClick={addCurrentProductToCart}
               className="w-full rounded-2xl bg-blue-600 py-4 text-lg font-bold text-white hover:bg-blue-700"
             >
               🛒 Add to Cart
