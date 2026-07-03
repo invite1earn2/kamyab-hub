@@ -110,18 +110,25 @@ Track, process and complete customer orders from one dashboard.
 
 <tr>
 
-<th>Customer</th>
+<th className="p-4 text-left">Order Type</th>
 
-<th>Product</th>
+<th className="p-4 text-left">Customer</th>
 
-<th>Price</th>
+<th className="p-4 text-left">Phone</th>
 
-<th>Profit</th>
+<th className="p-4 text-left">City</th>
 
-<th>Status</th>
+<th className="p-4 text-left">Product</th>
 
-<th>Action</th>
+<th className="p-4 text-center">Qty</th>
 
+<th className="p-4 text-right">Price</th>
+
+<th className="p-4 text-right">Profit</th>
+
+<th className="p-4 text-center">Status</th>
+
+<th className="p-4 text-center">Action</th>
 </tr>
 
 </thead>
@@ -135,14 +142,69 @@ key={item.id}
 className="border-t hover:bg-gray-50"
 >
 
-<td>{item.user_email || "-"}</td>
+<td className="p-4">
 
-<td>{item.product_name}</td>
+{item.order_source === "customer" ? (
 
-<td>PKR {item.price}</td>
+<span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
 
-<td>PKR {item.profit}</td>
+🛍 Customer
 
+</span>
+
+) : (
+
+<span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
+
+🤝 Partner
+
+</span>
+
+)}
+
+</td>
+
+<td className="p-4">
+
+{item.customer_name || item.user_email || "-"}
+
+</td>
+
+<td className="p-4">
+
+{item.customer_phone || "-"}
+
+</td>
+
+<td className="p-4">
+
+{item.customer_city || "-"}
+
+</td>
+
+<td className="p-4 font-semibold">
+
+{item.product_name}
+
+</td>
+
+<td className="p-4 text-center">
+
+{item.quantity || 1}
+
+</td>
+
+<td className="p-4 text-right font-bold">
+
+PKR {item.price}
+
+</td>
+
+<td className="p-4 text-right">
+
+PKR {item.profit}
+
+</td>
 <td className="p-4">
 
 {item.status==="pending" && (
