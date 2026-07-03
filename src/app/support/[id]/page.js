@@ -13,6 +13,8 @@ export default function Conversation() {
 
   const [messages, setMessages] = useState([]);
 
+  const [reply, setReply] = useState("");
+
   useEffect(() => {
 
     if (!checkOwner()) {
@@ -57,6 +59,48 @@ export default function Conversation() {
 
   }
 
+  async function sendReply() {
+
+  if (!reply.trim()) {
+
+    return;
+
+  }
+
+  const email = messages.length > 0
+    ? messages[0].user_email
+    : "";
+
+  const { error } = await supabase
+
+    .from("support_messages")
+
+    .insert([{
+
+      conversation_id: conversationId,
+
+      user_email: email,
+
+      sender: "owner",
+
+      message: reply
+
+    }]);
+
+  if (error) {
+
+    console.log(error);
+
+    return;
+
+  }
+
+  setReply("");
+
+  await loadMessages();
+
+}
+
   return (
 
     <main className="max-w-5xl mx-auto p-8">
@@ -67,9 +111,9 @@ export default function Conversation() {
 
       </h1>
 
-      <div className="space-y-4">
+         <div className="space-y-4">
 
-        {
+         {
 
           messages.map((item) => (
 
@@ -106,6 +150,42 @@ export default function Conversation() {
         }
 
       </div>
+
+      <div className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
+
+  <h2 className="mb-4 text-xl font-bold">
+
+    Reply to User
+
+  </h2>
+
+  <textarea
+
+    value={reply}
+
+    onChange={(e) => setReply(e.target.value)}
+
+    placeholder="Type your reply..."
+
+    rows={5}
+
+    className="w-full rounded-xl border border-gray-300 p-4 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100"
+
+  />
+
+  <button
+
+    onClick={sendReply}
+
+    className="mt-5 rounded-xl bg-green-600 px-8 py-3 font-semibold text-white transition hover:bg-green-700"
+
+  >
+
+    Send Reply
+
+  </button>
+
+</div>
 
     </main>
 
