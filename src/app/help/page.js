@@ -331,6 +331,10 @@ key={item.id}
 className={`max-w-[85%] rounded-3xl px-5 py-4 shadow ${
 item.sender==="system"
 ? "bg-white mr-auto"
+
+: item.sender==="owner"
+? "bg-green-600 text-white mr-auto"
+
 : "bg-blue-600 text-white ml-auto"
 }`}
 >
@@ -340,17 +344,15 @@ item.sender==="system"
 <p className="font-semibold text-sm">
 
 {
-
 item.sender==="system"
 
-?
+? "🤖 Kamyab Hub"
 
-"👨‍💼 Kamyab Hub Support"
+: item.sender==="owner"
 
-:
+? "👨‍💼 Support Team"
 
-"You"
-
+: "You"
 }
 
 </p>
