@@ -162,12 +162,23 @@ export default function Cart() {
 
         </div>
 
-        <Link
-          href="/checkout"
-          className="mt-8 block rounded-2xl bg-black py-4 text-center text-lg font-bold text-white hover:bg-gray-800"
-        >
-          Proceed to Checkout
-        </Link>
+        <div className="mt-8 grid gap-3 md:grid-cols-2">
+
+  <Link
+    href="/products"
+    className="rounded-2xl border border-gray-300 py-4 text-center text-lg font-bold text-gray-700 transition hover:bg-gray-100"
+  >
+    🛍 Want to Buy More?
+  </Link>
+
+  <Link
+    href="/checkout"
+    className="rounded-2xl bg-black py-4 text-center text-lg font-bold text-white transition hover:bg-gray-800"
+  >
+    Proceed to Checkout →
+  </Link>
+
+</div>
 
       </div>
 

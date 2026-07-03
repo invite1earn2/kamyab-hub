@@ -77,11 +77,10 @@ export default function Products() {
             key={item.id}
             className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
-            <div className="h-46 overflow-hidden bg-gray-100 sm:h-48 md:h-52">
+            <div className="h-56 overflow-hidden bg-gray-100 sm:h-64 md:h-72">
               {item.image_url ? (
                 <img
-                  src={item.image_url}
-                  alt={item.name}
+                  src={item.image_url}                  alt={item.name}
                   className="h-full w-full object-cover"
                 />
               ) : (
@@ -91,8 +90,8 @@ export default function Products() {
               )}
             </div>
 
-            <div className="p-3">
-              <h2 className="min-h-[44px] text-[15px] font-bold leading-5 text-gray-900">
+            <div className="p-2">
+              <h2 className="min-h-[36px] text-[15px] font-bold leading-5 text-gray-900 line-clamp-2">
                 {item.name}
               </h2>
 
@@ -106,29 +105,15 @@ export default function Products() {
                 </span>
               </div>
 
-              <div className="mt-4 space-y-2">
-                <Link
-                  href={`/product/${item.id}`}
-                  className="block w-full rounded-2xl border border-gray-300 py-3 text-center font-bold transition hover:bg-gray-100"
-                >
-                  👁 View Details
-                </Link>
+              <div className="mt-3 space-y-2">
 
                 <button
   onClick={() => addProductToCart(item)}
-                  className="w-full rounded-2xl bg-blue-600 py-3 font-bold text-white transition hover:bg-blue-700"
+                  className="w-full rounded-2xl bg-blue-600 py-2.5 font-bold text-white transition hover:bg-blue-700"
                 >
                   🛒 Add to Cart
                 </button>
 
-                {role === "Business Partner" && (
-                  <button
-                    onClick={() => sell(item)}
-                    className="w-full rounded-2xl bg-black py-3 font-bold text-white transition hover:bg-gray-800"
-                  >
-                    💼 Sell Product
-                  </button>
-                )}
               </div>
             </div>
           </div>
