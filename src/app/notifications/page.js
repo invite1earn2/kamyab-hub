@@ -10,6 +10,7 @@ createNotification
 } from "../../services/notification";
 
 import { checkOwner } from "../../services/owner";
+import supabase from "../../lib/supabase";
 
 export default function Notifications(){
 
@@ -88,12 +89,62 @@ await getNotifications(
 email,
 role
 );
+await supabase
+
+.from("notifications")
+
+.update({
+
+is_read:true
+
+})
+
+.eq(
+
+role==="owner"
+
+?
+
+"role"
+
+:
+
+"user_email",
+
+role==="owner"
+
+?
+
+"owner"
+
+:
+
+email
+
+)
+
+.eq(
+
+"is_read",
+
+false
+
+);
 
 console.log("Notifications Returned:", data);
 console.log("======================================");
 
-setNotifications(data);
-setNotifications(data);
+setNotifications(
+
+data.map(item=>({
+
+...item,
+
+is_read:true
+
+}))
+
+);
 
 setLoading(false);
 
