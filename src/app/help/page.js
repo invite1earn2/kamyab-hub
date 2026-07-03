@@ -112,6 +112,8 @@ await supabase
 
 conversation_id: conversation.id,
 
+user_email: localStorage.getItem("user_email"),
+
 sender: "system",
 
 message: `👋 Welcome to Kamyab Hub Help Center!

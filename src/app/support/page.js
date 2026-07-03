@@ -88,7 +88,13 @@ Status: {item.status}
 
 <button
 
-className="mt-5 bg-black text-white px-6 py-3 rounded-xl"
+onClick={() => {
+
+window.location.href = `/support/${item.id}`;
+
+}}
+
+className="mt-5 rounded-xl bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800"
 
 >
 
