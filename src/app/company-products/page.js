@@ -122,6 +122,8 @@ image_url: imageUrl,
 category:editingProduct.category,
 short_description:editingProduct.short_description,
 delivery_time:editingProduct.delivery_time,
+stock_status:editingProduct.stock_status,
+original_price:editingProduct.original_price,
 status:editingProduct.status,
 is_featured:editingProduct.is_featured
 
@@ -144,6 +146,8 @@ image_url:imageUrl,
 category:editingProduct.category,
 short_description:editingProduct.short_description,
 delivery_time:editingProduct.delivery_time,
+stock_status:editingProduct.stock_status,
+original_price:editingProduct.original_price,
 status:editingProduct.status,
 is_featured:editingProduct.is_featured,
 display_order:products.length+1
@@ -283,8 +287,11 @@ className="w-full border border-gray-200 rounded-xl overflow-hidden"
 
 <th className="p-4 text-left">Price</th>
 
-<th className="p-4 text-left">Profit</th>
+<th className="p-4 text-left">Original</th>
 
+<th className="p-4 text-left">Stock</th>
+
+<th className="p-4 text-left">Profit</th>
 <th className="p-4 text-left">Status</th>
 
 <th className="p-4 text-left">Featured</th>
@@ -331,6 +338,20 @@ className="border-t"
 <td className="p-4">
 
 PKR {item.price}
+
+</td>
+
+<td className="p-4 text-gray-500 line-through">
+
+{item.original_price
+? `PKR ${item.original_price}`
+: "-"}
+
+</td>
+
+<td className="p-4">
+
+{item.stock_status}
 
 </td>
 
@@ -434,6 +455,28 @@ className="w-full border rounded-lg p-3"
 Selling Price
 
 </label>
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Original Price
+
+</label>
+
+<input
+type="number"
+value={editingProduct.original_price || ""}
+onChange={(e)=>
+setEditingProduct({
+...editingProduct,
+original_price:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+/>
+
+</div>
 
 <input
 type="number"
@@ -569,6 +612,35 @@ className="w-full border rounded-lg p-3"
 Delivery Time
 
 </label>
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Stock Status
+
+</label>
+
+<select
+value={editingProduct.stock_status || "In Stock"}
+onChange={(e)=>
+setEditingProduct({
+...editingProduct,
+stock_status:e.target.value
+})
+}
+className="w-full border rounded-lg p-3"
+>
+
+<option>In Stock</option>
+
+<option>Limited Stock</option>
+
+<option>Out of Stock</option>
+
+</select>
+
+</div>
 
 <input
 value={editingProduct.delivery_time || ""}
