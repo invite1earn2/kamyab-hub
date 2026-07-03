@@ -91,7 +91,7 @@ export default function Conversation() {
       return;
 
     }
-
+    console.log("Conversation User Email:", userEmail);
     const { error } = await supabase
 
       .from("support_messages")
@@ -116,21 +116,29 @@ export default function Conversation() {
 
     }
 
-    await createNotification({
+    console.log("Creating notification", {
+  user_email: userEmail,
+  role: "partner",
+  title: "💬 Support Reply"
+});
 
-user_email:userEmail,
+const result = await createNotification({
 
-role:"partner",
+  user_email: userEmail,
 
-title:"💬 Support Reply",
+  role: "partner",
 
-message:"Kamyab Hub Support replied to your message.",
+  title: "💬 Support Reply",
 
-type:"support",
+  message: "Kamyab Hub Support replied to your message.",
 
-link:"/help"
+  type: "support",
+
+  link: "/help"
 
 });
+
+console.log("Notification result:", result);
 
 setReply("");
 
