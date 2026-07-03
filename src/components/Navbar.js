@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import FloatingHelpButton from "./FloatingHelpButton";
 import NotificationBadge from "./NotificationBadge";
+import Link from "next/link";
+import { getCartCount } from "../services/cart";
 
 export default function Navbar() {
   const [user, setUser] = useState("");
@@ -11,6 +13,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [companyMenu, setCompanyMenu] = useState(false);
 const [partnerMenu, setPartnerMenu] = useState(false);
+const [cartCount, setCartCount] = useState(0);
 const dropdownRef = useRef(null);
   useEffect(() => {
     const email = localStorage.getItem("user_email");
@@ -21,6 +24,7 @@ const dropdownRef = useRef(null);
     }
 
     setIsCompany(role === "owner");
+    setCartCount(getCartCount());
   }, []);
 
   function logout() {
@@ -88,6 +92,20 @@ const dropdownRef = useRef(null);
           <a href="/products" className="hover:text-blue-600 transition">
   Products
 </a>
+          {!isCompany && (
+  <Link
+    href="/cart"
+    className="relative hover:text-blue-600 transition font-semibold"
+  >
+    🛒 Cart
+
+    {cartCount > 0 && (
+      <span className="absolute -top-2 -right-5 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-600 px-1 text-xs font-bold text-white">
+        {cartCount}
+      </span>
+    )}
+  </Link>
+)}
 
           {!user && (
             <>
