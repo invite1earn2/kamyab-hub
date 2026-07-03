@@ -40,7 +40,9 @@ link
 
 if(error){
 
-console.error("Notification Error:", error);
+alert(error.message);
+
+console.error(error);
 
 return false;
 
