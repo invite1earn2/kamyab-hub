@@ -7,6 +7,7 @@ import {
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NotificationListener from "../components/NotificationListener";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,7 +93,9 @@ export default function RootLayout({ children }) {
 
         <Navbar />
 
-        <main className="flex-1">
+<NotificationListener />
+
+<main className="flex-1">
 
   {children}
 
