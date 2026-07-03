@@ -518,6 +518,31 @@ Manage homepage community member experiences.
 
 </a>
 
+<a
+href="/support"
+className="border rounded-2xl p-6 hover:shadow-lg transition"
+>
+
+<div className="text-4xl">
+
+🎧
+
+</div>
+
+<h3 className="text-xl font-bold mt-4">
+
+Support Inbox
+
+</h3>
+
+<p className="text-gray-600 mt-2">
+
+View user conversations and reply to support requests.
+
+</p>
+
+</a>
+
 </div>
 
 </div>
