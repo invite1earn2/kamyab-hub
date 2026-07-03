@@ -43,7 +43,7 @@ export default function ProductDetails() {
 
   function addCurrentProductToCart() {
   addToCart(product, quantity);
-  alert("Product added to cart.");
+  window.location.href = "/cart";
 }
 
   function buyNow() {
