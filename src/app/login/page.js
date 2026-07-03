@@ -1,241 +1,137 @@
 "use client";
 
-import {
-useEffect,
-useState
-}
-from "react";
-
-import {
-login
-}
-from "../../services/auth";
-
-import {
-bootstrapOwner
-}
-from "../../services/bootstrapOwner";
-
-export default function Login(){
-
-const [
-email,
-setEmail
-]=
-useState("");
-
-const [
-password,
-setPassword
-]=
-useState("");
-
-useEffect(()=>{
-
-async function initialize(){
-
-await bootstrapOwner();
-
-const existing=
-localStorage.getItem(
-"user_email"
-);
-
-const role=
-localStorage.getItem(
-"user_role"
-);
-
-if(existing){
-
-if(role==="owner"){
-
-window.location.href="/company";
-
-}else{
-
-window.location.href="/dashboard";
-
-}
-
-}
-
-}
-
-initialize();
-
-},[]);
-async function submit(e){
-
-e.preventDefault();
-
-if(!email.trim()){
-
-alert("Please enter email.");
-return;
-
-}
-
-if(!password.trim()){
-
-alert("Please enter password.");
-return;
-
-}
-
-const user=
-await login(
-email,
-password
-);
-
-if(user){
-
-localStorage.setItem(
-"user_email",
-user.email
-);
-
-localStorage.setItem(
-"user_id",
-user.id
-);
-
-localStorage.setItem(
-"user_role",
-user.role
-);
-
-if(user.role==="owner"){
-
-window.location.replace("/company");
-
-}else{
-
-window.location.replace("/dashboard");
-
-}
-
-return;
-
-}
-
-alert("Invalid Login");
-
-}
-
-return(
-
-<main className="min-h-screen bg-gray-50 flex items-center justify-center px-6">
-
-<div className="w-full max-w-md bg-white rounded-3xl shadow-xl border p-10 hover:shadow-2xl transition-all duration-300">
-
-<div className="text-center mb-10">
-
-<div className="w-20 h-20 rounded-3xl bg-black text-white flex items-center justify-center text-3xl font-black mx-auto shadow-lg">
-
-K
-
-</div>
-
-<p className="text-blue-600 font-semibold uppercase tracking-wider">
-
-Welcome Back
-
-</p>
-
-<h1 className="text-5xl font-black mt-6 tracking-tight">
-
-Kamyab Hub
-
-</h1>
-
-<p className="text-blue-600 font-semibold mt-2">
-
-Har Qadam Kamyabi Ki Taraf
-
-</p>
-
-<p className="text-gray-600 mt-5 leading-7">
-
-Sign in to access your Business Partner Dashboard and continue growing your business.
-
-</p>
-
-</div>
-
-<form
-onSubmit={submit}
-autoComplete="off"
-className="flex flex-col gap-5"
->
-
-<div>
-
-<label className="block mb-2 font-medium">
-
-Email Address
-
-</label>
-
-<input
-type="email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-placeholder="Enter your email"
-className="w-full border rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-/>
-
-</div>
-
-<div>
-
-<label className="block mb-2 font-medium">
-
-Password
-
-</label>
-
-<input
-type="password"
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
-placeholder="Enter your password"
-className="w-full border rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-/>
-
-</div>
-
-<button
-type="submit"
-className="w-full bg-black text-white rounded-xl py-4 font-bold text-lg hover:scale-[1.02] hover:bg-gray-800 transition-all duration-300 shadow-lg"
->
-
-Login to Kamyab Hub
-
-</button>
-
-</form>
-
-<p className="text-center text-gray-500 mt-8 text-sm">
-
-Don't have an account?
-
-<a
-href="/signup"
-className="text-blue-600 font-semibold ml-2 hover:underline"
->
-
-Become a Business Partner
-
-</a>
-
-</p>
-
-</div>
-
-</main>
-
-);
-
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import supabase from "../../lib/supabase";
+import { createOrder } from "../../services/order";
+
+export default function Products() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [role, setRole] = useState(null);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  async function load() {
+    const { data } = await supabase
+      .from("products")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    setProducts(data || []);
+
+    setRole(localStorage.getItem("user_role"));
+
+    setLoading(false);
+  }
+
+  async function sell(item) {
+    await createOrder(item);
+    alert("Order Created Successfully");
+  }
+
+  function addToCart(item) {
+    alert("Shopping Cart will be added in Phase 3.");
+  }
+
+  if (loading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+
+          <p className="mt-4 font-medium text-gray-600">
+            Loading Products...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <main className="p-6 md:p-10">
+      <div className="mb-10">
+        <p className="font-semibold uppercase tracking-wider text-blue-600">
+          Marketplace
+        </p>
+
+        <h1 className="mt-2 text-4xl font-black">
+          Products Marketplace
+        </h1>
+
+        <p className="mt-3 max-w-2xl text-gray-600">
+          Browse quality products with nationwide delivery.
+          Become a Business Partner to earn commissions by selling
+          Kamyab Hub products.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-3">
+        {products.map((item) => (
+          <div
+            key={item.id}
+            className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+          >
+            <div className="h-46 overflow-hidden bg-gray-100 sm:h-48 md:h-52">
+              {item.image_url ? (
+                <img
+                  src={item.image_url}
+                  alt={item.name}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-6xl">
+                  📦
+                </div>
+              )}
+            </div>
+
+            <div className="p-3">
+              <h2 className="min-h-[44px] text-[15px] font-bold leading-5 text-gray-900">
+                {item.name}
+              </h2>
+
+              <p className="mt-2 text-xl font-black text-blue-700">
+                PKR {item.price}
+              </p>
+
+              <div className="mt-2">
+                <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-[11px] font-semibold text-green-700">
+                  🚚 Delivery Available
+                </span>
+              </div>
+
+              <div className="mt-4 space-y-2">
+                <Link
+                  href={`/product/${item.id}`}
+                  className="block w-full rounded-2xl border border-gray-300 py-3 text-center font-bold transition hover:bg-gray-100"
+                >
+                  👁 View Details
+                </Link>
+
+                <button
+                  onClick={() => addToCart(item)}
+                  className="w-full rounded-2xl bg-blue-600 py-3 font-bold text-white transition hover:bg-blue-700"
+                >
+                  🛒 Add to Cart
+                </button>
+
+                {role === "Business Partner" && (
+                  <button
+                    onClick={() => sell(item)}
+                    className="w-full rounded-2xl bg-black py-3 font-bold text-white transition hover:bg-gray-800"
+                  >
+                    💼 Sell Product
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
 }
