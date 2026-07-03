@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import supabase from "../../lib/supabase";
+import { createNotification } from "../../services/notification";
 
 export default function Help() {
 
@@ -55,6 +56,22 @@ console.log(error);
 return;
 
 }
+
+await createNotification({
+
+user_email:"owner",
+
+role:"owner",
+
+title:"💬 New Support Message",
+
+message:"A Business Partner has sent a new support message.",
+
+type:"support",
+
+link:"/support"
+
+});
 
 setMessage("");
 

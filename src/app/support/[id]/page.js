@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import supabase from "../../../lib/supabase";
 import { checkOwner } from "../../../services/owner";
+import { createNotification } from "../../../services/notification";
 
 export default function Conversation() {
 
@@ -115,9 +116,25 @@ export default function Conversation() {
 
     }
 
-    setReply("");
+    await createNotification({
 
-    await loadMessages();
+user_email:userEmail,
+
+role:"partner",
+
+title:"💬 Support Reply",
+
+message:"Kamyab Hub Support replied to your message.",
+
+type:"support",
+
+link:"/help"
+
+});
+
+setReply("");
+
+await loadMessages();
 
   }
 
