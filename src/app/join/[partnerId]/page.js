@@ -15,15 +15,26 @@ export default function Join({ params }) {
 
     }
 
-    window.location.href = "/signup";
+    // Redirect visitors to the Home page instead of Signup
+    window.location.replace("/");
 
   }, [params]);
 
   return (
 
-    <main className="p-10 text-center">
+    <main className="flex min-h-[60vh] items-center justify-center">
 
-      Redirecting...
+      <div className="text-center">
+
+        <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+
+        <p className="mt-5 text-lg font-semibold text-gray-700">
+
+          Redirecting to Kamyab Hub...
+
+        </p>
+
+      </div>
 
     </main>
 
