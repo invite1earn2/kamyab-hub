@@ -9,10 +9,40 @@ export default function Help() {
 const [message,setMessage]=useState("");
 const [messages,setMessages]=useState([]);
 const [conversationId,setConversationId]=useState(null);
+const [email,setEmail] =
+useState("");
+
+const [guestId,setGuestId] =
+useState("");
 
 useEffect(()=>{
 
-loadConversation();
+const userEmail =
+localStorage.getItem("user_email") || "";
+
+setEmail(userEmail);
+
+let guest =
+localStorage.getItem("guest_id");
+
+if(!guest){
+
+guest =
+crypto.randomUUID();
+
+localStorage.setItem(
+"guest_id",
+guest
+);
+
+}
+
+setGuestId(guest);
+
+loadConversation(
+userEmail,
+guest
+);
 
 },[]);
 
@@ -30,6 +60,32 @@ return;
 
 }
 
+if(!email){
+
+const { count } =
+await supabase
+.from("support_messages")
+.select("*",{
+count:"exact",
+head:true
+})
+.eq(
+"guest_id",
+guestId
+);
+
+if(count >= 1){
+
+alert(
+"You have already used your free support message.\n\nPlease create an account or login to continue chatting with our support team."
+);
+
+return;
+
+}
+
+}
+
 const { error } = await supabase
 
 .from(
@@ -41,6 +97,9 @@ const { error } = await supabase
 conversation_id:
 conversationId,
 
+guest_id:
+guestId,
+
 sender:
 "user",
 
@@ -48,7 +107,6 @@ message:
 message
 
 }]);
-
 if(error){
 
 console.log(error);
@@ -80,17 +138,38 @@ await loadConversation();
 }
 
 
-async function loadConversation(){
+async function loadConversation(
+  email,
+  guestId
+){
 
-let { data: conversation } = await supabase
-
+let query =
+supabase
 .from("support_conversations")
+.select("*");
 
-.select("*")
+if(email){
 
-.eq("user_email", email)
+query =
+query.eq(
+"user_email",
+email
+);
 
-.single();
+}else{
+
+query =
+query.eq(
+"guest_id",
+guestId
+);
+
+}
+
+let {
+data: conversation
+} =
+await query.single();
 
 if(!conversation){
 
@@ -100,8 +179,11 @@ const { data: newConversation } = await supabase
 
 .insert([{
 
-user_email: email
+user_email: email || null,
 
+guest_id: guestId,
+
+is_guest: !email
 }])
 
 .select()
