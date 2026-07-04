@@ -92,6 +92,9 @@ const dropdownRef = useRef(null);
           <a href="/products" className="hover:text-blue-600 transition">
   Products
 </a>
+<a href="/my-products" className="hover:text-blue-600 transition">
+  My Products
+</a>
           {!isCompany && (
   <Link
     href="/cart"
