@@ -242,10 +242,30 @@ if(newConversationError){
 
 console.log("SUPABASE ERROR:");
 
-console.log(newConversationError);
+console.log(
+JSON.stringify(
+newConversationError,
+null,
+2
+)
+);
 
 console.log(newConversationError);
-alert(JSON.stringify(newConversationError, null, 2));
+console.log(
+newConversationError.message
+);
+
+console.log(
+newConversationError.details
+);
+
+console.log(
+newConversationError.hint
+);
+
+console.log(
+newConversationError.code
+);
 
 return;
 
