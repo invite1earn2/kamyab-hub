@@ -13,6 +13,7 @@ export default function Subscribe(){
 const [transaction,setTransaction]=useState("");
 const [loading,setLoading]=useState(true);
 const [copied,setCopied]=useState(false);
+const [payment,setPayment]=useState(null);
 useEffect(()=>{
 
 checkSubscription();
@@ -119,6 +120,15 @@ return;
 
 }
 
+const { data: paymentData } =
+await supabase
+.from("company_payment_settings")
+.select("*")
+.eq("id",1)
+.single();
+
+setPayment(paymentData);
+
 setLoading(false);
 
 }
@@ -204,10 +214,10 @@ method:
 "EasyPaisa",
 
 account_title:
-"Ali Khan",
+"Muhammad Usman",
 
 account_number:
-"03024567898",
+"03336304211",
 
 transaction_id:
 transaction
@@ -609,7 +619,7 @@ EasyPaisa Number
 
 <button
 onClick={()=>{
-navigator.clipboard.writeText("03024567898");
+navigator.clipboard.writeText("03336304211");
 
 setCopied(true);
 

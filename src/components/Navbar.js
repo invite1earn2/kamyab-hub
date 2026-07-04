@@ -275,7 +275,12 @@ className="block px-5 py-3 hover:bg-gray-100"
 >
 🚚 Company Orders
 </a>
-
+<a
+href="/company-payment-settings"
+className="block px-5 py-3 hover:bg-gray-100"
+>
+💳 Company Payment Settings
+</a>
 <a
 href="/withdrawals"
 className="block px-5 py-3 hover:bg-gray-100"
