@@ -92,31 +92,173 @@ export default function MobileMenu({
 
           {!user && (
 
-            <>
+<>
 
-              <a
-                href="/signup"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
-              >
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
 
-                👤 Signup
+<div className="font-semibold">
 
-              </a>
+⭐ Dashboard
 
-              <a
-                href="/login"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
-              >
+</div>
 
-                🔑 Login
+<div className="text-xs text-gray-500">
 
-              </a>
+Business Partner Dashboard
 
-            </>
+</div>
 
-          )}
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+👥 Invite
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Earn PKR 300 Per Referral
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+🏪 My Products
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Add & Sell Your Products
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+🛒 Orders
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Manage Customer Orders
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+💳 Payment Settings
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Setup Withdrawal Methods
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+💰 Withdraw
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Withdraw Your Earnings
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
+>
+
+<div className="font-semibold">
+
+📈 Analytics
+
+</div>
+
+<div className="text-xs text-gray-500">
+
+Track Your Business Growth
+
+</div>
+
+</a>
+
+<hr className="my-4"/>
+
+<a
+href="/signup"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+>
+
+👤 Signup
+
+</a>
+
+<a
+href="/login"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+>
+
+🔑 Login
+
+</a>
+
+</>
+
+)}  
 
           {user && !isCompany && (
 

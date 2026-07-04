@@ -86,27 +86,15 @@ const dropdownRef = useRef(null);
         <div className="hidden lg:flex items-center gap-6">
 
           <a href="/" className="hover:text-blue-600 transition">
-            Home
-          </a>
+  Home
+</a>
 
-          <a href="/products" className="hover:text-blue-600 transition">
+<a href="/products" className="hover:text-blue-600 transition">
   Products
 </a>
-<a href="/my-products" className="hover:text-blue-600 transition">
-  My Products
-</a>
+
 <a href="/track-order" className="hover:text-blue-600 transition">
   Track Order
-</a>
-<a
-  href="/my-products"
-  onClick={closeMenu}
-  className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
->
-  📦 My Products
-</a>
-<a href="/my-products" className="hover:text-blue-600 transition">
-  My Products
 </a>
           {!isCompany && (
   <Link
@@ -124,46 +112,107 @@ const dropdownRef = useRef(null);
 )}
 
           {!user && (
-            <>
-              <a href="/signup" className="hover:text-blue-600 transition">
-                Signup
-              </a>
+  <>
 
-              <a href="/login" className="hover:text-blue-600 transition">
-                Login
-              </a>
-            </>
-          )}
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Dashboard
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Invite
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ My Products
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Orders
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Payment
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Withdraw
+    </a>
+
+    <a
+      href="/partner"
+      className="hover:text-blue-600 transition"
+    >
+      ⭐ Analytics
+    </a>
+
+    <a
+      href="/signup"
+      className="hover:text-blue-600 transition font-semibold"
+    >
+      Signup
+    </a>
+
+    <a
+      href="/login"
+      className="hover:text-blue-600 transition font-semibold"
+    >
+      Login
+    </a>
+
+  </>
+)}
 
 {user && !isCompany && (
   <>
     <a href="/dashboard" className="hover:text-blue-600 transition">
-      Dashboard
-    </a>
+  Dashboard
+</a>
 
-    <a href="/invite" className="hover:text-blue-600 transition">
-      Invite
-    </a>
+<a href="/invite" className="hover:text-blue-600 transition">
+  Invite
+</a>
 
-    <a href="/orders" className="hover:text-blue-600 transition">
-      Orders
-    </a>
+<a href="/my-products" className="hover:text-blue-600 transition font-semibold text-blue-600">
+  My Products
+</a>
 
-    <a href="/payment-settings" className="hover:text-blue-600 transition">
-      Payment Settings
-    </a>
+<a href="/orders" className="hover:text-blue-600 transition">
+  Orders
+</a>
 
-    <a href="/withdraw" className="hover:text-blue-600 transition">
-      Withdraw
-    </a>
+<a href="/payment-settings" className="hover:text-blue-600 transition">
+  Payment Settings
+</a>
 
-    <a href="/analytics" className="hover:text-blue-600 transition">
-      Analytics
-    </a>
+<a href="/withdraw" className="hover:text-blue-600 transition">
+  Withdraw
+</a>
 
-    <a href="/my-withdrawals" className="hover:text-blue-600 transition">
-      Withdrawals
-    </a>
+<a href="/analytics" className="hover:text-blue-600 transition">
+  Analytics
+</a>
+
+<a href="/my-withdrawals" className="hover:text-blue-600 transition">
+  Withdrawals
+</a>
 
     <NotificationBadge />
 
