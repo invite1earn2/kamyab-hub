@@ -95,6 +95,19 @@ const dropdownRef = useRef(null);
 <a href="/my-products" className="hover:text-blue-600 transition">
   My Products
 </a>
+<a href="/track-order" className="hover:text-blue-600 transition">
+  Track Order
+</a>
+<a
+  href="/my-products"
+  onClick={closeMenu}
+  className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+  📦 My Products
+</a>
+<a href="/my-products" className="hover:text-blue-600 transition">
+  My Products
+</a>
           {!isCompany && (
   <Link
     href="/cart"

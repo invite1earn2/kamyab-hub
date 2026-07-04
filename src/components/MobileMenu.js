@@ -80,6 +80,15 @@ export default function MobileMenu({
             🏠 Home
 
           </a>
+          <a
+  href="/track-order"
+  onClick={closeMenu}
+  className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+>
+
+  📦 Track Order
+
+</a>
 
           {!user && (
 
@@ -124,6 +133,15 @@ export default function MobileMenu({
                 📦 Products
 
               </a>
+              <a
+href="/my-products"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
+🏪 My Products
+
+</a>
 
               <a href="/invite" onClick={closeMenu} className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700">
 
@@ -270,6 +288,15 @@ className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover
 >
 
 🛍 Products
+
+</a>
+<a
+href="/my-products"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover:bg-blue-50 hover:text-blue-700"
+>
+
+🏪 My Products
 
 </a>
 
