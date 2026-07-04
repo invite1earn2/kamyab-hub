@@ -5,7 +5,18 @@ import supabase from "../../lib/supabase";
 
 export default function MyProducts() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+const [loading, setLoading] = useState(true);
+
+const [showModal, setShowModal] = useState(false);
+
+const [product, setProduct] = useState({
+  name: "",
+  price: "",
+  original_price: "",
+  category: "",
+  short_description: "",
+  stock_status: "In Stock"
+});
 
   useEffect(() => {
     loadProducts();
@@ -79,7 +90,7 @@ export default function MyProducts() {
           </button>
 
           <button
-            onClick={() => alert("Coming in Version 2")}
+            onClick={() => setShowModal(true)}
             className="rounded-2xl bg-black px-6 py-3 font-bold text-white hover:bg-gray-800"
           >
             ➕ Add Product
@@ -130,7 +141,7 @@ export default function MyProducts() {
           </p>
 
           <button
-            onClick={() => alert("Coming in Version 2")}
+            onClick={() => setShowModal(true)}
             className="mt-8 rounded-2xl bg-blue-600 px-8 py-4 font-bold text-white hover:bg-blue-700"
           >
             ➕ Add First Product
@@ -196,7 +207,55 @@ export default function MyProducts() {
         </div>
 
       )}
+    {showModal && (
 
+<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
+
+<div className="w-full max-w-xl rounded-3xl bg-white p-8 shadow-2xl">
+
+<div className="mb-6 flex items-center justify-between">
+
+<h2 className="text-2xl font-black">
+
+Add New Product
+
+</h2>
+
+<button
+onClick={() => setShowModal(false)}
+className="text-2xl"
+>
+
+✕
+
+</button>
+
+</div>
+
+<p className="text-gray-600">
+
+Version 2 Product Form
+
+</p>
+
+<div className="mt-8 flex justify-end">
+
+<button
+onClick={() => setShowModal(false)}
+className="rounded-xl border px-6 py-3 hover:bg-gray-100"
+>
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+)}
     </main>
   );
 }
