@@ -212,7 +212,13 @@ console.log(conversationError);
 
 if(!conversation){
 
-const { data: newConversation } = await supabase
+const {
+
+data: newConversation,
+
+error: newConversationError
+
+} = await supabase
 
 .from("support_conversations")
 
@@ -220,14 +226,30 @@ const { data: newConversation } = await supabase
 
 user_email: email || null,
 
+status: "open",
+
 guest_id: guestId,
 
 is_guest: !email
+
 }])
 
 .select()
 
 .single();
+
+if(newConversationError){
+
+console.log("SUPABASE ERROR:");
+
+console.log(newConversationError);
+
+console.log(newConversationError);
+alert(JSON.stringify(newConversationError, null, 2));
+
+return;
+
+}
 
 conversation = newConversation;
 
