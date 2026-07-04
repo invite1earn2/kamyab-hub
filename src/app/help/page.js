@@ -17,6 +17,12 @@ useState("");
 
 useEffect(()=>{
 
+initialize();
+
+},[]);
+
+async function initialize(){
+
 const userEmail =
 localStorage.getItem("user_email") || "";
 
@@ -39,12 +45,12 @@ guest
 
 setGuestId(guest);
 
-loadConversation(
+await loadConversation(
 userEmail,
 guest
 );
 
-},[]);
+}
 
 async function sendMessage(){
 
@@ -69,10 +75,8 @@ await supabase
 count:"exact",
 head:true
 })
-.eq(
-"guest_id",
-guestId
-);
+.eq("guest_id",guestId)
+.eq("sender","user");
 
 if(count >= 1){
 
@@ -123,7 +127,10 @@ role:"owner",
 
 title:"💬 New Support Message",
 
-message:"A Business Partner has sent a new support message.",
+message:
+email
+? "A Business Partner has sent a new support message."
+: "A guest visitor has sent a support message.",
 
 type:"support",
 
@@ -169,10 +176,25 @@ guestId
 
 }
 
-let {
-data: conversation
-} =
-await query.single();
+let conversation = null;
+
+const {
+data,
+error: conversationError
+}
+=
+await query.maybeSingle();
+
+conversation = data;
+
+if(
+conversationError &&
+conversationError.code !== "PGRST116"
+){
+
+console.log(conversationError);
+
+}
 
 if(!conversation){
 
