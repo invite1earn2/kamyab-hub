@@ -54,15 +54,29 @@ guest
 
 async function sendMessage(){
 
-if(
+if (!message.trim()) {
 
-!conversationId ||
+  return;
 
-!message.trim()
+}
 
-){
+if (!conversationId) {
 
-return;
+  await loadConversation(
+    email,
+    guestId
+  );
+  console.log("Conversation ID:", conversationId);
+console.log("Email:", email);
+console.log("Guest ID:", guestId);
+
+  if (!conversationId) {
+
+    alert("Unable to initialize the support conversation. Please refresh the page and try again.");
+
+    return;
+
+  }
 
 }
 
