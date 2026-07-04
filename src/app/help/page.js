@@ -133,7 +133,10 @@ link:"/support"
 
 setMessage("");
 
-await loadConversation();
+await loadConversation(
+email,
+guestId
+);
 
 }
 
@@ -192,6 +195,9 @@ is_guest: !email
 
 conversation = newConversation;
 
+const {
+error: welcomeError
+} =
 await supabase
 
 .from("support_messages")
@@ -200,7 +206,9 @@ await supabase
 
 conversation_id: conversation.id,
 
-user_email: localStorage.getItem("user_email"),
+user_email: email || null,
+
+guest_id: guestId,
 
 sender: "system",
 
@@ -225,6 +233,12 @@ We can assist you with:
 We appreciate your trust in Kamyab Hub and look forward to assisting you.`
 
 }]);
+
+if(welcomeError){
+
+console.log(welcomeError);
+
+}
 
 }
 
