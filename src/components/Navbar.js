@@ -439,8 +439,7 @@ Logout
         closeMenu={closeMenu}
       />
 
-      {user && <FloatingHelpButton />}
-
+      <FloatingHelpButton />
     </nav>
   );
 }
