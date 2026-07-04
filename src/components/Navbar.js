@@ -132,7 +132,7 @@ const dropdownRef = useRef(null);
       href="/partner"
       className="hover:text-blue-600 transition"
     >
-      ⭐ My Products
+      ⭐ My store
     </a>
 
     <a

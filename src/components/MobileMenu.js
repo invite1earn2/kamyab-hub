@@ -72,21 +72,32 @@ export default function MobileMenu({
         <div className="space-y-2 px-5 py-5 pb-10">
 
           <a
-            href="/"
-            onClick={closeMenu}
-            className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
-          >
-
-            🏠 Home
-
-          </a>
-          <a
-  href="/track-order"
-  onClick={closeMenu}
-  className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+href="/"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
 >
 
-  📦 Track Order
+🏠 Home
+
+</a>
+
+<a
+href="/products"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+>
+
+🛍 Products
+
+</a>
+
+<a
+href="/track-order"
+onClick={closeMenu}
+className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover:bg-blue-50"
+>
+
+📦 Track Order
 
 </a>
 
@@ -142,13 +153,13 @@ className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
 
 <div className="font-semibold">
 
-🏪 My Products
+🏪 My Store
 
 </div>
 
 <div className="text-xs text-gray-500">
 
-Add & Sell Your Products
+Build Your Online Business
 
 </div>
 
