@@ -45,18 +45,27 @@ export default function Products() {
         .in("email", partnerEmails);
 
       (users || []).forEach((u) => {
-        sellerMap[u.email] = u.name;
-      });
+  sellerMap[u.email] = {
+    name: u.name,
+    partner_id: u.partner_id
+  };
+});
 
     }
 
     const finalProducts = (data || []).map((item) => ({
-      ...item,
-      seller_name:
-        item.product_type === "company"
-          ? "Kamyab Hub"
-          : sellerMap[item.owner_email] || "Business Partner",
-    }));
+
+  ...item,
+
+  seller_name:
+    item.product_type === "company"
+      ? "Kamyab Hub"
+      : sellerMap[item.owner_email]?.name || "Business Partner",
+
+  partner_id:
+    sellerMap[item.owner_email]?.partner_id || null
+
+}));
 
     setProducts(finalProducts);
     setLoading(false);
@@ -162,13 +171,26 @@ export default function Products() {
                   {item.name}
                 </h2>
 
-                <p className="mt-1 text-xs font-medium text-gray-500">
+                <div className="mt-1">
 
-                  {item.product_type === "company"
-                    ? "🏢 Sold by Kamyab Hub"
-                    : `🤝 Sold by ${item.seller_name}`}
+  <p className="text-xs font-medium text-gray-500">
 
-                </p>
+    {item.product_type === "company"
+      ? "🏢 Sold by Kamyab Hub"
+      : `🤝 Sold by ${item.seller_name}`}
+
+  </p>
+
+  {item.product_type === "partner" && (
+    <a
+      href={`/store/${item.partner_id}`}
+      className="mt-1 inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline"
+    >
+      🏪 Visit Store →
+    </a>
+  )}
+
+</div>
 
                 <p className="mt-2 text-xl font-black text-blue-700">
                   PKR {item.price}
