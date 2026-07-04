@@ -8,6 +8,7 @@ export default function MyProducts() {
 const [loading, setLoading] = useState(true);
 
 const [showModal, setShowModal] = useState(false);
+const [selectedImage, setSelectedImage] = useState(null);
 
 const [product, setProduct] = useState({
   name: "",
@@ -24,11 +25,109 @@ const [product, setProduct] = useState({
 
   async function loadProducts() {
     const email = localStorage.getItem("user_email");
+    if (!product.name.trim()) {
+  alert("Please enter Product Name.");
+  return;
+}
+
+if (!product.price) {
+  alert("Please enter Selling Price.");
+  return;
+}
 
     if (!email) {
       window.location.href = "/login";
       return;
     }
+    async function saveProduct() {
+
+  const email = localStorage.getItem("user_email");
+
+  let imageUrl = "";
+
+  if (selectedImage) {
+
+    const extension =
+      selectedImage.name.split(".").pop();
+
+    const fileName =
+      email.replace(/[^a-zA-Z0-9]/g, "-") +
+      "-" +
+      Date.now() +
+      "." +
+      extension;
+
+    const { error: uploadError } =
+      await supabase.storage
+        .from("product-images")
+        .upload(fileName, selectedImage, {
+          upsert: true,
+        });
+
+    if (uploadError) {
+
+      alert(uploadError.message);
+
+      return;
+
+    }
+
+    const { data } =
+      supabase.storage
+        .from("product-images")
+        .getPublicUrl(fileName);
+
+    imageUrl = data.publicUrl;
+
+  }
+
+  const { error } =
+    await supabase
+      .from("products")
+      .insert({
+
+        ...product,
+
+        image_url: imageUrl,
+
+        owner_email: email,
+
+        product_type: "partner",
+
+        status: "active",
+
+        display_order: 999
+
+      });
+
+  if (error) {
+
+    console.log(error);
+
+    alert("Failed to add product.");
+
+    return;
+
+  }
+
+  alert("Product Added Successfully");
+
+  setShowModal(false);
+
+  setSelectedImage(null);
+
+  setProduct({
+    name: "",
+    price: "",
+    original_price: "",
+    category: "",
+    short_description: "",
+    stock_status: "In Stock"
+  });
+
+  loadProducts();
+
+}
 
     const { data, error } = await supabase
       .from("products")
@@ -238,16 +337,72 @@ Version 2 Product Form
 
 </p>
 
-<div className="mt-8 flex justify-end">
+<div className="grid gap-5">
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Product Name
+
+</label>
+
+<input
+value={product.name}
+onChange={(e)=>
+setProduct({
+...product,
+name:e.target.value
+})
+}
+className="w-full border rounded-xl p-3"
+/>
+
+</div>
+
+<div>
+
+<label className="block mb-2 font-medium">
+
+Selling Price
+
+</label>
+
+<input
+type="number"
+value={product.price}
+onChange={(e)=>
+setProduct({
+...product,
+price:e.target.value
+})
+}
+className="w-full border rounded-xl p-3"
+/>
+
+</div>
+
+<div className="mt-6 flex gap-4">
 
 <button
-onClick={() => setShowModal(false)}
-className="rounded-xl border px-6 py-3 hover:bg-gray-100"
+onClick={()=>setShowModal(false)}
+className="border px-6 py-3 rounded-xl hover:bg-gray-100"
 >
 
-Close
+Cancel
 
 </button>
+
+<button
+onClick={saveProduct}
+className="bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800"
+>
+
+Save Product
+
+</button>
+
+</div>
 
 </div>
 
