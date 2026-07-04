@@ -82,17 +82,6 @@ await loadConversation();
 
 async function loadConversation(){
 
-const email =
-localStorage.getItem("user_email");
-
-if(!email){
-
-window.location.href="/login";
-
-return;
-
-}
-
 let { data: conversation } = await supabase
 
 .from("support_conversations")
