@@ -55,29 +55,45 @@ const dropdownRef = useRef(null);
             Har Qadam Kamyabi Ki Taraf
           </p>
 
-          {user && (
-            <>
+          {user ? (
+  <>
 
-              <p className="mt-3 text-sm text-gray-700">
-                Welcome Back,
-                <span className="font-bold text-gray-900">
-                  {" "}{user}
-                </span>
-                👋
-              </p>
+    <p className="mt-3 text-sm text-gray-700">
+      Welcome Back,
+      <span className="font-bold text-gray-900">
+        {" "}{user}
+      </span>
+      👋
+    </p>
 
-              <span
-                className={`inline-flex mt-2 rounded-full px-3 py-1 text-xs font-semibold ${
-                  isCompany
-                    ? "bg-purple-100 text-purple-700"
-                    : "bg-amber-100 text-amber-700"
-                }`}
-              >
-                {isCompany ? "👑 Platform Owner" : "🤝 Business Partner"}
-              </span>
+    <span
+      className={`inline-flex mt-2 rounded-full px-3 py-1 text-xs font-semibold ${
+        isCompany
+          ? "bg-purple-100 text-purple-700"
+          : "bg-amber-100 text-amber-700"
+      }`}
+    >
+      {isCompany ? "👑 Platform Owner" : "🤝 Business Partner"}
+    </span>
 
-            </>
-          )}
+  </>
+) : (
+  <>
+
+    <p className="mt-3 text-sm text-gray-700">
+      Welcome to
+      <span className="font-bold text-blue-700">
+        {" "}Kamyab Hub
+      </span>
+      👋
+    </p>
+
+    <span className="inline-flex mt-2 rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+      🌍 Dear Visitor
+    </span>
+
+  </>
+)}
 
         </div>
 
