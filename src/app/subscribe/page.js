@@ -214,10 +214,10 @@ method:
 "EasyPaisa",
 
 account_title:
-"Muhammad Usman",
+"Sabeen Akhtar",
 
 account_number:
-"03336304211",
+"03427079165",
 
 transaction_id:
 transaction
@@ -579,7 +579,7 @@ Payment Method
 
 <p className="font-bold text-lg">
 
-EasyPaisa
+{payment?.payment_method}
 
 </p>
 
@@ -595,7 +595,7 @@ Account Title
 
 <p className="font-bold text-lg">
 
-Ali Khan
+{payment?.account_title}
 
 </p>
 
@@ -613,14 +613,15 @@ EasyPaisa Number
 
 <p className="text-3xl font-black tracking-wider text-blue-700">
 
-03024567898
+03427079165
 
 </p>
 
 <button
 onClick={()=>{
-navigator.clipboard.writeText("03336304211");
-
+navigator.clipboard.writeText(
+payment?.account_number || ""
+);
 setCopied(true);
 
 setTimeout(()=>{
