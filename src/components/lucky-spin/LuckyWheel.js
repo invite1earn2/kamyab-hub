@@ -296,6 +296,90 @@ spinning
 
 </div>
 
+<div className="mt-6 w-full max-w-sm">
+
+<div className="rounded-2xl bg-white shadow p-4">
+
+<h3 className="text-center text-sm font-bold text-gray-800">
+
+🎁 Rewards You Can Win
+
+</h3>
+
+<div className="mt-4 grid grid-cols-2 gap-3">
+
+<div className="rounded-xl bg-purple-50 p-3 text-center">
+
+🪙 10 Points
+
+</div>
+
+<div className="rounded-xl bg-blue-50 p-3 text-center">
+
+🪙 20 Points
+
+</div>
+
+<div className="rounded-xl bg-green-50 p-3 text-center">
+
+🪙 50 Points
+
+</div>
+
+<div className="rounded-xl bg-yellow-50 p-3 text-center">
+
+🏆 100 Points
+
+</div>
+
+<div className="rounded-xl bg-pink-50 p-3 text-center">
+
+🎡 Extra Spin
+
+</div>
+
+<div className="rounded-xl bg-orange-50 p-3 text-center">
+
+🎁 Voucher
+
+</div>
+
+</div>
+
+<hr className="my-5"/>
+
+<h3 className="text-center text-sm font-bold text-gray-800">
+
+⭐ How It Works
+
+</h3>
+
+<div className="mt-4 space-y-3 text-sm text-gray-600">
+
+<div>
+
+① Spin once every day.
+
+</div>
+
+<div>
+
+② Win exciting rewards instantly.
+
+</div>
+
+<div>
+
+③ Invite a successful Business Partner to unlock more spins.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 );
