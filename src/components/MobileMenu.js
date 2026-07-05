@@ -168,6 +168,36 @@ Build Your Online Business
 <a
 href="/partner"
 onClick={closeMenu}
+className="block rounded-xl border border-yellow-300 bg-yellow-50 px-4 py-3 transition hover:bg-yellow-100"
+>
+
+<div className="flex items-center justify-between">
+
+<div className="font-semibold">
+
+🎡 Lucky Spin
+
+</div>
+
+<span className="rounded-full bg-red-500 px-2 py-1 text-[10px] font-bold text-white">
+
+LOCKED
+
+</span>
+
+</div>
+
+<div className="mt-1 text-xs text-gray-600">
+
+Daily Rewards for Business Partners
+
+</div>
+
+</a>
+
+<a
+href="/partner"
+onClick={closeMenu}
 className="block rounded-xl px-4 py-3 transition hover:bg-blue-50"
 >
 
@@ -286,6 +316,37 @@ className="block rounded-xl px-4 py-3 font-medium text-gray-700 transition hover
                 📦 Products
 
               </a>
+
+              <a
+href="/lucky-spin"
+onClick={closeMenu}
+className="block rounded-xl border border-yellow-300 bg-gradient-to-r from-yellow-50 to-orange-50 px-4 py-3 font-medium text-gray-800 transition hover:bg-yellow-100"
+>
+
+<div className="flex items-center justify-between">
+
+<div>
+
+🎡 Lucky Spin
+
+</div>
+
+<span className="rounded-full bg-green-600 px-2 py-1 text-[10px] font-bold text-white">
+
+DAILY
+
+</span>
+
+</div>
+
+<div className="mt-1 text-xs text-gray-600">
+
+Win Daily Rewards
+
+</div>
+
+</a>
+
               <a
 href="/my-products"
 onClick={closeMenu}
@@ -443,6 +504,37 @@ className="block rounded-xl px-4 py-3 font-medium text-gray-800 transition hover
 🛍 Products
 
 </a>
+
+<a
+href="/lucky-spin"
+onClick={closeMenu}
+className="block rounded-xl border border-yellow-300 bg-gradient-to-r from-yellow-50 to-orange-50 px-4 py-3 font-medium text-gray-800 transition hover:bg-yellow-100"
+>
+
+<div className="flex items-center justify-between">
+
+<div>
+
+🎡 Lucky Spin
+
+</div>
+
+<span className="rounded-full bg-green-600 px-2 py-1 text-[10px] font-bold text-white">
+
+DAILY
+
+</span>
+
+</div>
+
+<div className="mt-1 text-xs text-gray-600">
+
+Win Daily Rewards
+
+</div>
+
+</a>
+
 <a
 href="/my-products"
 onClick={closeMenu}
