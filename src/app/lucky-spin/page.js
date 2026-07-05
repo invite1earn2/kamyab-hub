@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import AuthGuard from "../../components/authguard";
 import supabase from "../../lib/supabase";
+import LuckyWheel from "../../components/lucky-spin/LuckyWheel";
 
 export default function LuckySpin() {
 
@@ -463,109 +464,15 @@ load();
 
         </div>
 
-        <div className="mt-14 flex flex-col items-center">
+        <LuckyWheel
 
-<div className="relative">
+  rotation={rotation}
 
-<div className="absolute -top-8 left-1/2 -translate-x-1/2 text-5xl">
+  spinning={spinning}
 
-📍
+  onSpin={spinNow}
 
-</div>
-
-<div
-
-style={{
-
-transform:`rotate(${rotation}deg)`,
-
-transition:spinning
-
-?
-
-"transform 5s cubic-bezier(.17,.67,.19,1)"
-
-:
-
-"none"
-
-}}
-
-className="relative h-[420px] w-[420px] rounded-full border-[10px] border-yellow-400 bg-white shadow-2xl overflow-hidden"
-
->
-
-<div className="absolute inset-0 rounded-full">
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-0"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-45"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-90"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-[135deg]"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-180"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-[225deg]"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-[270deg]"></div>
-
-<div className="absolute left-1/2 top-0 h-1/2 w-[2px] bg-gray-300 origin-bottom -translate-x-1/2 rotate-[315deg]"></div>
-
-</div>
-
-<div className="absolute inset-0 flex items-center justify-center">
-
-<div className="grid grid-cols-3 gap-6 text-center text-sm font-bold">
-
-<div>🪙 10</div>
-
-<div>🪙 20</div>
-
-<div>🪙 50</div>
-
-<div>🏆 100</div>
-
-<div>🎡 Extra</div>
-
-<div>🎁 Voucher</div>
-
-<div>🚀 Promote</div>
-
-<div>🙂 Try Again</div>
-
-<div>⭐ Bonus</div>
-
-</div>
-
-</div>
-
-<div className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-500 border-4 border-white shadow-lg"></div>
-
-</div>
-
-</div>
-
-<button
-  disabled={spinning}
-  onClick={spinNow}
-  className="mt-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-12 py-5 text-xl font-bold text-white shadow-xl transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
->
-  {
-    spinning
-      ? "🎡 SPINNING..."
-      : "🎡 SPIN NOW"
-  }
-</button>
-
-<p className="mt-5 text-gray-500">
-
-Win exciting rewards every day.
-
-</p>
-
-</div>
+/>
 
       </main>
 
