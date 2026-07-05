@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import AuthGuard from "../../components/authguard";
 import supabase from "../../lib/supabase";
 import LuckyWheel from "../../components/lucky-spin/LuckyWheel";
+import WinnerModal from "../../components/lucky-spin/WinnerModal";
 
 export default function LuckySpin() {
 
@@ -16,6 +17,9 @@ export default function LuckySpin() {
   const [rotation,setRotation]=useState(0);
 
 const [spinning,setSpinning]=useState(false);
+const [showWinner,setShowWinner]=useState(false);
+
+const [winner,setWinner]=useState(null);
 
   useEffect(()=>{
 
@@ -341,15 +345,9 @@ resolve,
 
 setSpinning(false);
 
-alert(
+setWinner(reward);
 
-`🎉 Congratulations!
-
-${reward.reward_name}
-
-${reward.reward_description}`
-
-);
+setShowWinner(true);
 
 load();
 }
@@ -501,6 +499,20 @@ Status
       </main>
 
       }
+
+      <WinnerModal
+
+open={showWinner}
+
+reward={winner}
+
+onClose={()=>
+
+setShowWinner(false)
+
+}
+
+/>
 
     </AuthGuard>
 
