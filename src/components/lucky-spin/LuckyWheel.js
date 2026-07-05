@@ -56,7 +56,7 @@ color:"#6B7280"
 
 return(
 
-<div className="mt-14 flex flex-col items-center">
+<div className="mt-5 flex flex-col items-center">
 
 <div className="relative">
 
@@ -67,6 +67,8 @@ return(
 </div>
 
 <svg
+
+className="w-[280px] h-[280px] md:w-[420px] md:h-[420px]"
 
 width="420"
 
@@ -109,6 +111,16 @@ floodOpacity="0.25"
 />
 
 </filter>
+
+<radialGradient id="goldGradient">
+
+<stop offset="0%" stopColor="#FFF8A6"/>
+
+<stop offset="45%" stopColor="#FACC15"/>
+
+<stop offset="100%" stopColor="#D97706"/>
+
+</radialGradient>
 
 </defs>
 
@@ -186,19 +198,63 @@ fill="white"
 
 }
 
+<g
+
+onClick={!spinning ? onSpin : undefined}
+
+style={{
+
+cursor:spinning ? "default" : "pointer",
+
+transformOrigin:"210px 210px"
+
+}}
+
+className={
+
+spinning
+
+?
+
+""
+
+:
+
+"animate-pulse"
+
+}
+
+>
+
 <circle
 
 cx="210"
 
 cy="210"
 
-r="42"
+r="48"
 
-fill="#FACC15"
+fill="url(#goldGradient)"
 
 stroke="#ffffff"
 
 strokeWidth="8"
+
+style={{
+
+filter:
+
+spinning
+
+?
+
+"brightness(1)"
+
+:
+
+"drop-shadow(0 0 12px gold)"
+
+}}
 
 />
 
@@ -210,29 +266,11 @@ y="217"
 
 textAnchor="middle"
 
-fontSize="18"
+fontSize="20"
 
-fontWeight="800"
+fontWeight="900"
 
-fill="#111827"
-
->
-
-SPIN
-
-</text>
-
-</svg>
-
-</div>
-
-<button
-
-disabled={spinning}
-
-onClick={onSpin}
-
-className="mt-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-12 py-5 text-xl font-bold text-white shadow-xl transition hover:scale-105 disabled:opacity-50"
+fill="#7C2D12"
 
 >
 
@@ -242,21 +280,21 @@ spinning
 
 ?
 
-"🎡 SPINNING..."
+"..."
 
 :
 
-"🎡 SPIN NOW"
+"SPIN"
 
 }
 
-</button>
+</text>
 
-<p className="mt-5 text-gray-500">
+</g>
 
-Win exciting rewards every day.
+</svg>
 
-</p>
+</div>
 
 </div>
 

@@ -382,17 +382,17 @@ load();
 
       :
 
-      <main className="mx-auto max-w-5xl px-6 py-10">
+     <main className="mx-auto max-w-4xl px-4 py-5">
 
-        <div className="rounded-3xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 p-10 text-white shadow-xl">
+        <div className="rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 p-5 text-white shadow-lg">
 
-          <h1 className="text-5xl font-black">
+          <h1 className="text-2xl md:text-4xl font-black">
 
             🎡 Kamyab Lucky Spin
 
           </h1>
 
-          <p className="mt-4 text-lg text-purple-100">
+          <p className="mt-2 text-sm md:text-base text-purple-100">
 
             Spin every day and win exciting rewards.
 
@@ -400,25 +400,43 @@ load();
 
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-4 grid grid-cols-3 gap-3">
 
-          <div className="rounded-3xl bg-white p-8 shadow">
+          <div className="rounded-2xl bg-white p-3 shadow text-center">
 
-            <p className="text-gray-500 font-semibold">
+<div className="text-2xl">
 
-              Available Spins
+🟢
 
-            </p>
+</div>
 
-            <h2 className="mt-4 text-5xl font-black">
+<div className="mt-1 text-sm font-bold">
 
-              {availableSpins}
+{
 
-            </h2>
+alreadySpun
 
-          </div>
+?
 
-          <div className="rounded-3xl bg-white p-8 shadow">
+"Used"
+
+:
+
+"Ready"
+
+}
+
+</div>
+
+<div className="text-[11px] text-gray-500">
+
+Status
+
+</div>
+
+</div>
+
+          <div className="rounded-xl bg-white p-3 shadow">
 
             <p className="text-gray-500 font-semibold">
 
@@ -426,7 +444,7 @@ load();
 
             </p>
 
-            <h2 className="mt-4 text-2xl font-bold">
+            <h2 className="mt-1 text-sm font-bold text-center">
 
               {
 
@@ -446,21 +464,27 @@ load();
 
           </div>
 
-          <div className="rounded-3xl bg-white p-8 shadow">
+          <div className="rounded-2xl bg-white p-3 shadow text-center">
 
-            <p className="text-gray-500 font-semibold">
+  <div className="text-2xl">
 
-              Daily Limit
+    📅
 
-            </p>
+  </div>
 
-            <h2 className="mt-4 text-2xl font-bold">
+  <div className="mt-1 text-sm font-bold">
 
-              1 Spin
+    1/Day
 
-            </h2>
+  </div>
 
-          </div>
+  <div className="text-[11px] text-gray-500">
+
+    Limit
+
+  </div>
+
+</div>
 
         </div>
 
