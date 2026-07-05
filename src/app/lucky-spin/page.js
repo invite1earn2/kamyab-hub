@@ -54,6 +54,82 @@ export default function LuckySpin() {
     setLoading(false);
 
   }
+  async function spinNow(){
+
+  if(alreadySpun){
+
+    alert(
+      "You have already used today's Lucky Spin."
+    );
+
+    return;
+
+  }
+
+  if(availableSpins<=0){
+
+    alert(
+      "You don't have any available spins.\n\nInvite a successful Business Partner to unlock more Lucky Spins."
+    );
+
+    return;
+
+  }
+
+  const { data: rewards } =
+await supabase
+
+.from("spin_rewards")
+
+.select("*")
+
+.eq(
+"is_active",
+true
+)
+
+.order(
+"display_order",
+{
+ascending:true
+}
+);
+
+if(!rewards || rewards.length===0){
+
+  alert(
+    "No Lucky Spin rewards have been configured."
+  );
+
+  return;
+
+}
+
+const randomIndex=
+Math.floor(
+Math.random()*
+rewards.length
+);
+
+const reward=
+rewards[randomIndex];
+
+console.log(
+"Selected Reward:",
+reward
+);
+
+alert(
+
+`🎉 Congratulations!
+
+You won:
+
+${reward.reward_name}`
+
+);
+
+}
 
   return(
 
@@ -169,7 +245,7 @@ export default function LuckySpin() {
 
           <button
 
-            disabled
+            onClick={spinNow}
 
             className="rounded-full bg-purple-600 px-12 py-5 text-xl font-bold text-white opacity-60"
 
