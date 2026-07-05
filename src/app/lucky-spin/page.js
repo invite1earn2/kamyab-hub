@@ -105,15 +105,201 @@ if(!rewards || rewards.length===0){
 
 }
 
-const randomIndex=
-Math.floor(
-Math.random()*
-rewards.length
+const totalProbability=
+
+rewards.reduce(
+
+(total,item)=>
+
+total+
+
+Number(item.probability||0),
+
+0
+
 );
 
-const reward=
-rewards[randomIndex];
+const randomNumber=
 
+Math.floor(
+
+Math.random()*
+
+totalProbability
+
+)+1;
+
+let runningTotal=0;
+
+let reward=null;
+
+for(const item of rewards){
+
+runningTotal+=
+Number(item.probability||0);
+
+if(randomNumber<=runningTotal){
+
+reward=item;
+
+break;
+
+}
+
+}
+console.log(
+"Random Number:",
+randomNumber
+);
+
+const email=
+localStorage.getItem(
+"user_email"
+);
+
+await supabase
+
+.from("spin_history")
+
+.insert([{
+
+user_email:
+email,
+
+reward_name:
+reward.reward_name,
+
+reward_code:
+reward.reward_code,
+
+reward_type:
+reward.reward_type,
+
+reward_value:
+reward.reward_value
+
+}]);
+const today=
+new Date()
+
+.toISOString()
+
+.split("T")[0];
+
+await supabase
+
+.from("user_spin_status")
+
+.update({
+
+available_spins:
+availableSpins-1,
+
+last_spin_date:
+today,
+
+total_spins:1
+
+})
+
+.eq(
+"user_email",
+email
+);
+await supabase
+
+.from("spin_rewards")
+
+.update({
+
+win_count:
+
+Number(
+reward.win_count||0
+)+1
+
+})
+
+.eq(
+"id",
+reward.id
+);
+if(
+reward.reward_code==="POINTS"
+){
+
+const {
+
+data:user
+
+}=
+
+await supabase
+
+.from("users")
+
+.select("reward_points")
+
+.eq(
+"email",
+email
+)
+
+.single();
+
+await supabase
+
+.from("users")
+
+.update({
+
+reward_points:
+
+Number(
+user.reward_points||0
+)+
+
+Number(
+reward.reward_value||0
+)
+
+})
+
+.eq(
+"email",
+email
+);
+
+}
+
+if(
+reward.reward_code==="EXTRA_SPIN"
+){
+
+await supabase
+
+.from("user_spin_status")
+
+.update({
+
+available_spins:
+
+availableSpins
+
++
+
+Number(
+reward.reward_value||1
+)
+
+})
+
+.eq(
+"user_email",
+email
+);
+
+}
 console.log(
 "Selected Reward:",
 reward
@@ -123,12 +309,13 @@ alert(
 
 `🎉 Congratulations!
 
-You won:
+${reward.reward_name}
 
-${reward.reward_name}`
+${reward.reward_description}`
 
 );
 
+load();
 }
 
   return(
