@@ -13,6 +13,7 @@ const [lifetime,setLifetime]=useState(0);
 const [referrals,setReferrals]=useState(0);
 const [sales,setSales]=useState(0);
 const [orderCount,setOrderCount]=useState(0);
+const [availableSpins,setAvailableSpins]=useState(0);
 
 useEffect(()=>{
 
@@ -68,6 +69,26 @@ setSales(total);
 
 setOrderCount(
 (data||[]).length
+);
+
+const { data: spin } =
+await supabase
+
+.from("user_spin_status")
+
+.select("available_spins")
+
+.eq(
+"user_email",
+userEmail
+)
+
+.single();
+
+setAvailableSpins(
+Number(
+spin?.available_spins || 0
+)
 );
 
 setLoading(false);
@@ -447,6 +468,52 @@ hover:scale-[1.02]"
   <div className="mt-8 inline-flex items-center font-semibold text-amber-600">
 
     Open Analytics
+
+    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
+
+      →
+
+    </span>
+
+  </div>
+
+</a>
+<a
+  href="/lucky-spin"
+  className="group rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-600 to-pink-600 p-8 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+>
+
+  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-4xl">
+
+    🎡
+
+  </div>
+
+  <h3 className="mt-6 text-2xl font-bold">
+
+    Kamyab Lucky Spin
+
+  </h3>
+
+  <p className="mt-4 leading-7 text-purple-100">
+
+    Spin every day and win exciting rewards. Invite successful Business Partners to unlock more spins.
+
+  </p>
+
+  <div className="mt-6">
+
+    <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-bold">
+
+      Available Spins: {availableSpins}
+
+    </span>
+
+  </div>
+
+  <div className="mt-8 inline-flex items-center font-semibold">
+
+    Spin Now
 
     <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
 

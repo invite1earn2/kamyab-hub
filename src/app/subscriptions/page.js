@@ -118,6 +118,35 @@ if (subscriptionError) {
       return;
 
     }
+    // ================================
+// Initialize Lucky Spin
+// ================================
+
+const { data: spinSettings } = await supabase
+  .from("spin_settings")
+  .select("*")
+  .single();
+
+const { data: existingSpin } = await supabase
+  .from("user_spin_status")
+  .select("id")
+  .eq("user_email", email)
+  .single();
+
+if (!existingSpin) {
+
+  await supabase
+    .from("user_spin_status")
+    .insert([{
+
+      user_email: email,
+
+      available_spins:
+        spinSettings?.signup_bonus_spins || 3
+
+    }]);
+
+}
     console.log("User subscription updated successfully.");
 
     const result = await createNotification({
@@ -195,6 +224,57 @@ console.log("Inviter:", inviter);
 
   console.log("Updated Inviter:", updatedInviter);
 console.log("Inviter Update Error:", inviterError);
+// ================================
+// Give Bonus Spins To Inviter
+// ================================
+
+const { data: inviterUser } = await supabase
+  .from("users")
+  .select("email")
+  .eq("id", inviter.id)
+  .single();
+
+if (inviterUser) {
+
+  const { data: spinSettings } = await supabase
+    .from("spin_settings")
+    .select("*")
+    .single();
+
+  const { data: inviterSpin } = await supabase
+    .from("user_spin_status")
+    .select("*")
+    .eq("user_email", inviterUser.email)
+    .single();
+
+  if (inviterSpin) {
+
+    await supabase
+
+      .from("user_spin_status")
+
+      .update({
+
+        available_spins:
+
+          Number(inviterSpin.available_spins || 0)
+
+          +
+
+          Number(
+            spinSettings?.referral_bonus_spins || 3
+          )
+
+      })
+
+      .eq(
+        "id",
+        inviterSpin.id
+      );
+
+  }
+
+}
 
 }   // closes if (inviter)
 
