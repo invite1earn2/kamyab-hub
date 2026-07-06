@@ -1,15 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import supabase from "../lib/supabase";
 
 export default function Home(){
 
 const [reviews,setReviews]=useState([]);
+const [signupUrl,setSignupUrl]=useState("/signup");
 
 useEffect(()=>{
 
 loadReviews();
+
+const params = new URLSearchParams(window.location.search);
+
+const ref = params.get("ref");
+
+if(ref){
+
+setSignupUrl(`/signup?ref=${ref}`);
+
+}
 
 },[]);
 
@@ -143,7 +155,7 @@ and a trusted business platform.
 
 <a
 
-href="/signup"
+href={signupUrl}
 
 className="floating-btn rounded-2xl bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold shadow-lg transition-all duration-300"
 
@@ -879,7 +891,7 @@ Learn about the vision, purpose and commitment behind Kamyab Hub from our founde
     </p>
 
     <a
-      href="/signup"
+      href={signupUrl}
       className="inline-block mt-10 px-10 py-4 rounded-xl bg-white text-black font-bold hover:scale-105 transition-all duration-500"
     >
 

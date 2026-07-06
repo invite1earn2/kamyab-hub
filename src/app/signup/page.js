@@ -41,24 +41,23 @@ new URLSearchParams(
 window.location.search
 );
 
-const ref=
+const ref =
 params.get("ref");
 
-if(ref){
+if (ref) {
 
-setReferral(ref);
+  setReferral(ref);
 
-}
-const partnerId =
-localStorage.getItem(
-"partner_id"
-);
+} else {
 
-if(partnerId){
+  const partnerId =
+    localStorage.getItem("partner_id");
 
-setReferral(
-partnerId
-);
+  if (partnerId) {
+
+    setReferral(partnerId);
+
+  }
 
 }
 
@@ -235,15 +234,20 @@ className="w-full border rounded-xl p-4 focus:outline-none focus:ring-2 focus:ri
 
 <label className="block mb-2 font-medium">
 
-Referral Code (Optional)
+Referral Partner ID
 
 </label>
 
 <input
 value={referral}
 onChange={(e)=>setReferral(e.target.value)}
-placeholder="Enter referral code"
-className="w-full border rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="Referral Partner ID"
+readOnly={!!referral}
+className={`w-full rounded-xl p-4 border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+  referral
+    ? "bg-gray-100 cursor-not-allowed"
+    : ""
+}`}
 />
 
 </div>
