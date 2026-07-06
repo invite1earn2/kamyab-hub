@@ -1,21 +1,24 @@
 "use client";
 
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
 
-export default function Join({ params }) {
+export default function Join() {
+
+  const params = useParams();
 
   useEffect(() => {
 
-    if (params?.partnerId) {
+    const partnerId = params?.partnerId;
 
-      localStorage.setItem(
-        "partner_id",
-        params.partnerId
-      );
+    console.log("Partner ID:", partnerId);
+
+    if (partnerId) {
+
+      localStorage.setItem("partner_id", partnerId);
 
     }
 
-    // Redirect visitors to the Home page instead of Signup
     window.location.replace("/");
 
   }, [params]);
