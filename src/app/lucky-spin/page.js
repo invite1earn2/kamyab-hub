@@ -169,22 +169,26 @@ export default function LuckySpin() {
 
   let runningTotal = 0;
 
-  let reward = null;
+  
+let reward = null;
+let rewardIndex = 0;
 
-  for (const item of rewards) {
+for (let i = 0; i < rewards.length; i++) {
 
-    runningTotal += Number(item.probability || 0);
+  runningTotal += Number(rewards[i].probability || 0);
 
-    if (randomNumber <= runningTotal) {
+  if (randomNumber <= runningTotal) {
 
-      reward = item;
+    reward = rewards[i];
 
-      break;
+    rewardIndex = i;
 
-    }
+    break;
 
   }
 
+}
+  
   if (!reward) {
 
     setSpinning(false);
@@ -327,13 +331,22 @@ export default function LuckySpin() {
 
   }
 
-  const extraRotation =
+  const sliceAngle = 360 / rewards.length;
 
-    3600 +
+// Pointer is at the top (12 o'clock)
+const pointerOffset = 270;
 
-    Math.floor(Math.random() * 360);
+// Center of the winning slice
+const targetAngle =
+pointerOffset -
+(rewardIndex * sliceAngle) -
+(sliceAngle / 2);
 
-  setRotation(extraRotation);
+// Add multiple full rotations for animation
+const finalRotation =
+3600 + targetAngle;
+
+setRotation(finalRotation);
 
   await new Promise(
 
