@@ -337,24 +337,48 @@ export default function LuckySpinHistory() {
             {history.map((item) => (
 
               <div
-                key={item.id}
-                className={`
-                  rounded-3xl
-                  bg-gradient-to-br
-                  ${rewardGradient(item.reward_code)}
-                  border
-                  border-white/10
-                  p-3
-                  shadow-2xl
-                  transition-all
-                  duration-300
-                  active:scale-95
-                `}
-              >
+  key={item.id}
+  className="
+    rounded-3xl
+    border
+    border-white/20
+    bg-white/10
+    backdrop-blur-2xl
+    p-3
+    shadow-[0_8px_30px_rgba(0,0,0,0.15)]
+    transition-all
+    duration-300
+    hover:bg-white/15
+    active:scale-95
+    overflow-hidden
+    relative
+  "
+ >          
+        <div
+  className="absolute inset-0 opacity-20"
+  style={{
+    background: `linear-gradient(135deg, ${item.color || "#8B5CF6"} 0%, transparent 80%)`
+  }}
+/>
 
                 <div className="flex items-start justify-between">
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-3xl backdrop-blur-md">
+                  <div className="
+flex
+h-12
+w-12
+items-center
+justify-center
+rounded-2xl
+bg-white/20
+backdrop-blur-xl
+border
+border-white/20
+shadow-lg
+text-3xl
+relative
+z-10
+">
 
                     {rewardIcon(item.reward_code)}
 
@@ -377,23 +401,23 @@ export default function LuckySpinHistory() {
 
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 relative z-10">
 
-                  <h3 className="line-clamp-2 text-sm font-bold text-white">
+  <h3 className="line-clamp-2 text-sm font-bold text-white">
 
-                    {item.reward_name}
+    {item.reward_name}
 
-                  </h3>
+  </h3>
 
-                  <div className="mt-2 text-2xl font-black text-white">
+  <div className="mt-2 text-2xl font-black text-white">
 
-                    {item.reward_value}
+    {item.reward_value}
 
-                  </div>
+  </div>
 
-                </div>
+</div>
 
-                <div className="mt-4 border-t border-white/10 pt-3">
+                <div className="mt-4 border-t border-white/10 pt-3 relative z-10">
 
                   <div className="text-[10px] text-white/70">
 
