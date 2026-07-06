@@ -15,6 +15,7 @@ const [sales,setSales]=useState(0);
 const [orderCount,setOrderCount]=useState(0);
 const [availableSpins,setAvailableSpins]=useState(0);
 const [rewardPoints,setRewardPoints]=useState(0);
+const [userName,setUserName]=useState("");
 
 useEffect(()=>{
 
@@ -26,7 +27,7 @@ localStorage.getItem("user_email");
 const { data:user }=
 await supabase
 .from("users")
-.select("subscribed,earnings_balance,lifetime_earnings,total_referrals,reward_points")
+.select("name,subscribed,earnings_balance,lifetime_earnings,total_referrals,reward_points")
 .eq("email",userEmail)
 .single();
 console.log("Dashboard User:", user);
@@ -65,6 +66,11 @@ Number(user.lifetime_earnings||0)
 setRewardPoints(
 
 Number(user.reward_points||0)
+
+);
+setUserName(
+
+user.name || "Business Partner"
 
 );
 
@@ -132,59 +138,81 @@ Preparing your business dashboard...
 
 <main className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
 
-<div className="mb-12 rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-50 via-slate-50 to-indigo-50 p-6 md:p-10 shadow-sm">
+<div className="mb-8 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600 p-6 text-white shadow-2xl">
 
-  <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+<div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl"></div>
 
-    <div>
+<div className="relative z-10">
 
-      <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+<div className="flex items-start justify-between">
 
-        👋 Welcome Back
+<div>
 
-      </span>
+<p className="text-sm text-white/80">
 
-      <h1 className="mt-5 text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
+👋 Welcome Back
 
-        Business Dashboard
+</p>
 
-      </h1>
+<h1 className="mt-2 text-3xl font-black">
 
-      <p className="mt-4 max-w-2xl text-base leading-7 text-gray-700 md:text-lg">
+{userName}
 
-        Manage your products, referral network, earnings, and business growth from one professional dashboard.
+</h1>
 
-      </p>
+<p className="mt-1 text-white/80">
 
-    </div>
+Business Partner
 
-    <div>
+</p>
 
-      <div className="rounded-2xl border border-blue-200 bg-white px-6 py-4 text-center shadow-md">
+</div>
 
-        <div className="text-3xl">
+<div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-3xl backdrop-blur-xl">
 
-          🤝
+🤝
 
-        </div>
+</div>
 
-        <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
+</div>
 
-          Account Type
+<div className="mt-6 grid grid-cols-2 gap-3">
 
-        </p>
+<div className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-xl">
 
-        <p className="mt-1 text-lg font-bold text-gray-900">
+<div className="text-xs text-white/70">
 
-          Business Partner
+🎡 Available Spins
 
-        </p>
+</div>
 
-      </div>
+<div className="mt-2 text-3xl font-black">
 
-    </div>
+{availableSpins}
 
-  </div>
+</div>
+
+</div>
+
+<div className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-xl">
+
+<div className="text-xs text-white/70">
+
+🪙 Reward Points
+
+</div>
+
+<div className="mt-2 text-3xl font-black">
+
+{rewardPoints}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
