@@ -14,6 +14,7 @@ const [referrals,setReferrals]=useState(0);
 const [sales,setSales]=useState(0);
 const [orderCount,setOrderCount]=useState(0);
 const [availableSpins,setAvailableSpins]=useState(0);
+const [rewardPoints,setRewardPoints]=useState(0);
 
 useEffect(()=>{
 
@@ -25,7 +26,7 @@ localStorage.getItem("user_email");
 const { data:user }=
 await supabase
 .from("users")
-.select("subscribed,earnings_balance,lifetime_earnings,total_referrals")
+.select("subscribed,earnings_balance,lifetime_earnings,total_referrals,reward_points")
 .eq("email",userEmail)
 .single();
 console.log("Dashboard User:", user);
@@ -61,8 +62,10 @@ setLifetime(
 Number(user.lifetime_earnings||0)
 );
 
-setReferrals(
-Number(user.total_referrals||0)
+setRewardPoints(
+
+Number(user.reward_points||0)
+
 );
 
 setSales(total);
@@ -185,35 +188,37 @@ Preparing your business dashboard...
 
 </div>
 
-<div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+<div className="grid grid-cols-2 gap-3 md:gap-5">
 
-<div className="rounded-3xl border border-green-100 bg-white p-7 shadow-sm hover:shadow-2xl
-hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
+<div className="relative overflow-hidden rounded-3xl border border-green-200/40 bg-white/70 backdrop-blur-xl p-5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl active:scale-95">
 
-<div className="flex items-start justify-between">
+<div className="absolute inset-0 bg-gradient-to-br from-green-400/20 via-transparent to-transparent"></div>
+
+<div className="relative z-10 flex items-start justify-between">
 
 <div>
 
-<p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+<p className="text-xs font-semibold uppercase tracking-wider text-green-700">
 
 Available Balance
 
 </p>
 
-<h2 className="mt-3 text-4xl font-black text-gray-900">
+<h2 className="mt-2 text-3xl font-black text-gray-900">
 
 PKR {balance}
+
 </h2>
 
-<p className="mt-3 text-sm text-green-600 font-semibold">
+<p className="mt-3 text-xs font-semibold text-green-600">
 
-▲ Your total business income
+Live Wallet Balance
 
 </p>
 
 </div>
 
-<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl">
+<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-3xl shadow-lg">
 
 💰
 
@@ -223,80 +228,121 @@ PKR {balance}
 
 </div>
 
-<div className="rounded-3xl border border-blue-100 bg-white p-7 shadow-sm hover:shadow-2xl
-hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
+<div className="relative overflow-hidden rounded-3xl border border-blue-200/40 bg-white/70 backdrop-blur-xl p-5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl active:scale-95">
 
-  <div className="flex items-start justify-between">
+<div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-transparent"></div>
 
-    <div>
+<div className="relative z-10 flex items-start justify-between">
 
-      <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+<div>
 
-        Lifetime Earnings
+<p className="text-xs font-semibold uppercase tracking-wider text-blue-700">
 
-      </p>
+Successful Referrals
 
-      <h2 className="mt-3 text-4xl font-black text-gray-900">
+</p>
 
-       PKR {lifetime}
+<h2 className="mt-2 text-3xl font-black text-gray-900">
 
-      </h2>
+{referrals}
 
-      <p className="mt-3 text-sm font-semibold text-blue-600">
+</h2>
 
-        {referrals} Successful Referrals
-      </p>
+<p className="mt-3 text-xs font-semibold text-blue-600">
 
-    </div>
+Business Partners Joined
 
-    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
-
-      👥
-
-    </div>
-
-  </div>
+</p>
 
 </div>
 
-<div className="rounded-3xl border border-amber-100 bg-white p-7 shadow-sm hover:shadow-2xl
-hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
+<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl shadow-lg">
 
-  <div className="flex items-start justify-between">
-
-    <div>
-
-      <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
-
-        Product Profit
-
-      </p>
-
-      <h2 className="mt-3 text-4xl font-black text-gray-900">
-
-        PKR {sales}
-
-      </h2>
-
-      <p className="mt-3 text-sm font-semibold text-amber-600">
-
-        {orderCount} Delivered Orders
-
-      </p>
-
-    </div>
-
-    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-3xl">
-
-      📦
-
-    </div>
-
-  </div>
+👥
 
 </div>
 
 </div>
+
+</div>
+
+ <div className="relative overflow-hidden rounded-3xl border border-purple-200/40 bg-white/70 backdrop-blur-xl p-5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl active:scale-95">
+
+<div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-transparent"></div>
+
+<div className="relative z-10 flex items-start justify-between">
+
+<div>
+
+<p className="text-xs font-semibold uppercase tracking-wider text-purple-700">
+
+Spin Rewards
+
+</p>
+
+<h2 className="mt-2 text-3xl font-black text-gray-900">
+
+{rewardPoints}
+
+</h2>
+
+<p className="mt-3 text-xs font-semibold text-purple-600">
+
+Kamyab Reward Points
+
+</p>
+
+</div>
+
+<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-3xl shadow-lg">
+
+🎡
+
+</div>
+
+</div>
+
+</div>
+
+<div className="relative overflow-hidden rounded-3xl border border-orange-200/40 bg-white/70 backdrop-blur-xl p-5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl active:scale-95">
+
+<div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-transparent to-transparent"></div>
+
+<div className="relative z-10 flex items-start justify-between">
+
+<div>
+
+<p className="text-xs font-semibold uppercase tracking-wider text-orange-700">
+
+Delivered Orders
+
+</p>
+
+<h2 className="mt-2 text-3xl font-black text-gray-900">
+
+{orderCount}
+
+</h2>
+
+<p className="mt-3 text-xs font-semibold text-orange-600">
+
+Completed Orders
+
+</p>
+
+</div>
+
+<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-3xl shadow-lg">
+
+📦
+
+</div>
+
+</div>
+
+</div>
+
+ </div>
 
 <div className="mt-20">
 
