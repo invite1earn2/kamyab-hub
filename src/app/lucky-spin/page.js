@@ -5,6 +5,7 @@ import AuthGuard from "../../components/authguard";
 import supabase from "../../lib/supabase";
 import LuckyWheel from "../../components/lucky-spin/LuckyWheel";
 import WinnerModal from "../../components/lucky-spin/WinnerModal";
+import LuckySpinHistory from "../../components/lucky-spin/LuckySpinHistory";
 
 export default function LuckySpin() {
 
@@ -487,15 +488,14 @@ Status
         </div>
 
         <LuckyWheel
+         LuckyWheel
+        rotation={rotation}
+        spinning={spinning}
+        onSpin={spinNow}
+       />
+       <LuckySpinHistory />
 
-  rotation={rotation}
-
-  spinning={spinning}
-
-  onSpin={spinNow}
-
-/>
-
+<LuckySpinHistory />
       </main>
 
       }
