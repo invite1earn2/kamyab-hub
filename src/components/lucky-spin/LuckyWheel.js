@@ -6,53 +6,11 @@ rotation,
 
 spinning,
 
-onSpin
+onSpin,
+
+rewards = []
 
 }){
-
-const rewards=[
-
-{
-label:"🪙 10",
-color:"#3B82F6"
-},
-
-{
-label:"🪙 20",
-color:"#10B981"
-},
-
-{
-label:"🪙 50",
-color:"#F59E0B"
-},
-
-{
-label:"🏆 100",
-color:"#EF4444"
-},
-
-{
-label:"🎡 Extra",
-color:"#8B5CF6"
-},
-
-{
-label:"🎁 Voucher",
-color:"#EC4899"
-},
-
-{
-label:"🚀 Promote",
-color:"#06B6D4"
-},
-
-{
-label:"🙂 Try Again",
-color:"#6B7280"
-}
-
-];
 
 return(
 
@@ -186,7 +144,7 @@ fill="white"
 
 >
 
-{reward.label}
+{reward.icon} {reward.reward_name}
 
 </text>
 
@@ -298,85 +256,75 @@ spinning
 
 <div className="mt-6 w-full max-w-sm">
 
-<div className="rounded-2xl bg-white shadow p-4">
+  <div className="rounded-2xl bg-white shadow p-4">
 
-<h3 className="text-center text-sm font-bold text-gray-800">
+    <h3 className="text-center text-sm font-bold text-gray-800">
 
-🎁 Rewards You Can Win
+      🎁 Rewards You Can Win
 
-</h3>
+    </h3>
 
-<div className="mt-4 grid grid-cols-2 gap-3">
+    <div className="mt-4 grid grid-cols-2 gap-3">
 
-<div className="rounded-xl bg-purple-50 p-3 text-center">
+      {rewards.map((reward) => (
 
-🪙 10 Points
+        <div
+          key={reward.id}
+          className="rounded-xl p-3 text-center text-white font-semibold"
+          style={{
+            background: reward.color
+          }}
+        >
 
-</div>
+          <div className="text-xl">
 
-<div className="rounded-xl bg-blue-50 p-3 text-center">
+            {reward.icon}
 
-🪙 20 Points
+          </div>
 
-</div>
+          <div className="mt-2 text-xs">
 
-<div className="rounded-xl bg-green-50 p-3 text-center">
+            {reward.reward_name}
 
-🪙 50 Points
+          </div>
 
-</div>
+        </div>
 
-<div className="rounded-xl bg-yellow-50 p-3 text-center">
+      ))}
 
-🏆 100 Points
+    </div>
 
-</div>
+    <hr className="my-5" />
 
-<div className="rounded-xl bg-pink-50 p-3 text-center">
+    <h3 className="text-center text-sm font-bold text-gray-800">
 
-🎡 Extra Spin
+      ⭐ How It Works
 
-</div>
+    </h3>
 
-<div className="rounded-xl bg-orange-50 p-3 text-center">
+    <div className="mt-4 space-y-3 text-sm text-gray-600">
 
-🎁 Voucher
+      <div>
 
-</div>
+        ① Spin once every day.
 
-</div>
+      </div>
 
-<hr className="my-5"/>
+      <div>
 
-<h3 className="text-center text-sm font-bold text-gray-800">
+        ② Win exciting rewards instantly.
 
-⭐ How It Works
+      </div>
 
-</h3>
+      <div>
 
-<div className="mt-4 space-y-3 text-sm text-gray-600">
+        ③ Invite a successful Business Partner to unlock more spins.
 
-<div>
+      </div>
 
-① Spin once every day.
+    </div>
 
-</div>
-
-<div>
-
-② Win exciting rewards instantly.
-
-</div>
-
-<div>
-
-③ Invite a successful Business Partner to unlock more spins.
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 

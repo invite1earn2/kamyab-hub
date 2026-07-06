@@ -9,568 +9,592 @@ import LuckySpinHistory from "../../components/lucky-spin/LuckySpinHistory";
 
 export default function LuckySpin() {
 
-  const [loading,setLoading]=useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const [availableSpins,setAvailableSpins]=useState(0);
+  const [availableSpins, setAvailableSpins] = useState(0);
 
-  const [alreadySpun,setAlreadySpun]=useState(false);
+  const [alreadySpun, setAlreadySpun] = useState(false);
 
-  const [rotation,setRotation]=useState(0);
+  const [rotation, setRotation] = useState(0);
 
-const [spinning,setSpinning]=useState(false);
-const [showWinner,setShowWinner]=useState(false);
+  const [spinning, setSpinning] = useState(false);
 
-const [winner,setWinner]=useState(null);
-const [showHistory, setShowHistory] = useState(false);
+  const [showWinner, setShowWinner] = useState(false);
 
-  useEffect(()=>{
+  const [winner, setWinner] = useState(null);
+
+  const [showHistory, setShowHistory] = useState(false);
+
+  // Dynamic Rewards
+
+  const [rewards, setRewards] = useState([]);
+
+  // Dynamic Settings
+
+  const [spinSettings, setSpinSettings] = useState(null);
+
+  useEffect(() => {
 
     load();
 
-  },[]);
+  }, []);
 
-  async function load(){
+  async function load() {
 
-    const email=
-    localStorage.getItem("user_email");
+    const email = localStorage.getItem("user_email");
 
-    const today=
-    new Date().toISOString().split("T")[0];
+    const today =
+      new Date().toISOString().split("T")[0];
 
-    const { data:spin }=
-    await supabase
+    // User Spin Status
 
-    .from("user_spin_status")
+    const { data: spin } =
+      await supabase
 
-    .select("*")
+        .from("user_spin_status")
 
-    .eq("user_email",email)
+        .select("*")
 
-    .single();
+        .eq("user_email", email)
 
-    if(spin){
+        .single();
+
+    if (spin) {
 
       setAvailableSpins(
-        Number(spin.available_spins||0)
+
+        Number(spin.available_spins || 0)
+
       );
 
-      if(spin.last_spin_date===today){
+      if (spin.last_spin_date === today) {
 
         setAlreadySpun(true);
+
+      } else {
+
+        setAlreadySpun(false);
 
       }
 
     }
 
+    // Dynamic Rewards
+
+    const { data: rewardsData } =
+      await supabase
+
+        .from("spin_rewards")
+
+        .select("*")
+
+        .eq("is_active", true)
+
+        .order("display_order", {
+
+          ascending: true
+
+        });
+
+    setRewards(rewardsData || []);
+
+    // Dynamic Spin Settings
+
+    const { data: settings } =
+      await supabase
+
+        .from("spin_settings")
+
+        .select("*")
+
+        .single();
+
+    setSpinSettings(settings);
+
     setLoading(false);
+ }
 
-  }
-  async function spinNow(){
+  async function spinNow() {
 
-  if(spinning){
-
-    return;
-
-  }
+  if (spinning) return;
 
   setSpinning(true);
 
-  if(alreadySpun){
+  const email = localStorage.getItem("user_email");
+  const role = localStorage.getItem("user_role");
 
-    alert(
-      "You have already used today's Lucky Spin."
-    );
+  if (alreadySpun && role !== "owner") {
+
+    alert("You have already used today's Lucky Spin.");
+
+    setSpinning(false);
 
     return;
 
   }
 
-  if(availableSpins<=0){
+  if (availableSpins <= 0 && role !== "owner") {
 
     alert(
       "You don't have any available spins.\n\nInvite a successful Business Partner to unlock more Lucky Spins."
     );
 
+    setSpinning(false);
+
     return;
 
   }
 
-  const { data: rewards } =
-await supabase
+  if (rewards.length === 0) {
 
-.from("spin_rewards")
+    alert("Lucky Spin rewards are not configured.");
 
-.select("*")
+    setSpinning(false);
 
-.eq(
-"is_active",
-true
-)
+    return;
 
-.order(
-"display_order",
-{
-ascending:true
-}
-);
+  }
 
-if(!rewards || rewards.length===0){
+  const totalProbability = rewards.reduce(
 
-  alert(
-    "No Lucky Spin rewards have been configured."
+    (total, item) => total + Number(item.probability || 0),
+
+    0
+
   );
 
-  return;
+  const randomNumber =
+
+    Math.floor(Math.random() * totalProbability) + 1;
+
+  let runningTotal = 0;
+
+  let reward = null;
+
+  for (const item of rewards) {
+
+    runningTotal += Number(item.probability || 0);
+
+    if (randomNumber <= runningTotal) {
+
+      reward = item;
+
+      break;
+
+    }
+
+  }
+
+  if (!reward) {
+
+    setSpinning(false);
+
+    return;
+
+  }
+
+  console.log("Winner:", reward);
+
+  await supabase
+
+    .from("spin_history")
+
+    .insert([{
+
+      user_email: email,
+
+      reward_name: reward.reward_name,
+
+      reward_code: reward.reward_code,
+
+      reward_type: reward.reward_type,
+
+      reward_value: reward.reward_value
+
+    }]);
+
+  const today =
+
+    new Date().toISOString().split("T")[0];
+
+  const updateData = {
+
+    last_spin_date: today,
+
+    total_spins: 1
+
+  };
+
+  if (role !== "owner") {
+
+    updateData.available_spins = availableSpins - 1;
+
+  }
+
+  await supabase
+
+    .from("user_spin_status")
+
+    .update(updateData)
+
+    .eq("user_email", email);
+
+  await supabase
+
+    .from("spin_rewards")
+
+    .update({
+
+      win_count:
+
+        Number(reward.win_count || 0) + 1
+
+    })
+
+    .eq("id", reward.id);
+
+  // Reward Logic
+
+  if (reward.reward_code === "POINTS") {
+
+    const { data: user } =
+
+      await supabase
+
+        .from("users")
+
+        .select("reward_points")
+
+        .eq("email", email)
+
+        .single();
+
+    await supabase
+
+      .from("users")
+
+      .update({
+
+        reward_points:
+
+          Number(user.reward_points || 0) +
+
+          Number(reward.reward_value || 0)
+
+      })
+
+      .eq("email", email);
+
+  }
+
+  if (reward.reward_code === "EXTRA_SPIN") {
+
+    await supabase
+
+      .from("user_spin_status")
+
+      .update({
+
+        available_spins:
+
+          availableSpins +
+
+          Number(reward.reward_value || 1)
+
+      })
+
+      .eq("user_email", email);
+
+  }
+
+  // Future Reward Types
+
+  if (reward.reward_code === "VOUCHER") {
+
+    console.log("Voucher Won");
+
+  }
+
+  if (reward.reward_code === "REFERRAL_BOOSTER") {
+
+    console.log("Referral Booster Won");
+
+  }
+
+  if (reward.reward_code === "NONE") {
+
+    console.log("Better Luck Next Time");
+
+  }
+
+  const extraRotation =
+
+    3600 +
+
+    Math.floor(Math.random() * 360);
+
+  setRotation(extraRotation);
+
+  await new Promise(
+
+    resolve =>
+
+      setTimeout(resolve, 5000)
+
+  );
+
+  setSpinning(false);
+
+  setWinner(reward);
+
+  setShowWinner(true);
+
+  load();
 
 }
 
-const totalProbability=
+return(
 
-rewards.reduce(
+  <AuthGuard>
 
-(total,item)=>
+    {
 
-total+
+    loading
 
-Number(item.probability||0),
+    ?
 
-0
+    <div className="min-h-[70vh] flex items-center justify-center">
 
-);
+      <div className="text-center">
 
-const randomNumber=
+        <div className="w-12 h-12 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
 
-Math.floor(
+        <p className="mt-4 text-gray-600">
 
-Math.random()*
+          Loading Lucky Spin...
 
-totalProbability
+        </p>
 
-)+1;
+      </div>
 
-let runningTotal=0;
+    </div>
 
-let reward=null;
+    :
 
-for(const item of rewards){
+    <main className="mx-auto max-w-4xl px-4 py-5">
 
-runningTotal+=
-Number(item.probability||0);
+      <div className="rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 p-5 text-white shadow-lg">
 
-if(randomNumber<=runningTotal){
+        <h1 className="text-2xl md:text-4xl font-black">
 
-reward=item;
+          {spinSettings?.wheel_title || "🎡 Kamyab Lucky Spin"}
 
-break;
+        </h1>
 
-}
+        <p className="mt-2 text-sm md:text-base text-purple-100">
 
-}
-console.log(
-"Random Number:",
-randomNumber
-);
+          {spinSettings?.wheel_subtitle || "Spin every day and win exciting rewards."}
 
-const email=
-localStorage.getItem(
-"user_email"
-);
+        </p>
 
-await supabase
+      </div>
 
-.from("spin_history")
+      <div className="mt-4 grid grid-cols-3 gap-3">
 
-.insert([{
+        <div className="rounded-2xl bg-white p-3 shadow text-center">
 
-user_email:
-email,
+          <div className="text-2xl">
 
-reward_name:
-reward.reward_name,
+            🟢
 
-reward_code:
-reward.reward_code,
+          </div>
 
-reward_type:
-reward.reward_type,
+          <div className="mt-1 text-sm font-bold">
 
-reward_value:
-reward.reward_value
+            {
 
-}]);
-const today=
-new Date()
+            alreadySpun
 
-.toISOString()
+            ?
 
-.split("T")[0];
+            "Used"
 
-await supabase
+            :
 
-.from("user_spin_status")
+            "Ready"
 
-.update({
+            }
 
-available_spins:
-availableSpins-1,
+          </div>
 
-last_spin_date:
-today,
+          <div className="text-[11px] text-gray-500">
 
-total_spins:1
+            Status
 
-})
+          </div>
 
-.eq(
-"user_email",
-email
-);
-await supabase
+        </div>
 
-.from("spin_rewards")
+        <div className="rounded-xl bg-white p-3 shadow">
 
-.update({
+          <p className="text-gray-500 font-semibold">
 
-win_count:
-
-Number(
-reward.win_count||0
-)+1
-
-})
-
-.eq(
-"id",
-reward.id
-);
-if(
-reward.reward_code==="POINTS"
-){
-
-const {
-
-data:user
-
-}=
-
-await supabase
-
-.from("users")
-
-.select("reward_points")
-
-.eq(
-"email",
-email
-)
-
-.single();
-
-await supabase
-
-.from("users")
-
-.update({
-
-reward_points:
-
-Number(
-user.reward_points||0
-)+
-
-Number(
-reward.reward_value||0
-)
-
-})
-
-.eq(
-"email",
-email
-);
-
-}
-
-if(
-reward.reward_code==="EXTRA_SPIN"
-){
-
-await supabase
-
-.from("user_spin_status")
-
-.update({
-
-available_spins:
-
-availableSpins
-
-+
-
-Number(
-reward.reward_value||1
-)
-
-})
-
-.eq(
-"user_email",
-email
-);
-
-}
-console.log(
-"Selected Reward:",
-reward
-);
-
-const extraRotation=
-
-3600+
-
-Math.floor(
-Math.random()*360
-);
-
-setRotation(extraRotation);
-
-await new Promise(
-
-(resolve)=>
-
-setTimeout(
-resolve,
-5000
-)
-
-);
-
-setSpinning(false);
-
-setWinner(reward);
-
-setShowWinner(true);
-
-load();
-}
-
-  return(
-
-    <AuthGuard>
-
-      {
-
-      loading
-
-      ?
-
-      <div className="min-h-[70vh] flex items-center justify-center">
-
-        <div className="text-center">
-
-          <div className="w-12 h-12 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-
-          <p className="mt-4 text-gray-600">
-
-            Loading Lucky Spin...
+            Today's Status
 
           </p>
+
+          <h2 className="mt-1 text-sm font-bold text-center">
+
+            {
+
+            alreadySpun
+
+            ?
+
+            "🔴 Already Used"
+
+            :
+
+            "🟢 Ready"
+
+            }
+
+          </h2>
+
+        </div>
+
+        <div className="rounded-2xl bg-white p-3 shadow text-center">
+
+          <div className="text-2xl">
+
+            📅
+
+          </div>
+
+          <div className="mt-1 text-sm font-bold">
+
+            {spinSettings?.spins_per_day || 1}/Day
+
+          </div>
+
+          <div className="text-[11px] text-gray-500">
+
+            Limit
+
+          </div>
 
         </div>
 
       </div>
 
-      :
+      <LuckyWheel
 
-     <main className="mx-auto max-w-4xl px-4 py-5">
+        rotation={rotation}
 
-        <div className="rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 p-5 text-white shadow-lg">
+        spinning={spinning}
 
-          <h1 className="text-2xl md:text-4xl font-black">
+        onSpin={spinNow}
 
-            🎡 Kamyab Lucky Spin
+        rewards={rewards}
 
-          </h1>
+      />
 
-          <p className="mt-2 text-sm md:text-base text-purple-100">
+      <div
 
-            Spin every day and win exciting rewards.
+        onClick={() => setShowHistory(!showHistory)}
 
-          </p>
+        className="
 
-        </div>
+          mt-6
 
-        <div className="mt-4 grid grid-cols-3 gap-3">
+          cursor-pointer
 
-          <div className="rounded-2xl bg-white p-3 shadow text-center">
+          rounded-2xl
 
-<div className="text-2xl">
+          border
 
-🟢
+          border-purple-200
 
-</div>
+          bg-gradient-to-r
 
-<div className="mt-1 text-sm font-bold">
+          from-purple-600
 
-{
+          via-pink-600
 
-alreadySpun
+          to-indigo-600
 
-?
+          p-4
 
-"Used"
+          text-white
 
-:
+          shadow-lg
 
-"Ready"
+          transition
 
-}
+          hover:scale-[1.01]
 
-</div>
+          active:scale-95
 
-<div className="text-[11px] text-gray-500">
+        "
 
-Status
+      >
 
-</div>
+        <div className="flex items-center justify-between">
 
-</div>
+          <div>
 
-          <div className="rounded-xl bg-white p-3 shadow">
+            <h3 className="text-lg font-bold">
 
-            <p className="text-gray-500 font-semibold">
+              {spinSettings?.history_title || "🎁 Lucky Spin History"}
 
-              Today's Status
+            </h3>
+
+            <p className="text-xs text-purple-100">
+
+              {spinSettings?.history_subtitle || "View all your previous rewards"}
 
             </p>
 
-            <h2 className="mt-1 text-sm font-bold text-center">
+          </div>
 
-              {
+          <div className="text-2xl">
 
-              alreadySpun
-
-              ?
-
-              "🔴 Already Used"
-
-              :
-
-              "🟢 Ready"
-
-              }
-
-            </h2>
+            {showHistory ? "▲" : "▼"}
 
           </div>
 
-          <div className="rounded-2xl bg-white p-3 shadow text-center">
-
-  <div className="text-2xl">
-
-    📅
-
-  </div>
-
-  <div className="mt-1 text-sm font-bold">
-
-    1/Day
-
-  </div>
-
-  <div className="text-[11px] text-gray-500">
-
-    Limit
-
-  </div>
-
-</div>
-
         </div>
 
-        <LuckyWheel
-  rotation={rotation}
-  spinning={spinning}
-  onSpin={spinNow}
-/>
+      </div>
 
-<div
-  onClick={() => setShowHistory(!showHistory)}
-  className="
-    mt-6
-    cursor-pointer
-    rounded-2xl
-    border
-    border-purple-200
-    bg-gradient-to-r
-    from-purple-600
-    via-pink-600
-    to-indigo-600
-    p-4
-    text-white
-    shadow-lg
-    transition
-    hover:scale-[1.01]
-    active:scale-95
-  "
->
+      {
 
-  <div className="flex items-center justify-between">
+      showHistory &&
 
-    <div>
-
-      <h3 className="text-lg font-bold">
-
-        🎁 Lucky Spin History
-
-      </h3>
-
-      <p className="text-xs text-purple-100">
-
-        View all your previous rewards
-
-      </p>
-
-    </div>
-
-    <div className="text-2xl">
-
-      {showHistory ? "▲" : "▼"}
-
-    </div>
-
-  </div>
-
-</div>
-
-{showHistory && (
-
-  <LuckySpinHistory />
-
-)}
-       <LuckySpinHistory />
-
-<LuckySpinHistory />
-      </main>
+      <LuckySpinHistory />
 
       }
 
-      <WinnerModal
+    </main>
 
-open={showWinner}
+    }
 
-reward={winner}
+    <WinnerModal
 
-onClose={()=>
+      open={showWinner}
 
-setShowWinner(false)
+      reward={winner}
 
-}
+      onClose={()=>
 
-/>
+        setShowWinner(false)
 
-    </AuthGuard>
+      }
 
-  );
+    />
+
+  </AuthGuard>
+
+);
 
 }
