@@ -21,6 +21,7 @@ const [spinning,setSpinning]=useState(false);
 const [showWinner,setShowWinner]=useState(false);
 
 const [winner,setWinner]=useState(null);
+const [showHistory, setShowHistory] = useState(false);
 
   useEffect(()=>{
 
@@ -488,11 +489,65 @@ Status
         </div>
 
         <LuckyWheel
-         LuckyWheel
-        rotation={rotation}
-        spinning={spinning}
-        onSpin={spinNow}
-       />
+  rotation={rotation}
+  spinning={spinning}
+  onSpin={spinNow}
+/>
+
+<div
+  onClick={() => setShowHistory(!showHistory)}
+  className="
+    mt-6
+    cursor-pointer
+    rounded-2xl
+    border
+    border-purple-200
+    bg-gradient-to-r
+    from-purple-600
+    via-pink-600
+    to-indigo-600
+    p-4
+    text-white
+    shadow-lg
+    transition
+    hover:scale-[1.01]
+    active:scale-95
+  "
+>
+
+  <div className="flex items-center justify-between">
+
+    <div>
+
+      <h3 className="text-lg font-bold">
+
+        🎁 Lucky Spin History
+
+      </h3>
+
+      <p className="text-xs text-purple-100">
+
+        View all your previous rewards
+
+      </p>
+
+    </div>
+
+    <div className="text-2xl">
+
+      {showHistory ? "▲" : "▼"}
+
+    </div>
+
+  </div>
+
+</div>
+
+{showHistory && (
+
+  <LuckySpinHistory />
+
+)}
        <LuckySpinHistory />
 
 <LuckySpinHistory />
