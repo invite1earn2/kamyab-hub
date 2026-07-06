@@ -142,7 +142,11 @@ if (!existingSpin) {
       user_email: email,
 
       available_spins:
-        spinSettings?.signup_bonus_spins || 3
+  Number(spinSettings?.signup_bonus_spins || 4),
+
+total_spins: 0,
+
+last_spin_date: null
 
     }]);
 
@@ -262,8 +266,8 @@ if (inviterUser) {
           +
 
           Number(
-            spinSettings?.referral_bonus_spins || 3
-          )
+spinSettings?.referral_bonus_spins || 4
+)
 
       })
 

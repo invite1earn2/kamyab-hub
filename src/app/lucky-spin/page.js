@@ -121,29 +121,36 @@ export default function LuckySpin() {
   setSpinning(true);
 
   const email = localStorage.getItem("user_email");
-  const role = localStorage.getItem("user_role");
 
-  if (alreadySpun && role !== "owner") {
+  if (alreadySpun) {
 
-    alert("You have already used today's Lucky Spin.");
+  alert("You have already used today's Lucky Spin.");
 
-    setSpinning(false);
+  setSpinning(false);
 
-    return;
+  return;
 
-  }
+}
 
-  if (availableSpins <= 0 && role !== "owner") {
+  if (availableSpins <= 0) {
 
-    alert(
-      "You don't have any available spins.\n\nInvite a successful Business Partner to unlock more Lucky Spins."
-    );
+  alert(
 
-    setSpinning(false);
+`🔒 Lucky Spin Locked
 
-    return;
+You have used all your Lucky Spins.
 
-  }
+Invite 1 successful Business Partner
+
+to unlock ${spinSettings?.referral_bonus_spins || 4} more Lucky Spins.`
+
+  );
+
+  setSpinning(false);
+
+  return;
+
+}
 
   if (rewards.length === 0) {
 
@@ -219,29 +226,25 @@ for (let i = 0; i < rewards.length; i++) {
 
   const today =
 
-    new Date().toISOString().split("T")[0];
+  new Date().toISOString().split("T")[0];
 
-  const updateData = {
+const updateData = {
 
-    last_spin_date: today,
+  available_spins: availableSpins - 1,
 
-    total_spins: 1
+  last_spin_date: today,
 
-  };
+  total_spins: 1
 
-  if (role !== "owner") {
+};
 
-    updateData.available_spins = availableSpins - 1;
+await supabase
 
-  }
+  .from("user_spin_status")
 
-  await supabase
+  .update(updateData)
 
-    .from("user_spin_status")
-
-    .update(updateData)
-
-    .eq("user_email", email);
+  .eq("user_email", email);
 
   await supabase
 
