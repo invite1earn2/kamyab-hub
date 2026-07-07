@@ -9,6 +9,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NotificationListener from "../components/NotificationListener";
 import WhatsAppFloat from "../components/WhatsAppFloat";
+import FloatingHelpButton from "../components/FloatingHelpButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,27 +27,27 @@ const notoNaskh = Noto_Naskh_Arabic({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata = {
-
+ export const metadata = {
   title: {
-  default: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
-  template: "%s | Kamyab Hub",
-},
+    default: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
+    template: "%s | Kamyab Hub",
+  },
+
   description:
-  "Start your online business with Kamyab Hub. Earn through referrals, sell quality products, and grow your income with Pakistan's trusted Business Partner Platform.",
+    "Start your online business with Kamyab Hub. Earn through referrals, sell quality products, and grow your income with Pakistan's trusted Business Partner Platform.",
 
   keywords: [
-  "online business Pakistan",
-  "earn money online",
-  "referral marketing Pakistan",
-  "business partner",
-  "online earning",
-  "affiliate marketing",
-  "product selling",
-  "work from home Pakistan",
-  "Kamyab Hub",
-  "business opportunity",
-],
+    "online business Pakistan",
+    "earn money online",
+    "referral marketing Pakistan",
+    "business partner",
+    "online earning",
+    "affiliate marketing",
+    "product selling",
+    "work from home Pakistan",
+    "Kamyab Hub",
+    "business opportunity",
+  ],
 
   authors: [
     {
@@ -60,56 +61,48 @@ export const metadata = {
 
   applicationName: "Kamyab Hub",
 
- verification: {
-  google: "LprUQOY4SIxlLOUod-52PKquoRVWdaAEiaf4wMdVltg",
-},
+  verification: {
+    google: "LprUQOY4SIxlLOUod-52PKquoRVWdaAEiaf4wMdVltg",
+  },
 
   openGraph: {
-  title: "Kamyab Hub | Online Business & Referral Platform in Pakistan",
+    title:
+      "Kamyab Hub | Online Business & Referral Platform in Pakistan",
 
-  description:
-    "Start your online business with Kamyab Hub. Earn through referrals and product sales with a one-time membership.",
+    description:
+      "Start your online business with Kamyab Hub. Earn through referrals and product sales with a one-time membership.",
 
-  url: "https://kamyabhub.com",
+    url: "https://kamyabhub.com",
 
-  siteName: "Kamyab Hub",
+    siteName: "Kamyab Hub",
 
-  locale: "en_PK",
+    locale: "en_PK",
 
-  type: "website",
-},
-
+    type: "website",
+  },
 };
 
-export default function RootLayout({ children }) {
-
-  return (
-
-    <html
+  export default function RootLayout({ children }) {
+   return (
+     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${notoNaskh.variable} h-full antialiased`}
-    >
-
-      <body className="min-h-full flex flex-col bg-gray-50">
-
+     >
+       <body className="min-h-full flex flex-col bg-gray-50">
         <Navbar />
 
-<NotificationListener />
+        <NotificationListener />
 
-<main className="flex-1">
+        <main className="flex-1">
+          {children}
+        </main>
 
-  {children}
+        <Footer />
 
-</main>
-
-<Footer />
-
-<WhatsAppFloat />
-
-      </body>
-
-    </html>
-
-  );
-
-}
+        {/* Floating Buttons */}
+        <FloatingHelpButton />
+        <WhatsAppFloat />
+       </body>
+     </html>
+    );
+ }
