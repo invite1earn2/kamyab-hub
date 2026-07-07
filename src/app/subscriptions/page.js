@@ -477,39 +477,45 @@ inviterUser.email
 
 .single();
 
-if(inviterSpin){
+if (inviterSpin) {
 
-await supabase
+  await supabase
 
-.from("user_spin_status")
+    .from("user_spin_status")
 
-.update({
+    .update({
 
-available_spins:
+      available_spins:
 
-Number(
+        Number(inviterSpin.available_spins || 0)
 
-inviterSpin.available_spins||0
+        +
 
-)
+        Number(spinSettings?.referral_bonus_spins || 4)
 
-+
+    })
 
-Number(
+    .eq("id", inviterSpin.id);
 
-spinSettings?.referral_bonus_spins||4
+} else {
 
-)
+  await supabase
 
-})
+    .from("user_spin_status")
 
-.eq(
+    .insert([{
 
-"id",
+      user_email: inviterUser.email,
 
-inviterSpin.id
+      available_spins:
 
-);
+        Number(spinSettings?.referral_bonus_spins || 4),
+
+      total_spins: 0,
+
+      last_spin_date: null
+
+    }]);
 
 }
 
