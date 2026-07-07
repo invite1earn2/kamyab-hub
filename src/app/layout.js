@@ -9,7 +9,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NotificationListener from "../components/NotificationListener";
 import WhatsAppFloat from "../components/WhatsAppFloat";
-import FloatingHelpButton from "../components/FloatingHelpButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,7 +99,6 @@ const notoNaskh = Noto_Naskh_Arabic({
         <Footer />
 
         {/* Floating Buttons */}
-        <FloatingHelpButton />
         <WhatsAppFloat />
        </body>
      </html>
