@@ -7,6 +7,7 @@ import supabase from "../lib/supabase";
 export default function Home(){
 
 const [reviews,setReviews]=useState([]);
+const [community,setCommunity]=useState(null);
 const [signupUrl,setSignupUrl]=useState("/signup");
 
 useEffect(()=>{
@@ -42,6 +43,19 @@ await supabase
 .order("display_order",{ascending:true});
 
 setReviews(data||[]);
+const { data: communityData } =
+
+await supabase
+
+.from("whatsapp_settings")
+
+.select("*")
+
+.eq("id",1)
+
+.single();
+
+setCommunity(communityData);
 
 }
 

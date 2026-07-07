@@ -8,6 +8,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NotificationListener from "../components/NotificationListener";
+import WhatsAppFloat from "../components/WhatsAppFloat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -102,6 +103,8 @@ export default function RootLayout({ children }) {
 </main>
 
 <Footer />
+
+<WhatsAppFloat />
 
       </body>
 
