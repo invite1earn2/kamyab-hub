@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { login } from "../../services/auth";
-import { bootstrapOwner } from "../../services/bootstrapOwner";
 
 export default function Login() {
 
@@ -14,9 +13,7 @@ export default function Login() {
 
     async function initialize() {
 
-      await bootstrapOwner();
-
-      const existing = localStorage.getItem("user_email");
+  const existing = localStorage.getItem("user_email");
       const role = localStorage.getItem("user_role");
 
       if (existing) {
