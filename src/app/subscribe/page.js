@@ -243,23 +243,23 @@ return(
 
 <div className="mx-auto max-w-5xl">
 
-<div className="rounded-3xl bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-600 p-6 text-center text-white shadow-2xl">
+<div className="rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 p-6 text-center text-white shadow-2xl">
 
-<div className="inline-flex rounded-full bg-white/20 px-4 py-2 text-sm font-bold">
+<div className="inline-flex rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black">
 
-🔥 Limited Time Offer
+⏳ Membership Verification
 
 </div>
 
 <h1 className="mt-5 text-3xl font-black md:text-5xl">
 
-Become a Business Partner
+Complete Your Membership
 
 </h1>
 
-<p className="mt-3 text-purple-100">
+<p className="mt-3 text-blue-100">
 
-Start earning through referrals, product sales and Lucky Spin.
+Your account has been created successfully. Complete your one-time membership payment to activate your Business Partner account.
 
 </p>
 
@@ -574,7 +574,7 @@ className="mt-6 w-full rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 
 
 <li>
 
-✅ Your Business Partner account activates automatically after approval.
+✅ Your membership will be activated after payment verification.
 
 </li>
 
