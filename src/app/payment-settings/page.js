@@ -314,18 +314,55 @@ Bank Account
 </div>
 
 {
-
 (paymentMethod==="EasyPaisa"||
 
 paymentMethod==="JazzCash")
 
 &&
 
-<div className="mt-10">
+<div className="mt-10 space-y-6">
+
+<div>
 
 <label className="block text-sm font-semibold text-gray-700 mb-2">
 
-Phone Number
+Account Holder Name
+
+</label>
+
+<input
+
+type="text"
+
+value={accountTitle}
+
+onChange={(e)=>setAccountTitle(e.target.value)}
+
+placeholder="Muhammad Ali"
+
+className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none focus:border-blue-600"
+
+/>
+
+</div>
+
+<div>
+
+<label className="block text-sm font-semibold text-gray-700 mb-2">
+
+{
+
+paymentMethod==="JazzCash"
+
+?
+
+"JazzCash Number"
+
+:
+
+"EasyPaisa Number"
+
+}
 
 </label>
 
@@ -342,6 +379,8 @@ placeholder="03XXXXXXXXX"
 className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none focus:border-blue-600"
 
 />
+
+</div>
 
 </div>
 
